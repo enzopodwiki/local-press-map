@@ -257,7 +257,8 @@
   }
   .d-cover{padding:22px 18px;border-right:2.5px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:color-mix(in srgb, var(--acc) 10%, var(--paper))}
   .cover-slot{width:176px;height:236px;border:2.4px solid var(--ink);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--paper)}
-  .cover-slot img{width:100%;height:100%;object-fit:contain;display:block}
+  .cover-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;opacity:0;transition:opacity .45s ease}
+  .cover-slot img.on{opacity:1}
   .cover-slot .ct{writing-mode:vertical-rl;text-orientation:mixed;font-weight:900;letter-spacing:.16em;padding:14px 0;max-height:100%;overflow:hidden}
   .cover-slot .cp{position:absolute;left:7px;bottom:6px;font-size:9px;font-weight:700;letter-spacing:.06em;background:var(--paper);border:1.4px solid var(--ink);padding:1.5px 5px}
   .cover-slot .badge{position:absolute;top:7px;right:-1px;font-size:8.5px;font-weight:700;letter-spacing:.1em;border:1.4px dashed var(--ink);padding:2px 5px;background:rgba(246,240,225,.85);transform:rotate(3deg)}
@@ -3711,20 +3712,21 @@ function hash(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>
 function colorOf(i){ return PALETTE[(i + hash(cur.group.id)) % PALETTE.length]; }
 
 function coverHTML(pub, big, forceText){
-  if(pub.cover && !forceText){
-    return `<img src="${pub.cover}" alt="${pub.t} 封面">`;
-  }
   const i = cur.group.pubs.indexOf(pub);
   const c = colorOf(i);
   const title = pub.t.replace(/[《》]/g,'').replace(/（英文）|（泰文）|（云上）|（东北食通信）|（濑户内风格）|（书与温泉）/g,'');
   const fs = big ? (title.length>=9?16:title.length>=7?19:title.length>=5?23:28)
                  : (title.length>=9?10.5:title.length>=7?12:title.length>=5?14:16);
-  return `
+  const text = `
     <div class="halftone-layer" style="color:${c};background-image:radial-gradient(${c} 1px, transparent 1.5px);background-size:7px 7px"></div>
     <span class="ct" style="font-size:${fs}px;color:${c}">${title}</span>
-    ${big?`<span class="cp">${pub.p}</span><span class="badge">封面位 · 待置入</span>`
+    ${big?`<span class="cp">${pub.p}</span>${pub.cover?'':'<span class="badge">封面位 · 待置入</span>'}`
          :`<span class="bmeta">${(pub.y||'').replace(/\s/g,'').slice(0,7)}</span>`}
   `;
+  if(pub.cover && !forceText && big){
+    return `${text}<img src="${pub.cover}" alt="${pub.t} 封面" onload="this.classList.add('on')" onerror="this.remove()">`;
+  }
+  return text;
 }
 
 function renderShelf(){
