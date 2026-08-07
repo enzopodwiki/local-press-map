@@ -85,7 +85,8 @@
   }
   .chip{border:2px solid var(--ink);padding:5px 12px;font-weight:700;background:var(--paper);box-shadow:3px 3px 0 rgba(38,34,28,.14)}
   .chip.alt{background:var(--ink);color:var(--paper)}
-  .stats-line .chip:last-child{margin-left:auto}
+  .stats-line .chip.push{margin-left:auto}
+  .stats-line a{color:var(--red);font-weight:900;text-decoration:underline;text-underline-offset:3px}
   /* ---------- 页签 ---------- */
   nav.tabs{max-width:1180px;margin:26px auto 0;padding:0 24px;display:flex;gap:12px;flex-wrap:wrap}
   .tab{
@@ -324,6 +325,7 @@
   <span class="chip alt">档案总录 <b id="stat-total">154</b> 种</span>
   
   <span class="chip"><b id="stat-shelves">—</b> 个书柜</span>
+  <span class="chip push" style="opacity:.85">Created by <a href="https://www.xiaohongshu.com/user/profile/5fb103fc000000000101ca7e" target="_blank" rel="noopener">Enzo</a></span>
   <span class="chip" style="opacity:.75">整理时间 · 2026 年 8 月</span>
 </div>
 
