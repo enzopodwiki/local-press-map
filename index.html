@@ -89,8 +89,7 @@
   /* 更新啦 · 胶带卷 */
   .tape-wrap{max-width:1180px;margin:14px auto 0;padding:0 24px;position:relative;z-index:30}
   .tape{display:inline-flex;align-items:center;border:none;background:none;padding:0;transform:rotate(-1.2deg)}
-  .tape-roll{width:36px;height:36px;border-radius:50%;border:2.5px solid var(--ink);background:radial-gradient(circle, var(--paper) 0 5px, var(--ink) 5px 7px, var(--red) 7px);box-shadow:2.5px 2.5px 0 rgba(38,34,28,.2);flex:0 0 auto}
-  .tape-band{margin-left:-4px;padding:8px 16px 8px 14px;border:2.5px solid var(--ink);border-left:none;border-radius:0 14px 14px 0;background:linear-gradient(180deg,#E97458,var(--red) 45%,#B23A20);color:#fff;font-weight:900;font-size:12.5px;letter-spacing:.05em;box-shadow:3px 3px 0 rgba(38,34,28,.18)}
+  .tape-band{padding:8px 18px;border:2.5px solid var(--ink);border-radius:999px;background:linear-gradient(180deg,#E97458,var(--red) 45%,#B23A20);color:#fff;font-weight:900;font-size:12.5px;letter-spacing:.05em;box-shadow:3px 3px 0 rgba(38,34,28,.18)}
   .tape-band b{background:#fff;color:var(--red);border-radius:50%;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;padding:0 4px;margin:0 2px}
   .tape:hover .tape-band{filter:brightness(1.07)}
   .tape-panel{position:absolute;left:24px;top:calc(100% + 8px);width:340px;border:2.5px solid var(--ink);background:var(--paper);box-shadow:6px 6px 0 rgba(38,34,28,.18);padding:12px 16px;z-index:40}
@@ -186,10 +185,6 @@
   .panel.portrait svg.map{margin:0 auto}
   .panel.portrait .wm{width:44%}
   .panel.portrait .map-wrap{padding-bottom:74px}
-  .panel[data-map="china"] .side-stack{top:44px;bottom:auto;transform:none;flex-direction:row;width:auto;gap:14px}
-  .panel[data-map="china"] .side-block{width:186px;padding:10px 12px}
-  .panel[data-map="china"] .side-block p{font-size:11px;line-height:1.7}
-  .panel[data-map="china"] .side-stack{gap:12px}
   .panel[data-map="japan"] svg.map{max-width:620px}
   .panel[data-map="thailand"] svg.map{max-width:470px}
   .panel[data-map="sgmy"] svg.map{max-width:600px}
@@ -198,10 +193,10 @@
     .panel.portrait svg.map{max-width:none}
     .panel.portrait .wm{width:62%}
   }
-  .map-nav{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:6;display:flex;align-items:center;gap:14px;padding:8px 12px;background:var(--paper);border:2.5px solid var(--ink);box-shadow:4px 4px 0 rgba(38,34,28,.22)}
-  .mn-btn{width:46px;height:40px;border:2.5px solid var(--ink);background:var(--paper);font-size:18px;font-weight:900;box-shadow:3px 3px 0 rgba(38,34,28,.18);transition:transform .12s,background .12s,color .12s}
+  .map-nav{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:6;display:flex;align-items:center;gap:8px;padding:5px 10px;background:var(--paper);border:2px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 rgba(38,34,28,.18)}
+  .mn-btn{width:26px;height:26px;border:2px solid var(--ink);border-radius:50%;background:var(--paper);font-size:12px;font-weight:900;box-shadow:2px 2px 0 rgba(38,34,28,.15);transition:transform .12s,background .12s,color .12s;display:flex;align-items:center;justify-content:center}
   .mn-btn:hover{transform:translate(-1px,-1px);background:var(--acc);color:#fff}
-  .mn-label{font-size:13px;font-weight:900;letter-spacing:.18em}
+  .mn-label{font-size:11px;font-weight:900;letter-spacing:.12em}
   /* 图钉 */
   .pin{cursor:pointer;outline:none}
   .pin .hit{fill:transparent}
@@ -3836,7 +3831,7 @@ MAPS.forEach((m,i)=>{
 document.querySelectorAll('.panel').forEach(pn=>{
   const id=pn.dataset.map; const i=MAPS.findIndex(m=>m.id===id);
   const nav=document.createElement('div'); nav.className='map-nav';
-  nav.innerHTML=`<button class="mn-btn" aria-label="上一地域">←</button><span class="mn-label">${MAPS[i].no} / 0${MAPS.length} · ${MAPS[i].name}</span><button class="mn-btn" aria-label="下一地域">→</button>`;
+  nav.innerHTML=`<button class="mn-btn" aria-label="上一地域">←</button><span class="mn-label">${MAPS[i].no}：${MAPS[i].name}</span><button class="mn-btn" aria-label="下一地域">→</button>`;
   const go=d=>{const t=MAPS[(i+d+MAPS.length)%MAPS.length];switchMap(t.id,document.querySelector(`.tab[data-map="${t.id}"]`));};
   nav.querySelector('[aria-label="上一地域"]').addEventListener('click',()=>go(-1));
   nav.querySelector('[aria-label="下一地域"]').addEventListener('click',()=>go(1));
@@ -3873,7 +3868,6 @@ function renderUpdates(){
     </div>`;
   el.innerHTML=`
     <button class="tape" id="tape-btn" aria-expanded="false">
-      <span class="tape-roll"></span>
       <span class="tape-band">更新啦 · ${short} 更新 <b>${first.items.length}</b> 种 ▾</span>
     </button>
     <div class="tape-panel" hidden>${UPDATES.map(batch).join('')}</div>`;
