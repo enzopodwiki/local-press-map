@@ -86,6 +86,18 @@
   .chip{border:2px solid var(--ink);padding:5px 12px;font-weight:700;background:var(--paper);box-shadow:3px 3px 0 rgba(38,34,28,.14)}
   .chip.alt{background:var(--ink);color:var(--paper)}
   .stats-line .chip.push{margin-left:auto}
+  /* 更新啦 bulletin */
+  .update-strip{max-width:1180px;margin:16px auto 0;padding:0 24px;display:flex;gap:16px;align-items:stretch;position:relative;z-index:1}
+  .up-stamp{flex:0 0 auto;align-self:center;background:var(--red);color:#fff;font-weight:900;font-size:15px;letter-spacing:.14em;padding:9px 13px;transform:rotate(-2.4deg);box-shadow:3px 3px 0 rgba(38,34,28,.2);border:2px solid var(--ink)}
+  .up-body{flex:1;border:2.5px solid var(--ink);background:var(--paper);box-shadow:4px 4px 0 rgba(38,34,28,.14);padding:12px 18px 10px}
+  .up-head{font-size:13px;font-weight:700;letter-spacing:.02em}
+  .up-head b{font-size:14px;font-weight:900}
+  .up-n{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 5px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:900}
+  .up-line{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;font-size:12.5px;font-weight:600;padding:4px 2px 4px 12px;margin-top:2px;border-bottom:1.5px dashed rgba(38,34,28,.28);transition:color .12s,background .12s}
+  .up-line i{font-style:normal;color:var(--red);font-weight:900;letter-spacing:.08em;flex:0 0 auto}
+  .up-line:hover{color:var(--red);background:rgba(217,74,43,.06)}
+  .up-toggle{margin:9px 0 4px;font-size:11.5px;font-weight:700;border:1.5px dashed var(--ink);padding:3px 10px;background:var(--paper-deep)}
+  .up-more .up-batch{margin-top:10px;border-top:2px solid rgba(38,34,28,.15);padding-top:8px}
   .stats-line a{color:var(--red);font-weight:900;text-decoration:underline;text-underline-offset:3px}
   /* ---------- 页签 ---------- */
   nav.tabs{max-width:1180px;margin:26px auto 0;padding:0 24px;display:flex;gap:12px;flex-wrap:wrap}
@@ -328,6 +340,8 @@
   <span class="chip push" style="opacity:.85">Created by <a href="https://www.xiaohongshu.com/user/profile/5fb103fc000000000101ca7e" target="_blank" rel="noopener">Enzo</a></span>
   <span class="chip" style="opacity:.75">整理时间 · 2026 年 8 月</span>
 </div>
+
+<div class="update-strip" id="update-strip" aria-label="刊物更新记录"></div>
 
 <nav class="tabs" id="tabs"></nav>
 
@@ -770,7 +784,7 @@ const DATA = [
     "y": "创刊 2021 年 11 月",
     "f": "不定期（已出版 4 期）",
     "s": "",
-    "i": "青山村自主发起的乡村共创村报，由驻村志愿者与村民共同书写，记录乡村的过去、当下与未来，在村内免费发放并提供电子版下载。内容涵盖人物故事、习俗记忆、自然笔记与散文——如端午游龙会的记录、龙坞水库口述史、立夏乌米饭的制作记忆。是青山村「未来乡村实验」（善水基金、融设计图书馆等在地实践）的组成部分。已出至第4期：Vol.01「我们正在过去与未来之间」（2021年11月）、Vol.02「离开的，留下的」、Vol.03「以空间征服时间」、Vol.04「乌米饭的零碎记忆」（2023年12月），第5期「日常生活批判」正在筹备。",
+    "i": "青山村自主发起的乡村共创村报，由驻村志愿者与村民共同书写，记录乡村的过去、当下与未来，在村内免费发放并提供电子版下载。内容涵盖人物故事、习俗记忆、自然笔记与散文——如端午游龙会的记录、龙坞水库口述史、立夏乌米饭的制作记忆。是青山村「未来乡村实验」（善水基金、融设计图书馆等在地实践）的组成部分。各期主题：Vol.01「我们正在过去与未来之间」、Vol.02「离开的，留下的」、Vol.03「以空间征服时间」、Vol.04「乌米饭的零碎记忆」，第5期「日常生活批判」正在筹备。",
     "l": [
      [
       "《青山青山村》Vol.01",
@@ -822,7 +836,7 @@ const DATA = [
     "y": "创刊 2022 年 2 月",
     "f": "不定期（已出版 4 期）",
     "s": "",
-    "i": "五月文创（「在地刊物展」发起团队）以临海在地文化为核心，切入青年视角，「探索小地方更为多元丰富的可能」。以年为节奏不定期出刊，包括：Vol.001「好好吃面」（2022年2月，整理14种临海面食配插画与做面习俗，精选37家面馆，含吃面地图）、Vol.002「回到临海的年轻人」（2023年7月，精选27家小店、深度呈现6个返乡青年团队）、Vol.003「小城种植」（2024年1月）、Vol.004「城市怎么玩都有趣」（2026年1月，整合「May Camp」城市探索项目十年经验，收录100个城市探索玩法）。",
+    "i": "五月文创（「在地刊物展」发起团队）以临海在地文化为核心，切入青年视角，「探索小地方更为多元丰富的可能」。以年为节奏不定期出刊，包括：Vol.001「好好吃面」（整理14种临海面食配插画与做面习俗，精选37家面馆，含吃面地图）、Vol.002「回到临海的年轻人」（精选27家小店、深度呈现6个返乡青年团队）、Vol.003「小城种植」、Vol.004「城市怎么玩都有趣」（整合「May Camp」城市探索项目十年经验，收录100个城市探索玩法）。",
     "l": [
      [
       "五月May《a mayzine 001 好好吃面》",
@@ -1063,7 +1077,7 @@ const DATA = [
     "y": "创刊 2011 年 1 月",
     "f": "不定期",
     "s": "",
-    "i": "由烟台市芝罘历史文化研究会创办的研究刊物，前身为2011年1月创刊的《芝罘历史文化丛刊》，2019年（总第21期）更名为《芝罘历史文化》，内容涵盖烟台/芝罘的人物、老建筑、商帮、铁路、餐饮等地方文史，每期 200页 左右。",
+    "i": "由烟台市芝罘历史文化研究会创办的研究刊物，前身为2011年1月创刊的《芝罘历史文化丛刊》，2019年（总第21期）更名为《芝罘历史文化》，内容涵盖烟台/芝罘的人物、老建筑、商帮、铁路、餐饮等地方文史，每期200页左右。",
     "l": [
      [
       "芝罘历史文化研究会《写作中不可忽视的形式方面的技术规范》",
@@ -3845,6 +3859,46 @@ function switchMap(id,btn){
   document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.dataset.map===id));
   closeDrawer();
 }
+
+/* ================= 更新啦 ================= */
+const UPDATES = [
+  {d:'2026 年 8 月 8 日', items:[
+    ['yantai','烟台','《芝罘历史文化》'],
+    ['qingdao','青岛','《市南人文历史研究》'],
+    ['wenzhou','温州','《瓯风》'],
+    ['fuzhou','福州','《诸神的游戏》'],
+    ['lasa','藏地','《松赞Songtsam》']
+  ]}
+  /* 新批次往数组头部追加：{d:'日期', items:[[regionId,'地域','《刊名》'],…]} */
+];
+function renderUpdates(){
+  const el=document.getElementById('update-strip');
+  if(!UPDATES.length){el.style.display='none';return;}
+  const [first,...rest]=UPDATES;
+  const batch=b=>`
+    <div class="up-batch">
+      <div class="up-head"><b>${b.d}</b> 更新了 <span class="up-n">${b.items.length}</span> 种刊物</div>
+      ${b.items.map(it=>`<button class="up-line" data-r="${it[0]}"><i>${it[1]}</i>${it[2]}</button>`).join('')}
+    </div>`;
+  el.innerHTML=`
+    <span class="up-stamp">更新啦</span>
+    <div class="up-body">
+      ${batch(first)}
+      ${rest.length?`<button class="up-toggle" id="up-toggle">展开往期更新（${rest.length} 批）</button><div class="up-more" hidden>${rest.map(batch).join('')}</div>`:''}
+    </div>`;
+  const tg=el.querySelector('#up-toggle');
+  if(tg) tg.addEventListener('click',()=>{
+    const m=el.querySelector('.up-more'); m.hidden=!m.hidden;
+    tg.textContent=m.hidden?`展开往期更新（${rest.length} 批）`:'收起往期更新';
+  });
+  el.querySelectorAll('.up-line').forEach(b=>b.addEventListener('click',()=>{
+    const g=DATA.find(d=>d.id===b.dataset.r);
+    if(!g) return;
+    switchMap(g.map, document.querySelector(`.tab[data-map="${g.map}"]`));
+    openRegion(g.id);
+  }));
+}
+renderUpdates();
 
 /* ================= 统计 ================= */
 const totalPubs = DATA.reduce((n,d)=>n+d.pubs.length,0);
