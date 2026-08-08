@@ -185,6 +185,7 @@
   .panel.portrait svg.map{margin:0 auto}
   .panel.portrait .wm{width:44%}
   .panel.portrait .map-wrap{padding-bottom:74px}
+  .panel[data-map="china"] .side-stack{top:calc(50% + 40px)}
   .panel[data-map="japan"] svg.map{max-width:620px}
   .panel[data-map="thailand"] svg.map{max-width:470px}
   .panel[data-map="sgmy"] svg.map{max-width:600px}
@@ -564,10 +565,10 @@
     </div>
   </section>
 
-  <!-- ============ MAP 04 新加坡 · 马来西亚 ============ -->
+  <!-- ============ MAP 04 新马 ============ -->
   <section class="panel portrait has-side" data-map="sgmy" style="--acc:var(--blue)">
     <div class="panel-head">
-      <h2 data-t="MAP 04 · 新加坡及马来西亚">MAP 04 · 新加坡及马来西亚</h2>
+      <h2 data-t="MAP 04 · 新马">MAP 04 · 新马</h2>
     </div>
     <div class="map-card tint">
       <span class="corner tl">SINGAPORE · MALAYSIA</span>
@@ -3800,7 +3801,7 @@ const MAPS = [
   {id:'china',   name:'中国大陆 · 港澳',      no:'MAP 01'},
   {id:'taiwan',  name:'台湾',                 no:'MAP 02'},
   {id:'japan',   name:'日本',                 no:'MAP 03'},
-  {id:'sgmy',    name:'新加坡 · 马来西亚',    no:'MAP 04'},
+  {id:'sgmy',    name:'新马',    no:'MAP 04'},
   {id:'thailand',name:'泰国',                 no:'MAP 05'}
 ];
 
