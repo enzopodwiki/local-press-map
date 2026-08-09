@@ -87,7 +87,7 @@
   .chip.alt{background:var(--ink);color:var(--paper)}
   .stats-line .chip.push{margin-left:auto}
   /* 更新啦 · 胶带卷 */
-  .tape-wrap{max-width:1180px;margin:14px auto 0;padding:0 24px;position:relative;z-index:30}
+  .tape-wrap{max-width:1180px;margin:14px auto 0;padding:0 24px;position:relative;z-index:60}
   .tape{display:inline-flex;align-items:center;border:none;background:none;padding:0;transform:rotate(-1.2deg)}
   .tape-band{padding:8px 18px;border:2.5px solid var(--ink);border-radius:999px;background:linear-gradient(180deg,#E97458,var(--red) 45%,#B23A20);color:#fff;font-weight:900;font-size:12.5px;letter-spacing:.05em;box-shadow:3px 3px 0 rgba(38,34,28,.18)}
   .tape-band b{background:#fff;color:var(--red);border-radius:50%;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;padding:0 4px;margin:0 2px}
@@ -332,7 +332,9 @@
     /* 地图：横滑大图 */
     .map-wrap{padding:8px 8px 4px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
     .map-wrap::-webkit-scrollbar{display:none}
-    .panel[data-map] svg.map{width:700px;min-width:700px;max-width:none;max-height:none}
+    .panel[data-map="china"] svg.map{width:700px;min-width:700px;max-width:none;max-height:none}
+    .panel[data-map] svg.map{max-height:none}
+    .panel.portrait svg.map{width:100%;min-width:0}
     .panel.portrait .map-wrap{padding-bottom:56px}
     /* 图钉放大可点 */
     .pin .hit{r:26px}
@@ -353,10 +355,7 @@
       padding:6px 12px;font-size:12px;font-weight:800;box-shadow:2px 2px 0 rgba(38,34,28,.15)}
     .ri-chip:active{background:var(--acc);color:#fff}
     /* 阅览须知：浮动按钮唤出 */
-    .stamp-box{position:fixed;left:12px;right:12px;bottom:60px;top:auto;z-index:79;display:none;transform:none;margin:0;max-width:none}
-    .stamp-box.open{display:block}
-    #note-fab{position:fixed;right:14px;bottom:14px;z-index:80;border:2px solid var(--ink);border-radius:999px;
-      background:var(--paper);padding:8px 14px;font-weight:900;font-size:12px;box-shadow:3px 3px 0 rgba(38,34,28,.2)}
+    .stamp-box{position:static;display:block;transform:none;margin:12px 0 0;max-width:none;font-size:11px;line-height:1.8}
     .d-body{padding:16px}
   }
 </style>
@@ -4080,9 +4079,6 @@ if(matchMedia('(max-width:760px)').matches){
     });
     pn.querySelector('.map-card').after(wrap);
   });
-  const fab=document.createElement('button');fab.id='note-fab';fab.textContent='须知';
-  fab.addEventListener('click',()=>document.querySelector('.stamp-box').classList.toggle('open'));
-  document.body.appendChild(fab);
 }
 
 /* 默认显示第一张地图 + 深链支持 */
