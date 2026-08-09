@@ -3897,6 +3897,10 @@ document.querySelectorAll('.panel').forEach(pn=>{
 
 function switchMap(id,btn){
   setAmbient(id);
+  if(id==='china') requestAnimationFrame(()=>{
+    const w=document.querySelector('.panel[data-map="china"] .map-wrap');
+    if(w && matchMedia('(max-width:760px)').matches) w.scrollLeft=w.scrollWidth;
+  });
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===btn));
   document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.dataset.map===id));
   closeDrawer();
