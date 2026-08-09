@@ -21,7 +21,7 @@
     --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden}
   body{
     font-family:var(--sans);
     color:var(--ink);
@@ -306,6 +306,58 @@
     .drawer-head .dh-hint{display:none}
     .masthead-row{flex-direction:column;align-items:flex-start}
     .postmark{width:70px;height:70px}
+  }
+  /* ===== 移动端适配 ===== */
+  @media (max-width:760px){
+    header{padding:26px 14px 4px}
+    .masthead{font-size:38px}
+    .tags-row{gap:8px;margin-top:12px}
+    .ltag{font-size:10px;gap:4px}
+    .ltag i{width:15px;height:15px;font-size:8.5px}
+    .stats-line{padding:0 14px;gap:6px}
+    .stats-line .chip.push{margin-left:0}
+    .chip{font-size:10.5px;padding:4px 8px}
+    .tape-wrap{padding:0 14px}
+    /* 页签：横滑 + 吸顶 */
+    nav.tabs{position:sticky;top:0;z-index:45;flex-wrap:nowrap;overflow-x:auto;gap:8px;
+      margin:14px 0 0;padding:8px 14px;background:var(--paper);box-shadow:0 2px 0 rgba(38,34,28,.1);
+      scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    nav.tabs::-webkit-scrollbar{display:none}
+    .tab{flex:0 0 auto;padding:8px 12px;font-size:12.5px;box-shadow:2px 2px 0 rgba(38,34,28,.15)}
+    main{padding:0 12px 90px;margin-top:14px}
+    .panel-head{margin-bottom:4px}
+    .panel-head h2{font-size:21px}
+    /* 装饰层全隐 */
+    .postmark,.seal,.motto,.legend,.wm,.side-stack,.corner{display:none}
+    /* 地图：横滑大图 */
+    .map-wrap{padding:8px 8px 4px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .map-wrap::-webkit-scrollbar{display:none}
+    .panel[data-map] svg.map{width:700px;min-width:700px;max-width:none;max-height:none}
+    .panel.portrait .map-wrap{padding-bottom:56px}
+    /* 图钉放大可点 */
+    .pin .hit{r:26px}
+    .pin .ring{r:13px}
+    .pin .core{r:8px}
+    .pin .pcount{font-size:11px}
+    .pin .plabel{font-size:15px;stroke-width:5px}
+    .zone-label{font-size:19px}
+    .map-nav{bottom:6px;gap:6px;padding:4px 8px}
+    .mn-btn{width:22px;height:22px;font-size:10px}
+    .mn-label{font-size:9.5px;letter-spacing:.08em}
+    .roam-row{right:12px;bottom:70px}
+    .roam-chip,.region-chip{width:58px;height:58px;font-size:10.5px}
+    /* 地区胶囊索引 */
+    .region-index{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .region-index::-webkit-scrollbar{display:none}
+    .ri-chip{flex:0 0 auto;border:2px solid var(--ink);background:var(--paper);border-radius:999px;
+      padding:6px 12px;font-size:12px;font-weight:800;box-shadow:2px 2px 0 rgba(38,34,28,.15)}
+    .ri-chip:active{background:var(--acc);color:#fff}
+    /* 阅览须知：浮动按钮唤出 */
+    .stamp-box{position:fixed;left:12px;right:12px;bottom:60px;top:auto;z-index:79;display:none;transform:none;margin:0;max-width:none}
+    .stamp-box.open{display:block}
+    #note-fab{position:fixed;right:14px;bottom:14px;z-index:80;border:2px solid var(--ink);border-radius:999px;
+      background:var(--paper);padding:8px 14px;font-weight:900;font-size:12px;box-shadow:3px 3px 0 rgba(38,34,28,.2)}
+    .d-body{padding:16px}
   }
 </style>
 </head>
@@ -4014,6 +4066,24 @@ document.querySelectorAll('[data-r]').forEach(el=>{
   el.addEventListener('click',open);
   el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
 });
+
+/* 移动端：地区胶囊索引 + 阅览须知浮钮 */
+if(matchMedia('(max-width:760px)').matches){
+  document.querySelectorAll('.panel').forEach(pn=>{
+    const mid=pn.dataset.map;
+    const wrap=document.createElement('div');wrap.className='region-index';
+    DATA.filter(r=>r.map===mid).forEach(r=>{
+      const b=document.createElement('button');b.className='ri-chip';b.dataset.r=r.id;
+      b.textContent=r.region+' '+r.pubs.length;
+      b.addEventListener('click',()=>openRegion(r.id));
+      wrap.appendChild(b);
+    });
+    pn.querySelector('.map-card').after(wrap);
+  });
+  const fab=document.createElement('button');fab.id='note-fab';fab.textContent='须知';
+  fab.addEventListener('click',()=>document.querySelector('.stamp-box').classList.toggle('open'));
+  document.body.appendChild(fab);
+}
 
 /* 默认显示第一张地图 + 深链支持 */
 switchMap('china', tabsEl.firstChild);
