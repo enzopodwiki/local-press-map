@@ -114,13 +114,13 @@
   .sr-t b{color:var(--red)}
   .sr-m{display:block;font-size:11px;opacity:.62;margin-top:2px;letter-spacing:.02em}
   .sr-empty{padding:16px;font-size:13px;opacity:.6;text-align:center}
-  /* 更新啦 · 胶带卷 */
-  .tape-wrap{max-width:1180px;margin:14px auto 0;padding:0 24px;position:relative;z-index:60}
+  /* 更新啦 · 胶带卷（置于页面最底部；层级低于书柜抽屉，绝不遮挡刊物页） */
+  .tape-wrap{max-width:1180px;margin:0 auto;padding:0 24px 34px;position:relative;z-index:30}
   .tape{display:inline-flex;align-items:center;border:none;background:none;padding:0;transform:rotate(-1.2deg)}
   .tape-band{padding:8px 18px;border:2.5px solid var(--ink);border-radius:999px;background:linear-gradient(180deg,#E97458,var(--red) 45%,#B23A20);color:#fff;font-weight:900;font-size:12.5px;letter-spacing:.05em;box-shadow:3px 3px 0 rgba(38,34,28,.18)}
   .tape-band b{background:#fff;color:var(--red);border-radius:50%;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;padding:0 4px;margin:0 2px}
   .tape:hover .tape-band{filter:brightness(1.07)}
-  .tape-panel{position:absolute;left:24px;top:calc(100% + 8px);width:340px;border:2.5px solid var(--ink);background:var(--paper);box-shadow:6px 6px 0 rgba(38,34,28,.18);padding:12px 16px;z-index:40}
+  .tape-panel{position:absolute;left:24px;bottom:calc(100% + 10px);top:auto;width:340px;border:2.5px solid var(--ink);background:var(--paper);box-shadow:6px 6px 0 rgba(38,34,28,.18);padding:12px 16px;z-index:40;max-height:min(430px,62vh);overflow:auto}
   .up-head{font-size:13px;font-weight:700;letter-spacing:.02em}
   .up-head b{font-size:14px;font-weight:900}
   .up-n{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 5px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:900}
@@ -352,7 +352,8 @@
     .search-panel{left:14px;right:14px}
     .search-box kbd{display:none}
     #search-input{padding:11px 14px;font-size:16px}   /* ≥16px 防 iOS 聚焦自动放大 */
-    .tape-wrap{padding:0 14px}
+    .tape-wrap{padding:0 14px 26px}
+    .tape-panel{left:14px;width:min(340px,calc(100vw - 28px))}
     /* 页签：横滑 + 吸顶 */
     nav.tabs{position:sticky;top:0;z-index:45;flex-wrap:nowrap;overflow-x:auto;gap:8px;
       margin:14px 0 0;padding:8px 14px;background:var(--paper);box-shadow:0 2px 0 rgba(38,34,28,.1);
@@ -437,8 +438,6 @@
   </div>
   <div class="search-panel" id="search-panel" role="listbox" aria-label="搜索结果" hidden></div>
 </div>
-
-<div class="tape-wrap" id="update-strip" aria-label="刊物更新记录"></div>
 
 <nav class="tabs" id="tabs"></nav>
 
@@ -689,6 +688,7 @@
 
 </main>
 
+<div class="tape-wrap" id="update-strip" aria-label="刊物更新记录"></div>
 
 <!-- ============ 抽屉 ============ -->
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="在地刊物书柜">
