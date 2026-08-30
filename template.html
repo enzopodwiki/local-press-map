@@ -70,15 +70,6 @@
   }
   .stamp-box b{font-size:15px}
   .stamp-box .dotmark{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px}
-  /* 地域行李签 */
-  .tags-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-  .ltag{
-    display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:11.5px;letter-spacing:.02em;opacity:.85;
-  }
-  .ltag i{
-    width:19px;height:19px;display:flex;align-items:center;justify-content:center;font-style:normal;
-    background:var(--c);color:#fff;font-size:10.5px;font-weight:900;border-radius:3px;
-  }
   .stats-line{
     margin:20px auto 0;max-width:1180px;padding:0 24px;
     display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:13px;
@@ -344,9 +335,6 @@
   @media (max-width:760px){
     header{padding:26px 14px 4px}
     .masthead{font-size:38px}
-    .tags-row{gap:8px;margin-top:12px}
-    .ltag{font-size:10px;gap:4px}
-    .ltag i{width:15px;height:15px;font-size:8.5px}
     .stats-line{padding:0 14px;gap:6px}
     .stats-line .chip.push{margin-left:0}
     .chip{font-size:10.5px;padding:4px 8px}
@@ -406,14 +394,6 @@
   <div class="masthead-row">
     <div>
       <h1 class="masthead" data-t="在地刊物地图">在地刊物地图</h1>
-      
-      <div class="tags-row" aria-hidden="true">
-        <span class="ltag" style="--c:var(--red);--r:-1.2deg"><i>山</i>大陆 · 胡同与山谷</span>
-        <span class="ltag" style="--c:var(--green);--r:1deg"><i>島</i>台湾 · 街仔与离岛</span>
-        <span class="ltag" style="--c:var(--magenta);--r:-.8deg"><i>波</i>日本 · 下町与列岛</span>
-        <span class="ltag" style="--c:var(--blue);--r:-1deg"><i>椰</i>新马 · 海峡与南洋</span>
-        <span class="ltag" style="--c:var(--gold);--r:1.4deg"><i>寺</i>泰国 · 清迈与曼谷</span>
-      </div>
     </div>
     <div class="stamp-box">
       <b>阅 览 须 知</b><br>
