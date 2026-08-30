@@ -86,9 +86,10 @@
   .chip{border:2px solid var(--ink);padding:5px 12px;font-weight:700;background:var(--paper);box-shadow:3px 3px 0 rgba(38,34,28,.14)}
   .chip.alt{background:var(--ink);color:var(--paper)}
   .stats-line .chip.push{margin-left:auto}
-  /* ===== 全站搜索 ===== */
-  .search-wrap{position:relative;max-width:1180px;margin:14px auto 0;padding:0 24px;z-index:61}
-  .search-box{position:relative}
+  /* ===== 全站搜索（窄框靠右，与左下「更新啦」横向错开；结果面板在文档流内撑开，只推不盖） ===== */
+  .search-wrap{position:relative;max-width:1180px;margin:14px auto 0;padding:0 24px;z-index:30;
+    display:flex;flex-direction:column;align-items:flex-end;pointer-events:none}
+  .search-box{position:relative;width:400px;pointer-events:auto}
   #search-input{
     width:100%;border:2.5px solid var(--ink);background:var(--paper);color:var(--ink);
     font-family:var(--sans);font-size:14px;padding:10px 46px 10px 14px;
@@ -102,7 +103,7 @@
     font-family:var(--sans);font-size:11px;font-weight:700;color:rgba(38,34,28,.55);background:var(--paper);
   }
   .search-panel{
-    position:absolute;left:24px;right:24px;top:calc(100% + 8px);
+    margin-top:8px;width:400px;pointer-events:auto;
     border:2.5px solid var(--ink);background:var(--paper);
     box-shadow:6px 6px 0 rgba(38,34,28,.18);padding:8px;
     max-height:min(430px,62vh);overflow:auto;
@@ -349,7 +350,7 @@
     .stats-line .chip.push{margin-left:0}
     .chip{font-size:10.5px;padding:4px 8px}
     .search-wrap{padding:0 14px;margin-top:10px}
-    .search-panel{left:14px;right:14px}
+    .search-box,.search-panel{width:100%}
     .search-box kbd{display:none}
     #search-input{padding:11px 14px;font-size:16px}   /* ≥16px 防 iOS 聚焦自动放大 */
     .tape-wrap{padding:0 14px}
@@ -4468,7 +4469,7 @@ if(matchMedia('(max-width:760px)').matches){
 const searchWrap = document.getElementById('search-wrap');
 const searchInput = document.getElementById('search-input');
 const searchPanel = document.getElementById('search-panel');
-searchInput.placeholder = `搜索 ${totalPubs} 种刊物 · 刊名 / 城市 / 关键词`;
+searchInput.placeholder = `搜索 ${totalPubs} 种刊物…`;
 let searchHits = [], searchIdx = -1;
 
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
