@@ -87,11 +87,19 @@ def main():
     if insecure:
         note(f'使用 http:// 的信源（建议换 https）：{sorted(set(insecure))}')
 
-    # 6. 「更新啦」引用的地域必须存在
+    # 6. 「更新啦」：书柜 id、地域名、书名都要能对上（点击会深链跳到具体那本书）
     updates = re.search(r'const UPDATES = \[.*?\];', html, re.S).group(0)
-    for rid in re.findall(r'\[\s*\'([a-z0-9-]+)\'', updates):
-        if not any(r['id'] == rid for r in data):
+    by_id = {r['id']: r for r in data}
+    for m in re.finditer(r"\['([a-z0-9-]+)',\s*'([^']*)',\s*'(.*?)'\]", updates):
+        rid, label, title = m.group(1), m.group(2), m.group(3)
+        g = by_id.get(rid)
+        if not g:
             err(f'「更新啦」引用了不存在的书柜 id：{rid}')
+            continue
+        if label != g['region']:
+            note(f'「更新啦」地域名与数据不一致：{rid} 写的是「{label}」，书柜实际叫「{g["region"]}」')
+        if not any(p['t'] == title for p in g['pubs']):
+            err(f'「更新啦」条目在书柜 {rid}（{g["region"]}）中找不到：{title}')
 
     # 7. 档案文档自身
     md_text = MD_PATH.read_text(encoding='utf-8')

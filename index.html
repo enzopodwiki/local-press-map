@@ -86,6 +86,34 @@
   .chip{border:2px solid var(--ink);padding:5px 12px;font-weight:700;background:var(--paper);box-shadow:3px 3px 0 rgba(38,34,28,.14)}
   .chip.alt{background:var(--ink);color:var(--paper)}
   .stats-line .chip.push{margin-left:auto}
+  /* ===== 全站搜索 ===== */
+  .search-wrap{position:relative;max-width:1180px;margin:14px auto 0;padding:0 24px;z-index:61}
+  .search-box{position:relative}
+  #search-input{
+    width:100%;border:2.5px solid var(--ink);background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:14px;padding:10px 46px 10px 14px;
+    box-shadow:3px 3px 0 rgba(38,34,28,.14);outline:none;border-radius:0;appearance:none;
+  }
+  #search-input:focus{border-color:var(--red);box-shadow:3px 3px 0 rgba(217,74,43,.28)}
+  #search-input::placeholder{color:rgba(38,34,28,.45)}
+  .search-box kbd{
+    position:absolute;right:11px;top:50%;transform:translateY(-50%);pointer-events:none;
+    border:1.5px solid rgba(38,34,28,.38);border-radius:4px;padding:1px 7px;
+    font-family:var(--sans);font-size:11px;font-weight:700;color:rgba(38,34,28,.55);background:var(--paper);
+  }
+  .search-panel{
+    position:absolute;left:24px;right:24px;top:calc(100% + 8px);
+    border:2.5px solid var(--ink);background:var(--paper);
+    box-shadow:6px 6px 0 rgba(38,34,28,.18);padding:8px;
+    max-height:min(430px,62vh);overflow:auto;
+  }
+  .sr{display:block;width:100%;text-align:left;border:none;background:none;cursor:pointer;
+    padding:9px 12px;font-family:var(--sans);color:var(--ink)}
+  .sr:hover,.sr.active{background:color-mix(in srgb, var(--red) 10%, var(--paper))}
+  .sr-t{display:block;font-weight:700;font-size:14.5px;line-height:1.45}
+  .sr-t b{color:var(--red)}
+  .sr-m{display:block;font-size:11px;opacity:.62;margin-top:2px;letter-spacing:.02em}
+  .sr-empty{padding:16px;font-size:13px;opacity:.6;text-align:center}
   /* 更新啦 · 胶带卷 */
   .tape-wrap{max-width:1180px;margin:14px auto 0;padding:0 24px;position:relative;z-index:60}
   .tape{display:inline-flex;align-items:center;border:none;background:none;padding:0;transform:rotate(-1.2deg)}
@@ -320,6 +348,10 @@
     .stats-line{padding:0 14px;gap:6px}
     .stats-line .chip.push{margin-left:0}
     .chip{font-size:10.5px;padding:4px 8px}
+    .search-wrap{padding:0 14px;margin-top:10px}
+    .search-panel{left:14px;right:14px}
+    .search-box kbd{display:none}
+    #search-input{padding:11px 14px;font-size:16px}   /* ≥16px 防 iOS 聚焦自动放大 */
     .tape-wrap{padding:0 14px}
     /* 页签：横滑 + 吸顶 */
     nav.tabs{position:sticky;top:0;z-index:45;flex-wrap:nowrap;overflow-x:auto;gap:8px;
@@ -384,17 +416,26 @@
       <b>阅 览 须 知</b><br>
       <span class="dotmark" style="background:var(--red)"></span>点击地图上的图钉 / 分区，打开当地书柜<br>
       <span class="dotmark" style="background:var(--blue)"></span>书柜封面一字排开，点选翻阅<br>
-      <span class="dotmark" style="background:var(--green)"></span>键盘 ← → 快速换刊 · Esc 收起
+      <span class="dotmark" style="background:var(--green)"></span>键盘 ← → 快速换刊 · Esc 收起 · / 搜索
     </div>
   </div>
 </header>
 
 <div class="stats-line">
   <span class="chip alt">地图总录 <b id="stat-total">169</b> 种</span>
-  
+
   <span class="chip"><b id="stat-shelves">—</b> 个书柜</span>
   <span class="chip push" style="opacity:.85">Created by <a href="https://www.xiaohongshu.com/user/profile/5fb103fc000000000101ca7e" target="_blank" rel="noopener">Enzo</a></span>
   <span class="chip" style="opacity:.75">整理时间 · 2026 年 8 月</span>
+</div>
+
+<div class="search-wrap" id="search-wrap">
+  <div class="search-box">
+    <input id="search-input" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search"
+           role="combobox" aria-controls="search-panel" aria-expanded="false" aria-label="搜索刊物">
+    <kbd aria-hidden="true">/</kbd>
+  </div>
+  <div class="search-panel" id="search-panel" role="listbox" aria-label="搜索结果" hidden></div>
 </div>
 
 <div class="tape-wrap" id="update-strip" aria-label="刊物更新记录"></div>
@@ -4236,7 +4277,7 @@ const UPDATES = [
     ['kyoto','京都','《月刊京都》'],
     ['tokyo','东京','《DEEPTOKYOmagazine》'],
     ['roam-jp','日本全国','《THE NEW JAPAN》'],
-    ['shanghai','上海','《Ketchup》'],
+    ['shanghai','上海','《Ketchup》（日文）'],
     ['hk','香港','《四十一報》']
   ]}
   /* 新批次往数组头部追加：{d:'日期', items:[[regionId,'地域','《刊名》'],…]} */
@@ -4249,7 +4290,7 @@ function renderUpdates(){
   const batch=b=>`
     <div class="up-batch">
       <div class="up-head"><b>${b.d}</b> 更新了 <span class="up-n">${b.items.length}</span> 种刊物</div>
-      ${b.items.map(it=>`<button class="up-line" data-r="${it[0]}"><i>${it[1]}</i>${it[2]}</button>`).join('')}
+      ${b.items.map(it=>`<button class="up-line" data-r="${it[0]}" data-t="${it[2]}"><i>${it[1]}</i>${it[2]}</button>`).join('')}
     </div>`;
   el.innerHTML=`
     <button class="tape" id="tape-btn" aria-expanded="false">
@@ -4263,7 +4304,8 @@ function renderUpdates(){
     if(!g) return;
     panel.hidden=true;
     switchMap(g.map, document.querySelector(`.tab[data-map="${g.map}"]`));
-    openRegion(g.id);
+    const idx = g.pubs.findIndex(p=>p.t===b.dataset.t);
+    openRegion(g.id, idx<0?0:idx);   // 直接翻到更新的那本
   }));
 }
 renderUpdates();
@@ -4287,10 +4329,10 @@ const shelfRow = document.getElementById('shelf-row');
 const detailEl = document.getElementById('detail');
 let cur = null;
 
-function openRegion(rid){
+function openRegion(rid, idx=0){
   const g = DATA.find(d=>d.id===rid);
   if(!g) return;
-  cur = {group:g, idx:0};
+  cur = {group:g, idx:Math.min(Math.max(idx,0), g.pubs.length-1)};
   const acc = getComputedStyle(document.querySelector(`.panel[data-map="${g.map}"]`)).getPropertyValue('--acc');
   drawer.style.setProperty('--acc', acc);
   document.getElementById('dh-title').textContent = g.region;
@@ -4298,6 +4340,13 @@ function openRegion(rid){
   renderShelf();
   renderDetail();
   drawer.classList.add('on');
+}
+
+/* 深链同步：#书柜id/第几本（replaceState 不触发 hashchange，避免回环） */
+function syncHash(){
+  if(!cur) return;
+  const h = '#' + cur.group.id + '/' + (cur.idx + 1);
+  if(location.hash !== h) history.replaceState(null, '', h);
 }
 
 function hash(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0}return h}
@@ -4367,6 +4416,7 @@ function renderDetail(){
   document.getElementById('prev').addEventListener('click',()=>step(-1));
   document.getElementById('next').addEventListener('click',()=>step(1));
   shelfRow.children[cur.idx]?.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+  syncHash();
 }
 
 function step(d){
@@ -4381,14 +4431,19 @@ function closeDrawer(){
 }
 document.getElementById('dh-close').addEventListener('click',closeDrawer);
 document.addEventListener('keydown',e=>{
+  /* 搜索快捷键：/ 或 Ctrl/Cmd+K */
+  const typing = e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName);
+  if((e.key==='k'||e.key==='K') && (e.metaKey||e.ctrlKey)){ e.preventDefault(); searchInput.focus(); searchInput.select(); return; }
+  if(e.key==='/' && !typing){ e.preventDefault(); searchInput.focus(); searchInput.select(); return; }
+  if(typing) return;                      // 输入框内不翻书
   if(!cur) return;
   if(e.key==='Escape') closeDrawer();
   if(e.key==='ArrowLeft') step(-1);
   if(e.key==='ArrowRight') step(1);
 });
 
-/* ================= 绑定地图交互 ================= */
-document.querySelectorAll('[data-r]').forEach(el=>{
+/* ================= 绑定地图交互（仅限地图元素；「更新啦」与搜索结果各自带书目标定位） ================= */
+document.querySelectorAll('.panel [data-r]').forEach(el=>{
   const open = ()=>openRegion(el.dataset.r);
   el.addEventListener('click',open);
   el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
@@ -4409,6 +4464,119 @@ if(matchMedia('(max-width:760px)').matches){
   });
 }
 
+/* ================= 全站搜索 ================= */
+const searchWrap = document.getElementById('search-wrap');
+const searchInput = document.getElementById('search-input');
+const searchPanel = document.getElementById('search-panel');
+searchInput.placeholder = `搜索 ${totalPubs} 种刊物 · 刊名 / 城市 / 关键词`;
+let searchHits = [], searchIdx = -1;
+
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function hl(text, q){
+  const i = text.toLowerCase().indexOf(q.toLowerCase());
+  if(i<0) return esc(text);
+  return esc(text.slice(0,i)) + '<b>' + esc(text.slice(i, i+q.length)) + '</b>' + esc(text.slice(i+q.length));
+}
+
+function doSearch(q){
+  q = q.trim();
+  searchIdx = -1;
+  if(!q){ searchHits=[]; renderResults(''); return; }
+  const kw = q.toLowerCase();
+  const hits = [];
+  for(const g of DATA){
+    for(let i=0;i<g.pubs.length;i++){
+      const p = g.pubs[i];
+      const t=p.t.toLowerCase(), pl=(p.p||'').toLowerCase(), rg=g.region.toLowerCase(), it=p.i.toLowerCase();
+      let score;
+      if(t.includes(kw))          score = t.indexOf(kw);
+      else if(pl.includes(kw))    score = 100 + pl.indexOf(kw);
+      else if(rg.includes(kw))    score = 200 + rg.indexOf(kw);
+      else if(it.includes(kw))    score = 300 + it.indexOf(kw);
+      else continue;
+      hits.push({g, i, p, score});
+    }
+  }
+  hits.sort((a,b)=>a.score-b.score);
+  searchHits = hits.slice(0, 40);
+  renderResults(q);
+}
+
+function renderResults(q){
+  if(!q){ closeSearch(); return; }
+  searchInput.setAttribute('aria-expanded','true');
+  searchPanel.innerHTML = searchHits.length
+    ? searchHits.map((h,n)=>`
+      <button class="sr" role="option" aria-selected="false" data-n="${n}">
+        <span class="sr-t">${hl(h.p.t, q)}</span>
+        <span class="sr-m">${h.g.region}${h.p.y ? ' · '+h.p.y.replace(/\s/g,'').slice(0,10) : ''}${h.p.s ? ' · '+h.p.s : ''}</span>
+      </button>`).join('')
+    : `<div class="sr-empty">没有找到与「${esc(q)}」相关的刊物</div>`;
+  searchPanel.hidden = false;
+}
+
+function markActive(){
+  searchPanel.querySelectorAll('.sr').forEach((el,n)=>{
+    const on = n===searchIdx;
+    el.classList.toggle('active', on);
+    el.setAttribute('aria-selected', String(on));
+    if(on) el.scrollIntoView({block:'nearest'});
+  });
+}
+
+function closeSearch(){
+  searchHits=[]; searchIdx=-1;
+  searchPanel.hidden = true;
+  searchPanel.innerHTML='';
+  searchInput.setAttribute('aria-expanded','false');
+}
+
+function openHit(n){
+  const h = searchHits[n];
+  if(!h) return;
+  closeSearch();
+  searchInput.blur();
+  switchMap(h.g.map, document.querySelector(`.tab[data-map="${h.g.map}"]`));
+  openRegion(h.g.id, h.i);
+}
+
+searchInput.addEventListener('input', ()=>doSearch(searchInput.value));
+searchInput.addEventListener('keydown', e=>{
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault();
+    if(!searchHits.length) return;
+    searchIdx = (searchIdx + (e.key==='ArrowDown'?1:-1) + searchHits.length) % searchHits.length;
+    markActive();
+  }else if(e.key==='Enter'){
+    e.preventDefault();
+    if(searchHits.length) openHit(searchIdx<0?0:searchIdx);
+  }else if(e.key==='Escape'){
+    closeSearch(); searchInput.blur();
+  }
+});
+searchPanel.addEventListener('click', e=>{
+  const b = e.target.closest('.sr');
+  if(b) openHit(+b.dataset.n);
+});
+document.addEventListener('click', e=>{
+  if(!searchWrap.contains(e.target)) closeSearch();
+});
+
+/* ================= 移动端：封面左右滑动翻书 ================= */
+let swipeX=0, swipeY=0, swipeOn=false;
+drawer.addEventListener('touchstart', e=>{
+  const t = e.touches[0];
+  swipeX = t.clientX; swipeY = t.clientY;
+  swipeOn = !!e.target.closest('.d-cover, .d-body');   // 书架横滑区不拦截
+}, {passive:true});
+drawer.addEventListener('touchend', e=>{
+  if(!swipeOn || !cur){ swipeOn=false; return; }
+  swipeOn = false;
+  const t = e.changedTouches[0];
+  const dx = t.clientX - swipeX, dy = t.clientY - swipeY;
+  if(Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)*1.6) step(dx<0 ? 1 : -1);
+}, {passive:true});
+
 /* 默认显示第一张地图 + 深链支持 */
 switchMap('china', tabsEl.firstChild);
 wireLabelHover();
@@ -4417,13 +4585,16 @@ document.querySelectorAll('.panel').forEach(placeLabels);
 matchMedia('(max-width:760px)').addEventListener('change',()=>{
   document.querySelectorAll('.panel').forEach(placeLabels);
 });
+/* 深链格式：#书柜id（开书柜）或 #书柜id/第几本（1 起） */
 function applyHash(){
   const h = decodeURIComponent(location.hash.slice(1));
   if(!h) return;
-  const region = DATA.find(d=>d.id===h);
+  const [rid, n] = h.split('/');
+  const region = DATA.find(d=>d.id===rid);
   if(region){
     switchMap(region.map, document.querySelector(`.tab[data-map="${region.map}"]`));
-    openRegion(h);
+    const idx = n ? (parseInt(n,10)||1)-1 : 0;
+    openRegion(rid, idx);
   }else if(MAPS.some(m=>m.id===h)){
     switchMap(h, document.querySelector(`.tab[data-map="${h}"]`));
   }
