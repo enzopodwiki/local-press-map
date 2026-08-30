@@ -86,8 +86,10 @@
   .chip{border:2px solid var(--ink);padding:5px 12px;font-weight:700;background:var(--paper);box-shadow:3px 3px 0 rgba(38,34,28,.14)}
   .chip.alt{background:var(--ink);color:var(--paper)}
   .stats-line .chip.push{margin-left:auto}
-  /* ===== 全站搜索（窄框靠右，与左下「更新啦」横向错开；结果面板在文档流内撑开，只推不盖） ===== */
-  .search-wrap{position:relative;max-width:1180px;margin:14px auto 0;padding:0 24px;z-index:30;
+  /* ===== 工具行：左「更新啦」+ 右搜索框并排；两个面板都在文档流内撑开，只推不盖 ===== */
+  .toolbar{max-width:1180px;margin:14px auto 0;padding:0 24px;display:flex;align-items:flex-start;gap:24px}
+  .tape-wrap{position:relative;z-index:30;flex:0 0 auto;margin-top:2px}
+  .search-wrap{position:relative;z-index:30;margin-left:auto;flex:0 0 auto;
     display:flex;flex-direction:column;align-items:flex-end;pointer-events:none}
   .search-box{position:relative;width:400px;pointer-events:auto}
   #search-input{
@@ -115,8 +117,7 @@
   .sr-t b{color:var(--red)}
   .sr-m{display:block;font-size:11px;opacity:.62;margin-top:2px;letter-spacing:.02em}
   .sr-empty{padding:16px;font-size:13px;opacity:.6;text-align:center}
-  /* 更新啦 · 胶带卷（页首醒目位；面板在文档流内撑开，只推不盖，不遮挡任何内容） */
-  .tape-wrap{max-width:1180px;margin:14px auto 0;padding:0 24px;position:relative;z-index:30}
+  /* 更新啦 · 胶带卷（样式见上方工具行；面板在文档流内撑开，只推不盖，不遮挡任何内容） */
   .tape{display:inline-flex;align-items:center;border:none;background:none;padding:0;transform:rotate(-1.2deg)}
   .tape-band{padding:8px 18px;border:2.5px solid var(--ink);border-radius:999px;background:linear-gradient(180deg,#E97458,var(--red) 45%,#B23A20);color:#fff;font-weight:900;font-size:12.5px;letter-spacing:.05em;box-shadow:3px 3px 0 rgba(38,34,28,.18)}
   .tape-band b{background:#fff;color:var(--red);border-radius:50%;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;padding:0 4px;margin:0 2px}
@@ -349,11 +350,11 @@
     .stats-line{padding:0 14px;gap:6px}
     .stats-line .chip.push{margin-left:0}
     .chip{font-size:10.5px;padding:4px 8px}
-    .search-wrap{padding:0 14px;margin-top:10px}
+    .toolbar{padding:0 14px;flex-direction:column;align-items:stretch;gap:10px}
+    .search-wrap{margin-left:0}
     .search-box,.search-panel{width:100%}
     .search-box kbd{display:none}
     #search-input{padding:11px 14px;font-size:16px}   /* ≥16px 防 iOS 聚焦自动放大 */
-    .tape-wrap{padding:0 14px}
     .tape-panel{width:min(340px,100%)}
     /* 页签：横滑 + 吸顶 */
     nav.tabs{position:sticky;top:0;z-index:45;flex-wrap:nowrap;overflow-x:auto;gap:8px;
@@ -431,16 +432,17 @@
   <span class="chip" style="opacity:.75">整理时间 · 2026 年 8 月</span>
 </div>
 
-<div class="search-wrap" id="search-wrap">
-  <div class="search-box">
-    <input id="search-input" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search"
-           role="combobox" aria-controls="search-panel" aria-expanded="false" aria-label="搜索刊物">
-    <kbd aria-hidden="true">/</kbd>
+<div class="toolbar">
+  <div class="tape-wrap" id="update-strip" aria-label="刊物更新记录"></div>
+  <div class="search-wrap" id="search-wrap">
+    <div class="search-box">
+      <input id="search-input" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search"
+             role="combobox" aria-controls="search-panel" aria-expanded="false" aria-label="搜索刊物">
+      <kbd aria-hidden="true">/</kbd>
+    </div>
+    <div class="search-panel" id="search-panel" role="listbox" aria-label="搜索结果" hidden></div>
   </div>
-  <div class="search-panel" id="search-panel" role="listbox" aria-label="搜索结果" hidden></div>
 </div>
-
-<div class="tape-wrap" id="update-strip" aria-label="刊物更新记录"></div>
 
 <nav class="tabs" id="tabs"></nav>
 
