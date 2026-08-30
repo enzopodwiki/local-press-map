@@ -1,0 +1,546 @@
+{
+ "exclude": [
+  "香港社区报"
+ ],
+ "regions": [
+  {
+   "id": "beijing",
+   "region": "北京",
+   "map": "china",
+   "pubs": [
+    "《Timeout 消费导刊》",
+    "《LAWAAI·事儿多》"
+   ]
+  },
+  {
+   "id": "zhengzhou",
+   "region": "郑州",
+   "map": "china",
+   "pubs": [
+    "《壹页郑州》"
+   ]
+  },
+  {
+   "id": "jiaozuo",
+   "region": "焦作",
+   "map": "china",
+   "pubs": [
+    "《大南坡：共振村声》"
+   ]
+  },
+  {
+   "id": "shanghai",
+   "region": "上海",
+   "map": "china",
+   "pubs": [
+    "《新华录》",
+    "《Ketchup》（日文）",
+    "《古北古北》"
+   ]
+  },
+  {
+   "id": "nanjing",
+   "region": "南京",
+   "map": "china",
+   "pubs": [
+    "《不熟》（原 SOLO）"
+   ]
+  },
+  {
+   "id": "hangzhou",
+   "region": "杭州",
+   "map": "china",
+   "pubs": [
+    "《青山青山村》"
+   ]
+  },
+  {
+   "id": "huzhou",
+   "region": "湖州",
+   "map": "china",
+   "pubs": [
+    "《天荒坪云南烧烤完全指南》"
+   ]
+  },
+  {
+   "id": "zhoushan",
+   "region": "舟山",
+   "map": "china",
+   "pubs": [
+    "《岛与》"
+   ]
+  },
+  {
+   "id": "taizhou",
+   "region": "台州",
+   "map": "china",
+   "pubs": [
+    "《a mayzine》"
+   ]
+  },
+  {
+   "id": "jinhua",
+   "region": "金华",
+   "map": "china",
+   "pubs": [
+    "《一个，人的村庄……》"
+   ]
+  },
+  {
+   "id": "wenzhou",
+   "region": "温州",
+   "map": "china",
+   "pubs": [
+    "《恰天光》",
+    "《瓯风》"
+   ]
+  },
+  {
+   "id": "huangshan",
+   "region": "黄山",
+   "map": "china",
+   "pubs": [
+    "《黟县百工》"
+   ]
+  },
+  {
+   "id": "fuzhou",
+   "region": "福州",
+   "map": "china",
+   "pubs": [
+    "《homeland家园》",
+    "《海峡旅游》",
+    "《平话》",
+    "《诸神的游戏》"
+   ]
+  },
+  {
+   "id": "xiamen",
+   "region": "厦门",
+   "map": "china",
+   "pubs": [
+    "《搜街 SOGUIDE》"
+   ]
+  },
+  {
+   "id": "zhangzhou",
+   "region": "漳州",
+   "map": "china",
+   "pubs": [
+    "《城关阿志》"
+   ]
+  },
+  {
+   "id": "quanzhou",
+   "region": "泉州",
+   "map": "china",
+   "pubs": [
+    "《城市壹本 City Book》"
+   ]
+  },
+  {
+   "id": "yantai",
+   "region": "烟台",
+   "map": "china",
+   "pubs": [
+    "《芝罘历史文化》"
+   ]
+  },
+  {
+   "id": "qingdao",
+   "region": "青岛",
+   "map": "china",
+   "pubs": [
+    "《市南人文历史研究》"
+   ]
+  },
+  {
+   "id": "wuhan",
+   "region": "武汉",
+   "map": "china",
+   "pubs": [
+    "《大武汉》",
+    "《优良 better》"
+   ]
+  },
+  {
+   "id": "changsha",
+   "region": "长沙",
+   "map": "china",
+   "pubs": [
+    "《星球雷达》",
+    "《晨报周刊》"
+   ]
+  },
+  {
+   "id": "guangzhou",
+   "region": "广州",
+   "map": "china",
+   "pubs": [
+    "《深活集》"
+   ]
+  },
+  {
+   "id": "huizhou",
+   "region": "惠州",
+   "map": "china",
+   "pubs": [
+    "《走神》"
+   ]
+  },
+  {
+   "id": "chaozhou",
+   "region": "潮州",
+   "map": "china",
+   "pubs": [
+    "《阔目 Monsoon Fish》（前身《回南天》）"
+   ]
+  },
+  {
+   "id": "chongqing",
+   "region": "重庆",
+   "map": "china",
+   "pubs": [
+    "《最重庆》"
+   ]
+  },
+  {
+   "id": "guiyang",
+   "region": "贵阳",
+   "map": "china",
+   "pubs": [
+    "《出山》"
+   ]
+  },
+  {
+   "id": "chengdu",
+   "region": "成都",
+   "map": "china",
+   "pubs": [
+    "《可以》",
+    "《@成都》城市观察书系"
+   ]
+  },
+  {
+   "id": "xian",
+   "region": "西安",
+   "map": "china",
+   "pubs": [
+    "《Local本地》"
+   ]
+  },
+  {
+   "id": "dali",
+   "region": "大理",
+   "map": "china",
+   "pubs": [
+    "《山谷》"
+   ]
+  },
+  {
+   "id": "lasa",
+   "region": "西藏",
+   "map": "china",
+   "pubs": [
+    "《西藏人文地理》",
+    "《PHORPA》",
+    "《松赞Songtsam》"
+   ]
+  },
+  {
+   "id": "hk",
+   "region": "香港",
+   "map": "china",
+   "pubs": [
+    "《號外》",
+    "CACHe 系列刊物",
+    "《种植香港》",
+    "《四十一報》",
+    "《就係香港 Being Hong Kong》",
+    "《ISLANDERS島民》",
+    "《香港職人》",
+    "《香港老舖記錄冊》",
+    "《聽說長洲》"
+   ]
+  },
+  {
+   "id": "mo",
+   "region": "澳门",
+   "map": "china",
+   "pubs": [
+    "《城與書》",
+    "《新生代》",
+    "《咁澳門點？》"
+   ]
+  },
+  {
+   "id": "roam-cn",
+   "region": "流动书柜 · 全国刊物",
+   "map": "china",
+   "pubs": [
+    "《碧山》",
+    "《地道风物》",
+    "《柴米多生产生活指南》",
+    "《风物中国志》",
+    "《百工》"
+   ],
+   "sub": "跨地域出版、难以钉在单一坐标的刊物",
+   "roam": true
+  },
+  {
+   "id": "tw-all",
+   "region": "台湾 · 全台",
+   "map": "taiwan",
+   "pubs": [
+    "《鄉間小路》",
+    "《台灣光華雜誌》（Taiwan Panorama）",
+    "《新活水 Fountain》",
+    "《台毒誌 to̍k magazine》",
+    "《靛花》",
+    "《地味手帖》",
+    "《誌村鑑》",
+    "《藍鯨》",
+    "《五花鹽 BaconPress》",
+    "《日日好日》",
+    "《台味誌》",
+    "《薰風》",
+    "《旅人食通信》",
+    "《米通信》",
+    "《我村》OUR VILLAGES",
+    "《本地 The Place》",
+    "《遇见台湾》（大陆出版）"
+   ],
+   "sub": "跨分区发行的全台性刊物",
+   "roam": true
+  },
+  {
+   "id": "tw-north",
+   "region": "台湾 · 北部",
+   "map": "taiwan",
+   "pubs": [
+    "《台北畫刊》",
+    "《逐步東行》",
+    "《淡淡》",
+    "《文化桃園》",
+    "《貢丸湯》",
+    "《新竹生活》",
+    "《龜山不是島》",
+    "《海想知道》",
+    "《巢兼代》",
+    "《新莊報導》",
+    "《新竹風》",
+    "《甘樂誌》",
+    "《小小生活》",
+    "《SHOCK 三峽客》",
+    "《夭夭》",
+    "《風起Uprisings》",
+    "《雞籠霧雨》",
+    "《Taipei Post》",
+    "《稻相報 TÀU SIO PO》",
+    "《返腳》",
+    "《東園誌》",
+    "《Mingalar Par 緬甸街》",
+    "《新莊騷》",
+    "《野菱報》",
+    "《北辰》",
+    "在地Real Local：北投・天母",
+    "《北埔》系列",
+    "《在基隆：城、海、山與未來》",
+    "《台北早餐大王》",
+    "《d設計之旅 台灣·新竹》"
+   ]
+  },
+  {
+   "id": "tw-central",
+   "region": "台湾 · 中部",
+   "map": "taiwan",
+   "pubs": [
+    "《山城週刊》",
+    "《風格線上》（Solmag）",
+    "《雲林食通信》",
+    "《中台灣食通信》",
+    "《暖太陽》（Day in the Sun）",
+    "《今秋誌》",
+    "《炯話郎》",
+    "《員林紀事》",
+    "《尋庄》",
+    "《社群別冊》",
+    "《掀海風》",
+    "《籃城很有事》",
+    "《Smaaaaa,han（原來是司馬限啊）～部落誌》"
+   ]
+  },
+  {
+   "id": "tw-south",
+   "region": "台湾 · 南部",
+   "map": "taiwan",
+   "pubs": [
+    "《路克米 Look At Me》",
+    "《美印臺南》",
+    "《型農本色》",
+    "《屏東本事》",
+    "《AMAZING PINGTUNG》",
+    "《南》",
+    "《慢漫刊》",
+    "《野上野下》",
+    "《行南》",
+    "《透南風》",
+    "《正興聞》",
+    "《什貨生活》",
+    "《藍燈號誌》",
+    "《大雄誌 megao》",
+    "《鹽埕微醺》"
+   ]
+  },
+  {
+   "id": "tw-east",
+   "region": "台湾 · 东部",
+   "map": "taiwan",
+   "pubs": [
+    "《台東土黏黏》",
+    "《O'rip 生活旅人》",
+    "《about 關於地方：南方澳誌》",
+    "《拾紙》",
+    "《952 VAZAY TAMO》",
+    "《THE 17 LAB 地方誌》",
+    "《東台灣食通信》",
+    "《東透可 Taitungtalk》",
+    "《島嶼綠》",
+    "《太布河里 TRUKU BUNUN RIVER VILLAGE》"
+   ]
+  },
+  {
+   "id": "tw-islands",
+   "region": "台湾 · 离岛",
+   "map": "taiwan",
+   "pubs": [
+    "《金門文藝》",
+    "《Salty. Dongyin Pictorial Plus+》（東引畫刊）",
+    "《大角誌》（Tāi-kak）"
+   ]
+  },
+  {
+   "id": "tohoku",
+   "region": "东北",
+   "map": "japan",
+   "pubs": [
+    "《東北食べる通信》（东北食通信）"
+   ]
+  },
+  {
+   "id": "niigata",
+   "region": "新潟",
+   "map": "japan",
+   "pubs": [
+    "《自遊人》"
+   ]
+  },
+  {
+   "id": "kyoto",
+   "region": "京都",
+   "map": "japan",
+   "pubs": [
+    "《月刊京都》"
+   ]
+  },
+  {
+   "id": "tokyo",
+   "region": "东京",
+   "map": "japan",
+   "pubs": [
+    "《谷中・根津・千駄木》（谷根千）",
+    "《TOmagazine》",
+    "《DEEPTOKYOmagazine》"
+   ]
+  },
+  {
+   "id": "hyogo",
+   "region": "兵库 · 城崎",
+   "map": "japan",
+   "pubs": [
+    "《本と温泉》（书与温泉）"
+   ]
+  },
+  {
+   "id": "setouchi",
+   "region": "濑户内",
+   "map": "japan",
+   "pubs": [
+    "《せとうちスタイル》（濑户内风格）"
+   ]
+  },
+  {
+   "id": "kyushu",
+   "region": "北九州",
+   "map": "japan",
+   "pubs": [
+    "《雲のうえ》（云上）"
+   ]
+  },
+  {
+   "id": "roam-jp",
+   "region": "流动书柜 · 全国刊物",
+   "map": "japan",
+   "pubs": [
+    "《PAPERSKY》",
+    "《d design travel》",
+    "《離島経済新聞》（ritokei）",
+    "《TURNS》",
+    "《秋刀魚》（台湾出版）",
+    "《THE NEW JAPAN》"
+   ],
+   "sub": "一行一册、走遍列岛的刊物",
+   "roam": true
+  },
+  {
+   "id": "chiangmai",
+   "region": "清迈",
+   "map": "thailand",
+   "pubs": [
+    "《Citylife Chiang Mai》（英文）"
+   ]
+  },
+  {
+   "id": "bangkok",
+   "region": "曼谷",
+   "map": "thailand",
+   "pubs": [
+    "《a day》（泰文）"
+   ]
+  },
+  {
+   "id": "penang",
+   "region": "槟城",
+   "map": "sgmy",
+   "pubs": [
+    "《Penang Monthly》（英文）",
+    "《城视报 Penang City Eye》",
+    "《掺掺槟城》（中国出版）"
+   ]
+  },
+  {
+   "id": "selangor",
+   "region": "雪兰莪",
+   "map": "sgmy",
+   "pubs": [
+    "《雪州誌 The Selangor's》"
+   ]
+  },
+  {
+   "id": "muar",
+   "region": "麻河流域",
+   "map": "sgmy",
+   "pubs": [
+    "《麻河时光 Muar River Times》"
+   ]
+  },
+  {
+   "id": "singapore",
+   "region": "新加坡",
+   "map": "sgmy",
+   "pubs": [
+    "《Mynah Magazine》（英文）"
+   ]
+  }
+ ]
+}

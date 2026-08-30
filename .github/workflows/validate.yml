@@ -1,0 +1,16 @@
+name: validate
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: 构建产物必须与数据源一致
+        run: python3 tools/build.py --check
+      - name: 数据体检
+        run: python3 tools/validate.py

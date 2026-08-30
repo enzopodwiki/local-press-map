@@ -204,13 +204,10 @@
   .pin .ring{fill:var(--paper);stroke:var(--ink);stroke-width:2.4;transition:transform .18s ease;transform-origin:center;transform-box:fill-box}
   .pin .core{fill:var(--acc);transition:transform .18s ease;transform-origin:center;transform-box:fill-box}
   .pin .pcount{font-size:9.5px;font-weight:900;fill:#fff;text-anchor:middle;pointer-events:none;font-family:var(--sans)}
-  .plabel{font-size:12px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;pointer-events:none;font-family:var(--sans);letter-spacing:.04em}
+  .pin .plabel{font-size:12px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;pointer-events:none;font-family:var(--sans);letter-spacing:.04em}
   .pin:hover .ring,.pin:focus .ring{transform:scale(1.35)}
   .pin:hover .core,.pin:focus .core{transform:scale(1.35)}
   .pin:hover .plabel{fill:var(--acc)}
-.labels{pointer-events:none}
-.plabel.hl{fill:var(--acc)}
-.plabel{transition:fill .15s ease}
   /* 台湾分区 */
   .zone{cursor:pointer;transition:fill-opacity .18s ease;stroke:var(--ink);stroke-width:1.4}
   .zone:hover{fill-opacity:.5}
@@ -344,7 +341,7 @@
     .pin .ring{r:13px}
     .pin .core{r:8px}
     .pin .pcount{font-size:11px}
-    .plabel{font-size:15px;stroke-width:5px}
+    .pin .plabel{font-size:15px;stroke-width:5px}
     .zone-label{font-size:19px}
     .map-nav{bottom:6px;gap:6px;padding:4px 8px}
     .mn-btn{width:22px;height:22px;font-size:10px}
@@ -390,7 +387,7 @@
 </header>
 
 <div class="stats-line">
-  <span class="chip alt">地图总录 <b id="stat-total">169</b> 种</span>
+  <span class="chip alt">地图总录 <b id="stat-total">159</b> 种</span>
   
   <span class="chip"><b id="stat-shelves">—</b> 个书柜</span>
   <span class="chip push" style="opacity:.85">Created by <a href="https://www.xiaohongshu.com/user/profile/5fb103fc000000000101ca7e" target="_blank" rel="noopener">Enzo</a></span>
@@ -521,35 +518,35 @@
 <path class="outline" d="M521,670.1 L520,671.9 L521.3,670.3 L522.1,668.4 L522.8,666.5 L523.5,663.7 L523.8,661.1 L523.9,658.1 L523.8,656.5 L523.6,658.1 L523.5,661.1 L523.2,663.6 L522.6,666.4 L521.9,668.2 L521,670.1 Z"/>
 <path class="outline" d="M516.9,609.9 L517.1,611.1 L517.1,609.9 L516.3,606.5 L514.9,603 L513.6,600.4 L512.7,599.1 L509.6,594.7 L512.5,599.3 L513.3,600.6 L514.7,603.1 L516,606.6 L516.9,609.9 Z"/>
 
-<g class="pin" data-r="beijing" tabindex="0" transform="translate(608.2,225.1)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text></g>
-<g class="pin" data-r="xian" tabindex="0" transform="translate(504.5,311.8)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="zhengzhou" tabindex="0" transform="translate(570.0,305.3)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="nanjing" tabindex="0" transform="translate(641.3,347.7)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="shanghai" tabindex="0" transform="translate(678.6,360.3)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">3</text></g>
-<g class="pin" data-r="huangshan" tabindex="0" transform="translate(616,386)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
+<g class="pin" data-r="beijing" tabindex="0" transform="translate(608.2,225.1)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text><text class="plabel" x="18" y="4" >北京</text></g>
+<g class="pin" data-r="xian" tabindex="0" transform="translate(504.5,311.8)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="-17" y="4" text-anchor="end">西安</text></g>
+<g class="pin" data-r="zhengzhou" tabindex="0" transform="translate(570.0,305.3)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >郑州</text></g>
+<g class="pin" data-r="nanjing" tabindex="0" transform="translate(641.3,347.7)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="-17" y="4" text-anchor="end">南京</text></g>
+<g class="pin" data-r="shanghai" tabindex="0" transform="translate(678.6,360.3)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text><text class="plabel" x="18" y="4" >上海</text></g>
+<g class="pin" data-r="huangshan" tabindex="0" transform="translate(616,386)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="-16" y="14" text-anchor="end">黄山</text></g>
 
-<g class="pin" data-r="wuhan" tabindex="0" transform="translate(579.0,370.3)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text></g>
-<g class="pin" data-r="changsha" tabindex="0" transform="translate(560.1,407.1)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text></g>
+<g class="pin" data-r="wuhan" tabindex="0" transform="translate(579.0,370.3)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text><text class="plabel" x="-18" y="4" text-anchor="end">武汉</text></g>
+<g class="pin" data-r="changsha" tabindex="0" transform="translate(560.1,407.1)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text><text class="plabel" x="-18" y="4" text-anchor="end">长沙</text></g>
 
-<g class="pin" data-r="chengdu" tabindex="0" transform="translate(436.8,370.6)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text></g>
-<g class="pin" data-r="chongqing" tabindex="0" transform="translate(471.3,386.4)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="dali" tabindex="0" transform="translate(378.2,436.9)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="lasa" tabindex="0" transform="translate(256.7,385.0)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">3</text></g>
+<g class="pin" data-r="chengdu" tabindex="0" transform="translate(436.8,370.6)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text><text class="plabel" x="-18" y="4" text-anchor="end">成都</text></g>
+<g class="pin" data-r="chongqing" tabindex="0" transform="translate(471.3,386.4)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="15" y="16" >重庆</text></g>
+<g class="pin" data-r="dali" tabindex="0" transform="translate(378.2,436.9)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="15" y="4">大理</text></g>
+<g class="pin" data-r="lasa" tabindex="0" transform="translate(256.7,385.0)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">3</text><text class="plabel" x="18" y="4" >西藏</text></g>
 
-<g class="pin" data-r="hk" tabindex="0" transform="translate(583.2,502.3)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">9</text></g>
-<g class="pin" data-r="mo" tabindex="0" transform="translate(561.6,506.2)"><circle class="hit" r="20"/><circle class="ring" r="10"/><circle class="core" r="6"/><text class="pcount" y="3.5">3</text></g><g class="pin" data-r="hangzhou" tabindex="0" transform="translate(654,376)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="zhoushan" tabindex="0" transform="translate(702,378)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="taizhou" tabindex="0" transform="translate(680,396)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="jinhua" tabindex="0" transform="translate(642,402)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="wenzhou" tabindex="0" transform="translate(664,420)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">2</text></g>
-<g class="pin" data-r="fuzhou" tabindex="0" transform="translate(650,442)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">4</text></g>
-<g class="pin" data-r="xiamen" tabindex="0" transform="translate(610,478)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="quanzhou" tabindex="0" transform="translate(632,462)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="guangzhou" tabindex="0" transform="translate(530,466)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="huizhou" tabindex="0" transform="translate(560,478)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="chaozhou" tabindex="0" transform="translate(586,464)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g><g class="pin" data-r="yantai" tabindex="0" transform="translate(677.5,261.9)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="qingdao" tabindex="0" transform="translate(663.5,284.8)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g><g class="pin" data-r="jiaozuo" tabindex="0" transform="translate(552,285)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g><g class="pin" data-r="huzhou" tabindex="0" transform="translate(625,370)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g><g class="pin" data-r="zhangzhou" tabindex="0" transform="translate(598,438)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g><g class="pin" data-r="guiyang" tabindex="0" transform="translate(505,420)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="labels"><text class="plabel" data-r="beijing" data-ox="18" data-oy="4" data-anchor="start" x="626.2" y="229.1" text-anchor="start">北京</text><text class="plabel" data-r="xian" data-ox="-17" data-oy="4" data-anchor="end" x="487.5" y="315.8" text-anchor="end">西安</text><text class="plabel" data-r="zhengzhou" data-ox="17" data-oy="4" data-anchor="start" x="587" y="309.3" text-anchor="start">郑州</text><text class="plabel" data-r="nanjing" data-ox="-17" data-oy="4" data-anchor="end" x="624.3" y="351.7" text-anchor="end">南京</text><text class="plabel" data-r="shanghai" data-ox="18" data-oy="4" data-anchor="start" x="696.6" y="364.3" text-anchor="start">上海</text><text class="plabel" data-r="huangshan" data-ox="-16" data-oy="14" data-anchor="end" x="600" y="400" text-anchor="end">黄山</text><text class="plabel" data-r="wuhan" data-ox="-18" data-oy="4" data-anchor="end" x="561" y="374.3" text-anchor="end">武汉</text><text class="plabel" data-r="changsha" data-ox="-18" data-oy="4" data-anchor="end" x="542.1" y="411.1" text-anchor="end">长沙</text><text class="plabel" data-r="chengdu" data-ox="-18" data-oy="4" data-anchor="end" x="418.8" y="374.6" text-anchor="end">成都</text><text class="plabel" data-r="chongqing" data-ox="15" data-oy="16" data-anchor="start" x="486.3" y="402.4" text-anchor="start">重庆</text><text class="plabel" data-r="dali" data-ox="15" data-oy="4" data-anchor="start" x="393.2" y="440.9" text-anchor="start">大理</text><text class="plabel" data-r="lasa" data-ox="18" data-oy="4" data-anchor="start" x="274.7" y="389" text-anchor="start">西藏</text><text class="plabel" data-r="hk" data-ox="14" data-oy="30" data-anchor="start" x="597.2" y="532.3" text-anchor="start">香港</text><text class="plabel" data-r="mo" data-ox="-16" data-oy="4" data-anchor="end" x="545.6" y="510.2" text-anchor="end">澳门</text><text class="plabel" data-r="hangzhou" data-ox="-16" data-oy="4" data-anchor="end" x="638" y="380" text-anchor="end">杭州</text><text class="plabel" data-r="zhoushan" data-ox="15" data-oy="4" data-anchor="start" x="717" y="382" text-anchor="start">舟山</text><text class="plabel" data-r="taizhou" data-ox="15" data-oy="4" data-anchor="start" x="695" y="400" text-anchor="start">台州</text><text class="plabel" data-r="jinhua" data-ox="-16" data-oy="4" data-anchor="end" x="626" y="406" text-anchor="end">金华</text><text class="plabel" data-r="wenzhou" data-ox="-16" data-oy="4" data-anchor="end" x="648" y="424" text-anchor="end">温州</text><text class="plabel" data-r="fuzhou" data-ox="15" data-oy="4" data-anchor="start" x="665" y="446" text-anchor="start">福州</text><text class="plabel" data-r="xiamen" data-ox="2" data-oy="24" data-anchor="middle" x="612" y="502" text-anchor="middle">厦门</text><text class="plabel" data-r="quanzhou" data-ox="15" data-oy="4" data-anchor="start" x="647" y="466" text-anchor="start">泉州</text><text class="plabel" data-r="guangzhou" data-ox="-16" data-oy="4" data-anchor="end" x="514" y="470" text-anchor="end">广州</text><text class="plabel" data-r="huizhou" data-ox="-16" data-oy="4" data-anchor="end" x="544" y="482" text-anchor="end">惠州</text><text class="plabel" data-r="chaozhou" data-ox="15" data-oy="4" data-anchor="start" x="601" y="468" text-anchor="start">潮州</text><text class="plabel" data-r="yantai" data-ox="15" data-oy="4" data-anchor="start" x="692.5" y="265.9" text-anchor="start">烟台</text><text class="plabel" data-r="qingdao" data-ox="-16" data-oy="4" data-anchor="end" x="647.5" y="288.8" text-anchor="end">青岛</text><text class="plabel" data-r="jiaozuo" data-ox="-16" data-oy="4" data-anchor="end" x="536" y="289" text-anchor="end">焦作</text><text class="plabel" data-r="huzhou" data-ox="-16" data-oy="4" data-anchor="end" x="609" y="374" text-anchor="end">湖州</text><text class="plabel" data-r="zhangzhou" data-ox="15" data-oy="4" data-anchor="start" x="613" y="442" text-anchor="start">漳州</text><text class="plabel" data-r="guiyang" data-ox="15" data-oy="4" data-anchor="start" x="520" y="424" text-anchor="start">贵阳</text></g></svg><span class="motto">在土地上閱讀</span><span class="legend">纹样 · 山峦纹</span></div>
+<g class="pin" data-r="hk" tabindex="0" transform="translate(583.2,502.3)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">8</text><text class="plabel" x="14" y="30">香港</text></g>
+<g class="pin" data-r="mo" tabindex="0" transform="translate(561.6,506.2)"><circle class="hit" r="20"/><circle class="ring" r="10"/><circle class="core" r="6"/><text class="pcount" y="3.5">3</text><text class="plabel" x="-16" y="4" text-anchor="end">澳门</text></g><g class="pin" data-r="hangzhou" tabindex="0" transform="translate(654,376)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="-16" y="4" text-anchor="end">杭州</text></g>
+<g class="pin" data-r="zhoushan" tabindex="0" transform="translate(702,378)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="15" y="4">舟山</text></g>
+<g class="pin" data-r="taizhou" tabindex="0" transform="translate(680,396)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="15" y="4">台州</text></g>
+<g class="pin" data-r="jinhua" tabindex="0" transform="translate(642,402)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="-16" y="4" text-anchor="end">金华</text></g>
+<g class="pin" data-r="wenzhou" tabindex="0" transform="translate(664,420)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">2</text><text class="plabel" x="-16" y="4" text-anchor="end">温州</text></g>
+<g class="pin" data-r="fuzhou" tabindex="0" transform="translate(650,442)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">4</text><text class="plabel" x="15" y="4">福州</text></g>
+<g class="pin" data-r="xiamen" tabindex="0" transform="translate(610,478)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="2" y="24" text-anchor="middle">厦门</text></g>
+<g class="pin" data-r="quanzhou" tabindex="0" transform="translate(632,462)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="15" y="4">泉州</text></g>
+<g class="pin" data-r="guangzhou" tabindex="0" transform="translate(530,466)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="-16" y="4" text-anchor="end">广州</text></g>
+<g class="pin" data-r="huizhou" tabindex="0" transform="translate(560,478)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="-16" y="4" text-anchor="end">惠州</text></g>
+<g class="pin" data-r="chaozhou" tabindex="0" transform="translate(586,464)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="15" y="4">潮州</text></g><g class="pin" data-r="yantai" tabindex="0" transform="translate(677.5,261.9)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="15" y="4">烟台</text></g>
+<g class="pin" data-r="qingdao" tabindex="0" transform="translate(663.5,284.8)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="-16" y="4" text-anchor="end">青岛</text></g>
+</svg><span class="motto">在土地上閱讀</span><span class="legend">纹样 · 山峦纹</span></div>
       <div class="roam-row"><button class="roam-chip" data-r="roam-cn">全国书柜<span class="rc-n">5</span></button></div>
     </div>
   </section>
@@ -569,12 +566,12 @@
         <div class="side-block"><b>岛屿出版观察</b><p>街仔与离岛的书写——按北、中、南、东、离岛五大分区及全台类收录。</p></div>
         <div class="side-block"><b>书柜速览</b><p><span data-count="taiwan">—</span> 种刊物 · <span data-shelves="taiwan">—</span> 个书柜<br>跨分区全台性刊物见地图右下「全台书柜」</p></div>
       </aside>
-      <div class="map-wrap"><svg class="wm" viewBox="0 0 400 300" aria-hidden="true"><g fill="none" stroke="#26221C" stroke-width="3"><path d="M200 36 l-26 26 h10 l-20 24 h12 l-22 26 h14 l-24 28 h92 l-24 -28 h14 l-22 -26 h12 l-20 -24 h10 z"/><path d="M200 142 v34 M176 176 h48"/><path d="M16 262 L76 202 L128 242 L188 182 L248 236 L308 192 L384 252"/></g></svg><svg class="map" viewBox="4 40 240 350" role="img" aria-label="台湾标准示意地图"><defs><clipPath id="tw-clip"><path d="M93.6,311.4 L99.3,314.2 L103.4,318.1 L108.9,328.4 L110.3,335.8 L110.6,343.2 L109.7,346.1 L111,350.3 L113.6,355.1 L116.9,356.1 L119.9,355.3 L125.6,358.8 L127,357.6 L126.5,350.2 L129.7,346.1 L129.4,338.7 L130.3,323.1 L135.4,304 L138,299.2 L139.5,293.6 L143,292 L150.1,287.4 L153.3,283.4 L155.4,277.8 L162.1,268.5 L164.5,263 L165.7,256.7 L168.7,255.2 L170.4,252.2 L169.2,247.2 L171.1,240.7 L174.2,236.5 L175.6,228.2 L177.5,222.8 L177.6,218.1 L182.6,199.2 L185.3,185.6 L188.2,178.3 L186.7,173.4 L187,170.6 L189.6,167.5 L190.5,164.1 L199.8,150.1 L201.2,142.9 L204.4,138.2 L205.8,133.9 L206.3,126.4 L204,121.8 L202.1,114.3 L202.6,107.8 L209.5,99.1 L215.6,93.8 L213.2,91.3 L210.6,91.2 L208.2,82.2 L202.4,82.4 L197.8,80.2 L195.3,80.2 L191.9,77.6 L191.4,74.6 L187.9,73.3 L185.4,68.8 L182.4,67.6 L178.5,67.7 L171.5,70.9 L169.1,73.6 L165.8,80.3 L161.7,81.9 L153.2,83.1 L147.2,87.2 L144.8,87.5 L138.8,90.4 L137.6,94.4 L133.8,99 L129.7,106.5 L128.5,113.6 L123.2,120.4 L118.4,122.9 L112.6,127.8 L109.1,137.2 L104.9,142.1 L101.6,147.4 L99.6,152.4 L95.7,158.3 L94.2,163.3 L89.6,168.8 L83.6,180.2 L80.7,185 L78.2,192.4 L72.7,195.2 L67,204.3 L66.4,213.9 L68.5,221 L67.4,234.9 L65.4,239.1 L60.5,257.7 L61.3,259.7 L69.3,263.7 L70.6,272.7 L74.6,287.6 L80.4,301.3 L82.2,303.7 L93.6,311.4 Z"/><path d="M31.5,217 L35.8,217.1 L34,212.9 L28.7,212.5 L27.5,214.8 L25.3,214.2 L25,218.8 L25.9,220.9 L28.6,221 L31.5,217 Z"/><path d="M20.6,210.7 L20.5,214.9 L18,216.5 L21.9,216 L22.1,210.8 L20.6,210.7 Z"/><path d="M19.9,231 L19.7,234.1 L21.4,234.1 L19.9,231 Z"/><path d="M24.6,207.2 L28.2,211.4 L29.1,207.7 L26.9,206.4 L24.6,207.2 Z"/><path d="M173.3,291.4 L174,294.3 L176.8,295.2 L176.9,291.4 L173.3,291.4 Z"/><path d="M176.6,341.5 L176.4,344.8 L178.4,347 L183.1,349.3 L183.9,346.9 L181.6,345.7 L181.7,341.7 L176.6,341.5 Z"/><path d="M222.3,51.4 L222,53.8 L224.4,53.4 L222.3,51.4 Z"/><path d="M14,245.5 L14,247.8 L16.5,245.4 L14,245.5 Z"/><path d="M86.7,321.1 L89.8,319.8 L88.9,318.7 L86.7,321.1 Z"/></clipPath></defs><path class="land" d="M93.6,311.4 L99.3,314.2 L103.4,318.1 L108.9,328.4 L110.3,335.8 L110.6,343.2 L109.7,346.1 L111,350.3 L113.6,355.1 L116.9,356.1 L119.9,355.3 L125.6,358.8 L127,357.6 L126.5,350.2 L129.7,346.1 L129.4,338.7 L130.3,323.1 L135.4,304 L138,299.2 L139.5,293.6 L143,292 L150.1,287.4 L153.3,283.4 L155.4,277.8 L162.1,268.5 L164.5,263 L165.7,256.7 L168.7,255.2 L170.4,252.2 L169.2,247.2 L171.1,240.7 L174.2,236.5 L175.6,228.2 L177.5,222.8 L177.6,218.1 L182.6,199.2 L185.3,185.6 L188.2,178.3 L186.7,173.4 L187,170.6 L189.6,167.5 L190.5,164.1 L199.8,150.1 L201.2,142.9 L204.4,138.2 L205.8,133.9 L206.3,126.4 L204,121.8 L202.1,114.3 L202.6,107.8 L209.5,99.1 L215.6,93.8 L213.2,91.3 L210.6,91.2 L208.2,82.2 L202.4,82.4 L197.8,80.2 L195.3,80.2 L191.9,77.6 L191.4,74.6 L187.9,73.3 L185.4,68.8 L182.4,67.6 L178.5,67.7 L171.5,70.9 L169.1,73.6 L165.8,80.3 L161.7,81.9 L153.2,83.1 L147.2,87.2 L144.8,87.5 L138.8,90.4 L137.6,94.4 L133.8,99 L129.7,106.5 L128.5,113.6 L123.2,120.4 L118.4,122.9 L112.6,127.8 L109.1,137.2 L104.9,142.1 L101.6,147.4 L99.6,152.4 L95.7,158.3 L94.2,163.3 L89.6,168.8 L83.6,180.2 L80.7,185 L78.2,192.4 L72.7,195.2 L67,204.3 L66.4,213.9 L68.5,221 L67.4,234.9 L65.4,239.1 L60.5,257.7 L61.3,259.7 L69.3,263.7 L70.6,272.7 L74.6,287.6 L80.4,301.3 L82.2,303.7 L93.6,311.4 Z"/><path class="land" d="M31.5,217 L35.8,217.1 L34,212.9 L28.7,212.5 L27.5,214.8 L25.3,214.2 L25,218.8 L25.9,220.9 L28.6,221 L31.5,217 Z"/><path class="land" d="M20.6,210.7 L20.5,214.9 L18,216.5 L21.9,216 L22.1,210.8 L20.6,210.7 Z"/><path class="land" d="M19.9,231 L19.7,234.1 L21.4,234.1 L19.9,231 Z"/><path class="land" d="M24.6,207.2 L28.2,211.4 L29.1,207.7 L26.9,206.4 L24.6,207.2 Z"/><path class="land" d="M173.3,291.4 L174,294.3 L176.8,295.2 L176.9,291.4 L173.3,291.4 Z"/><path class="land" d="M176.6,341.5 L176.4,344.8 L178.4,347 L183.1,349.3 L183.9,346.9 L181.6,345.7 L181.7,341.7 L176.6,341.5 Z"/><path class="land" d="M222.3,51.4 L222,53.8 L224.4,53.4 L222.3,51.4 Z"/><path class="land" d="M14,245.5 L14,247.8 L16.5,245.4 L14,245.5 Z"/><path class="land" d="M86.7,321.1 L89.8,319.8 L88.9,318.7 L86.7,321.1 Z"/><g clip-path="url(#tw-clip)"><rect class="zone" data-r="tw-north" x="4" y="40" width="240" height="83.6" fill="#46795F" fill-opacity=".13"/><rect class="zone" data-r="tw-central" x="4" y="123.6" width="240" height="93.5" fill="#46795F" fill-opacity=".13"/><rect class="zone" data-r="tw-south" x="4" y="217.1" width="240" height="172.9" fill="#46795F" fill-opacity=".13"/><rect class="zone" data-r="tw-east" x="164.1" y="40" width="79.9" height="350" fill="#46795F" fill-opacity=".16"/></g><g class="outline-g"><path d="M93.6,311.4 L99.3,314.2 L103.4,318.1 L108.9,328.4 L110.3,335.8 L110.6,343.2 L109.7,346.1 L111,350.3 L113.6,355.1 L116.9,356.1 L119.9,355.3 L125.6,358.8 L127,357.6 L126.5,350.2 L129.7,346.1 L129.4,338.7 L130.3,323.1 L135.4,304 L138,299.2 L139.5,293.6 L143,292 L150.1,287.4 L153.3,283.4 L155.4,277.8 L162.1,268.5 L164.5,263 L165.7,256.7 L168.7,255.2 L170.4,252.2 L169.2,247.2 L171.1,240.7 L174.2,236.5 L175.6,228.2 L177.5,222.8 L177.6,218.1 L182.6,199.2 L185.3,185.6 L188.2,178.3 L186.7,173.4 L187,170.6 L189.6,167.5 L190.5,164.1 L199.8,150.1 L201.2,142.9 L204.4,138.2 L205.8,133.9 L206.3,126.4 L204,121.8 L202.1,114.3 L202.6,107.8 L209.5,99.1 L215.6,93.8 L213.2,91.3 L210.6,91.2 L208.2,82.2 L202.4,82.4 L197.8,80.2 L195.3,80.2 L191.9,77.6 L191.4,74.6 L187.9,73.3 L185.4,68.8 L182.4,67.6 L178.5,67.7 L171.5,70.9 L169.1,73.6 L165.8,80.3 L161.7,81.9 L153.2,83.1 L147.2,87.2 L144.8,87.5 L138.8,90.4 L137.6,94.4 L133.8,99 L129.7,106.5 L128.5,113.6 L123.2,120.4 L118.4,122.9 L112.6,127.8 L109.1,137.2 L104.9,142.1 L101.6,147.4 L99.6,152.4 L95.7,158.3 L94.2,163.3 L89.6,168.8 L83.6,180.2 L80.7,185 L78.2,192.4 L72.7,195.2 L67,204.3 L66.4,213.9 L68.5,221 L67.4,234.9 L65.4,239.1 L60.5,257.7 L61.3,259.7 L69.3,263.7 L70.6,272.7 L74.6,287.6 L80.4,301.3 L82.2,303.7 L93.6,311.4 Z"/><path d="M31.5,217 L35.8,217.1 L34,212.9 L28.7,212.5 L27.5,214.8 L25.3,214.2 L25,218.8 L25.9,220.9 L28.6,221 L31.5,217 Z"/><path d="M20.6,210.7 L20.5,214.9 L18,216.5 L21.9,216 L22.1,210.8 L20.6,210.7 Z"/><path d="M19.9,231 L19.7,234.1 L21.4,234.1 L19.9,231 Z"/><path d="M24.6,207.2 L28.2,211.4 L29.1,207.7 L26.9,206.4 L24.6,207.2 Z"/><path d="M173.3,291.4 L174,294.3 L176.8,295.2 L176.9,291.4 L173.3,291.4 Z"/><path d="M176.6,341.5 L176.4,344.8 L178.4,347 L183.1,349.3 L183.9,346.9 L181.6,345.7 L181.7,341.7 L176.6,341.5 Z"/><path d="M222.3,51.4 L222,53.8 L224.4,53.4 L222.3,51.4 Z"/><path d="M14,245.5 L14,247.8 L16.5,245.4 L14,245.5 Z"/><path d="M86.7,321.1 L89.8,319.8 L88.9,318.7 L86.7,321.1 Z"/></g><g class="island-dot" data-r="tw-islands" tabindex="0"><circle class="hit" cx="25.6" cy="215.4" r="26" fill="transparent"/><circle cx="25.6" cy="215.4" r="5"/><circle cx="39.6" cy="223.4" r="4"/><circle cx="29.6" cy="233.4" r="3.4"/><circle cx="173.5" cy="291.9" r="4"/><circle cx="179.7" cy="345.5" r="4.6"/><circle cx="26" cy="148" r="4.4"/><circle cx="26" cy="118" r="3.6"/><circle cx="216" cy="62" r="3"/><circle cx="224" cy="56" r="2.4"/><text class="plabel" x="34" y="152" font-size="9.5">金门</text><text class="plabel" x="34" y="122" font-size="9.5">马祖</text><text class="plabel" x="216" y="78" font-size="9.5">钓鱼岛</text><text class="plabel" x="8" y="298" font-size="9.5">离岛 · 澎湖</text><text class="plabel" x="8" y="314" font-size="9.5">绿岛 兰屿</text><text class="plabel" x="8" y="330" font-size="9.5">金门 马祖 钓鱼岛</text></g><g class="pin" data-r="tw-north" tabindex="0" transform="translate(176.8,89.6)"><circle class="hit" r="20"/><circle class="ring" r="13"/><circle class="core" r="9"/><text class="pcount" y="3.5">30</text></g>
-<g class="pin" data-r="tw-central" tabindex="0" transform="translate(110.9,166.1)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">13</text></g>
-<g class="pin" data-r="tw-south" tabindex="0" transform="translate(76,264)"><circle class="hit" r="20"/><circle class="ring" r="13"/><circle class="core" r="9"/><text class="pcount" y="3.5">15</text></g>
-<g class="pin" data-r="tw-east" tabindex="0" transform="translate(184.6,180.6)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">10</text></g>
-<g class="pin" data-r="tw-islands" tabindex="0" transform="translate(30,196)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">3</text></g>
-<g class="labels"><text class="plabel" data-r="tw-north" data-ox="-18" data-oy="4" data-anchor="end" x="158.8" y="93.6" text-anchor="end">北部</text><text class="plabel" data-r="tw-central" data-ox="-17" data-oy="4" data-anchor="end" x="93.9" y="170.1" text-anchor="end">中部</text><text class="plabel" data-r="tw-south" data-ox="-18" data-oy="4" data-anchor="end" x="58" y="268" text-anchor="end">南部</text><text class="plabel" data-r="tw-east" data-ox="17" data-oy="4" data-anchor="start" x="201.6" y="184.6" text-anchor="start">东部</text><text class="plabel" data-r="tw-islands" data-ox="16" data-oy="4" data-anchor="start" x="46" y="200" text-anchor="start">离岛</text></g></svg><span class="motto">在島嶼上書寫</span><span class="legend">纹样 · 眷村与田垄</span></div>
+      <div class="map-wrap"><svg class="wm" viewBox="0 0 400 300" aria-hidden="true"><g fill="none" stroke="#26221C" stroke-width="3"><path d="M200 36 l-26 26 h10 l-20 24 h12 l-22 26 h14 l-24 28 h92 l-24 -28 h14 l-22 -26 h12 l-20 -24 h10 z"/><path d="M200 142 v34 M176 176 h48"/><path d="M16 262 L76 202 L128 242 L188 182 L248 236 L308 192 L384 252"/></g></svg><svg class="map" viewBox="4 40 240 350" role="img" aria-label="台湾标准示意地图"><defs><clipPath id="tw-clip"><path d="M93.6,311.4 L99.3,314.2 L103.4,318.1 L108.9,328.4 L110.3,335.8 L110.6,343.2 L109.7,346.1 L111,350.3 L113.6,355.1 L116.9,356.1 L119.9,355.3 L125.6,358.8 L127,357.6 L126.5,350.2 L129.7,346.1 L129.4,338.7 L130.3,323.1 L135.4,304 L138,299.2 L139.5,293.6 L143,292 L150.1,287.4 L153.3,283.4 L155.4,277.8 L162.1,268.5 L164.5,263 L165.7,256.7 L168.7,255.2 L170.4,252.2 L169.2,247.2 L171.1,240.7 L174.2,236.5 L175.6,228.2 L177.5,222.8 L177.6,218.1 L182.6,199.2 L185.3,185.6 L188.2,178.3 L186.7,173.4 L187,170.6 L189.6,167.5 L190.5,164.1 L199.8,150.1 L201.2,142.9 L204.4,138.2 L205.8,133.9 L206.3,126.4 L204,121.8 L202.1,114.3 L202.6,107.8 L209.5,99.1 L215.6,93.8 L213.2,91.3 L210.6,91.2 L208.2,82.2 L202.4,82.4 L197.8,80.2 L195.3,80.2 L191.9,77.6 L191.4,74.6 L187.9,73.3 L185.4,68.8 L182.4,67.6 L178.5,67.7 L171.5,70.9 L169.1,73.6 L165.8,80.3 L161.7,81.9 L153.2,83.1 L147.2,87.2 L144.8,87.5 L138.8,90.4 L137.6,94.4 L133.8,99 L129.7,106.5 L128.5,113.6 L123.2,120.4 L118.4,122.9 L112.6,127.8 L109.1,137.2 L104.9,142.1 L101.6,147.4 L99.6,152.4 L95.7,158.3 L94.2,163.3 L89.6,168.8 L83.6,180.2 L80.7,185 L78.2,192.4 L72.7,195.2 L67,204.3 L66.4,213.9 L68.5,221 L67.4,234.9 L65.4,239.1 L60.5,257.7 L61.3,259.7 L69.3,263.7 L70.6,272.7 L74.6,287.6 L80.4,301.3 L82.2,303.7 L93.6,311.4 Z"/><path d="M31.5,217 L35.8,217.1 L34,212.9 L28.7,212.5 L27.5,214.8 L25.3,214.2 L25,218.8 L25.9,220.9 L28.6,221 L31.5,217 Z"/><path d="M20.6,210.7 L20.5,214.9 L18,216.5 L21.9,216 L22.1,210.8 L20.6,210.7 Z"/><path d="M19.9,231 L19.7,234.1 L21.4,234.1 L19.9,231 Z"/><path d="M24.6,207.2 L28.2,211.4 L29.1,207.7 L26.9,206.4 L24.6,207.2 Z"/><path d="M173.3,291.4 L174,294.3 L176.8,295.2 L176.9,291.4 L173.3,291.4 Z"/><path d="M176.6,341.5 L176.4,344.8 L178.4,347 L183.1,349.3 L183.9,346.9 L181.6,345.7 L181.7,341.7 L176.6,341.5 Z"/><path d="M222.3,51.4 L222,53.8 L224.4,53.4 L222.3,51.4 Z"/><path d="M14,245.5 L14,247.8 L16.5,245.4 L14,245.5 Z"/><path d="M86.7,321.1 L89.8,319.8 L88.9,318.7 L86.7,321.1 Z"/></clipPath></defs><path class="land" d="M93.6,311.4 L99.3,314.2 L103.4,318.1 L108.9,328.4 L110.3,335.8 L110.6,343.2 L109.7,346.1 L111,350.3 L113.6,355.1 L116.9,356.1 L119.9,355.3 L125.6,358.8 L127,357.6 L126.5,350.2 L129.7,346.1 L129.4,338.7 L130.3,323.1 L135.4,304 L138,299.2 L139.5,293.6 L143,292 L150.1,287.4 L153.3,283.4 L155.4,277.8 L162.1,268.5 L164.5,263 L165.7,256.7 L168.7,255.2 L170.4,252.2 L169.2,247.2 L171.1,240.7 L174.2,236.5 L175.6,228.2 L177.5,222.8 L177.6,218.1 L182.6,199.2 L185.3,185.6 L188.2,178.3 L186.7,173.4 L187,170.6 L189.6,167.5 L190.5,164.1 L199.8,150.1 L201.2,142.9 L204.4,138.2 L205.8,133.9 L206.3,126.4 L204,121.8 L202.1,114.3 L202.6,107.8 L209.5,99.1 L215.6,93.8 L213.2,91.3 L210.6,91.2 L208.2,82.2 L202.4,82.4 L197.8,80.2 L195.3,80.2 L191.9,77.6 L191.4,74.6 L187.9,73.3 L185.4,68.8 L182.4,67.6 L178.5,67.7 L171.5,70.9 L169.1,73.6 L165.8,80.3 L161.7,81.9 L153.2,83.1 L147.2,87.2 L144.8,87.5 L138.8,90.4 L137.6,94.4 L133.8,99 L129.7,106.5 L128.5,113.6 L123.2,120.4 L118.4,122.9 L112.6,127.8 L109.1,137.2 L104.9,142.1 L101.6,147.4 L99.6,152.4 L95.7,158.3 L94.2,163.3 L89.6,168.8 L83.6,180.2 L80.7,185 L78.2,192.4 L72.7,195.2 L67,204.3 L66.4,213.9 L68.5,221 L67.4,234.9 L65.4,239.1 L60.5,257.7 L61.3,259.7 L69.3,263.7 L70.6,272.7 L74.6,287.6 L80.4,301.3 L82.2,303.7 L93.6,311.4 Z"/><path class="land" d="M31.5,217 L35.8,217.1 L34,212.9 L28.7,212.5 L27.5,214.8 L25.3,214.2 L25,218.8 L25.9,220.9 L28.6,221 L31.5,217 Z"/><path class="land" d="M20.6,210.7 L20.5,214.9 L18,216.5 L21.9,216 L22.1,210.8 L20.6,210.7 Z"/><path class="land" d="M19.9,231 L19.7,234.1 L21.4,234.1 L19.9,231 Z"/><path class="land" d="M24.6,207.2 L28.2,211.4 L29.1,207.7 L26.9,206.4 L24.6,207.2 Z"/><path class="land" d="M173.3,291.4 L174,294.3 L176.8,295.2 L176.9,291.4 L173.3,291.4 Z"/><path class="land" d="M176.6,341.5 L176.4,344.8 L178.4,347 L183.1,349.3 L183.9,346.9 L181.6,345.7 L181.7,341.7 L176.6,341.5 Z"/><path class="land" d="M222.3,51.4 L222,53.8 L224.4,53.4 L222.3,51.4 Z"/><path class="land" d="M14,245.5 L14,247.8 L16.5,245.4 L14,245.5 Z"/><path class="land" d="M86.7,321.1 L89.8,319.8 L88.9,318.7 L86.7,321.1 Z"/><g clip-path="url(#tw-clip)"><rect class="zone" data-r="tw-north" x="4" y="40" width="240" height="83.6" fill="#46795F" fill-opacity=".13"/><rect class="zone" data-r="tw-central" x="4" y="123.6" width="240" height="93.5" fill="#46795F" fill-opacity=".13"/><rect class="zone" data-r="tw-south" x="4" y="217.1" width="240" height="172.9" fill="#46795F" fill-opacity=".13"/><rect class="zone" data-r="tw-east" x="164.1" y="40" width="79.9" height="350" fill="#46795F" fill-opacity=".16"/></g><g class="outline-g"><path d="M93.6,311.4 L99.3,314.2 L103.4,318.1 L108.9,328.4 L110.3,335.8 L110.6,343.2 L109.7,346.1 L111,350.3 L113.6,355.1 L116.9,356.1 L119.9,355.3 L125.6,358.8 L127,357.6 L126.5,350.2 L129.7,346.1 L129.4,338.7 L130.3,323.1 L135.4,304 L138,299.2 L139.5,293.6 L143,292 L150.1,287.4 L153.3,283.4 L155.4,277.8 L162.1,268.5 L164.5,263 L165.7,256.7 L168.7,255.2 L170.4,252.2 L169.2,247.2 L171.1,240.7 L174.2,236.5 L175.6,228.2 L177.5,222.8 L177.6,218.1 L182.6,199.2 L185.3,185.6 L188.2,178.3 L186.7,173.4 L187,170.6 L189.6,167.5 L190.5,164.1 L199.8,150.1 L201.2,142.9 L204.4,138.2 L205.8,133.9 L206.3,126.4 L204,121.8 L202.1,114.3 L202.6,107.8 L209.5,99.1 L215.6,93.8 L213.2,91.3 L210.6,91.2 L208.2,82.2 L202.4,82.4 L197.8,80.2 L195.3,80.2 L191.9,77.6 L191.4,74.6 L187.9,73.3 L185.4,68.8 L182.4,67.6 L178.5,67.7 L171.5,70.9 L169.1,73.6 L165.8,80.3 L161.7,81.9 L153.2,83.1 L147.2,87.2 L144.8,87.5 L138.8,90.4 L137.6,94.4 L133.8,99 L129.7,106.5 L128.5,113.6 L123.2,120.4 L118.4,122.9 L112.6,127.8 L109.1,137.2 L104.9,142.1 L101.6,147.4 L99.6,152.4 L95.7,158.3 L94.2,163.3 L89.6,168.8 L83.6,180.2 L80.7,185 L78.2,192.4 L72.7,195.2 L67,204.3 L66.4,213.9 L68.5,221 L67.4,234.9 L65.4,239.1 L60.5,257.7 L61.3,259.7 L69.3,263.7 L70.6,272.7 L74.6,287.6 L80.4,301.3 L82.2,303.7 L93.6,311.4 Z"/><path d="M31.5,217 L35.8,217.1 L34,212.9 L28.7,212.5 L27.5,214.8 L25.3,214.2 L25,218.8 L25.9,220.9 L28.6,221 L31.5,217 Z"/><path d="M20.6,210.7 L20.5,214.9 L18,216.5 L21.9,216 L22.1,210.8 L20.6,210.7 Z"/><path d="M19.9,231 L19.7,234.1 L21.4,234.1 L19.9,231 Z"/><path d="M24.6,207.2 L28.2,211.4 L29.1,207.7 L26.9,206.4 L24.6,207.2 Z"/><path d="M173.3,291.4 L174,294.3 L176.8,295.2 L176.9,291.4 L173.3,291.4 Z"/><path d="M176.6,341.5 L176.4,344.8 L178.4,347 L183.1,349.3 L183.9,346.9 L181.6,345.7 L181.7,341.7 L176.6,341.5 Z"/><path d="M222.3,51.4 L222,53.8 L224.4,53.4 L222.3,51.4 Z"/><path d="M14,245.5 L14,247.8 L16.5,245.4 L14,245.5 Z"/><path d="M86.7,321.1 L89.8,319.8 L88.9,318.7 L86.7,321.1 Z"/></g><g class="island-dot" data-r="tw-islands" tabindex="0"><circle class="hit" cx="25.6" cy="215.4" r="26" fill="transparent"/><circle cx="25.6" cy="215.4" r="5"/><circle cx="39.6" cy="223.4" r="4"/><circle cx="29.6" cy="233.4" r="3.4"/><circle cx="173.5" cy="291.9" r="4"/><circle cx="179.7" cy="345.5" r="4.6"/><circle cx="26" cy="148" r="4.4"/><circle cx="26" cy="118" r="3.6"/><circle cx="216" cy="62" r="3"/><circle cx="224" cy="56" r="2.4"/><text class="plabel" x="34" y="152" font-size="9.5">金门</text><text class="plabel" x="34" y="122" font-size="9.5">马祖</text><text class="plabel" x="216" y="78" font-size="9.5">钓鱼岛</text><text class="plabel" x="8" y="298" font-size="9.5">离岛 · 澎湖</text><text class="plabel" x="8" y="314" font-size="9.5">绿岛 兰屿</text><text class="plabel" x="8" y="330" font-size="9.5">金门 马祖 钓鱼岛</text></g><g class="pin" data-r="tw-north" tabindex="0" transform="translate(176.8,89.6)"><circle class="hit" r="20"/><circle class="ring" r="13"/><circle class="core" r="9"/><text class="pcount" y="3.5">30</text><text class="plabel" x="-18" y="4" text-anchor="end">北部</text></g>
+<g class="pin" data-r="tw-central" tabindex="0" transform="translate(110.9,166.1)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">13</text><text class="plabel" x="-17" y="4" text-anchor="end">中部</text></g>
+<g class="pin" data-r="tw-south" tabindex="0" transform="translate(76,264)"><circle class="hit" r="20"/><circle class="ring" r="13"/><circle class="core" r="9"/><text class="pcount" y="3.5">15</text><text class="plabel" x="-18" y="4" text-anchor="end">南部</text></g>
+<g class="pin" data-r="tw-east" tabindex="0" transform="translate(184.6,180.6)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">10</text><text class="plabel" x="17" y="4">东部</text></g>
+<g class="pin" data-r="tw-islands" tabindex="0" transform="translate(30,196)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">3</text><text class="plabel" x="16" y="4">离岛</text></g>
+</svg><span class="motto">在島嶼上書寫</span><span class="legend">纹样 · 眷村与田垄</span></div>
       <div class="roam-row"><button class="region-chip" data-r="tw-all">全台书柜<span class="rc-n">17</span></button></div>
     </div>
   </section>
@@ -594,13 +591,13 @@
         <div class="side-block"><b>列岛出版观察</b><p>地方刊物的成熟样本——从东京下町到东北田野，一地一册，与地方共创。</p></div>
         <div class="side-block"><b>书柜速览</b><p><span data-count="japan">—</span> 种刊物 · <span data-shelves="japan">—</span> 个书柜<br>全国流动刊物 5 种，见地图右下「全国书柜」</p></div>
       </aside>
-      <div class="map-wrap"><svg class="wm" viewBox="0 0 400 300" aria-hidden="true"><g fill="none" stroke="#26221C" stroke-width="3"><path d="M110 240 L195 116 L280 240 Z"/><path d="M163 168 q32 20 64 0"/><path d="M296 152 h88 M304 152 v64 M376 152 v64 M290 140 q50 -16 100 0 M340 140 v12"/></g></svg><svg class="map" viewBox="0 0 560 666" role="img" aria-label="japan标准示意地图"><path class="land" d="M19,652.4 L17.5,652.8 L15.7,652.3 L14,652.1 L14,651.2 L15.7,650.3 L15.8,649 L20.1,649.9 L20,651 L19,652.4 Z"/><path class="land" d="M28.7,645.3 L27.3,650 L26.1,650.7 L24.9,650.3 L23.7,647.7 L24.6,646.7 L25.8,647.2 L26.7,647 L28.9,643.1 L28.7,645.3 Z"/><path class="land" d="M56.4,638.4 L54.3,639.2 L52.2,638.8 L52.5,634.6 L53.3,635.1 L53.7,636.6 L55.4,637.4 L56.4,638.4 Z"/><path class="land" d="M458.5,582.1 L456.5,578.9 L457.8,579.3 L458.8,581.1 L458.5,582.1 Z"/><path class="land" d="M124,581 L121.7,582.4 L120.8,584 L118.7,584.6 L116.6,586.9 L114.6,587.3 L114.6,589.2 L115.5,590.8 L114.1,591.1 L112.7,593 L112.6,594.4 L113.1,595.5 L111.2,597.7 L109.4,597.8 L109.3,596 L109.5,594.7 L111.2,591.4 L111.2,587.6 L112.8,587.2 L116,583.9 L116.4,582.8 L115.1,581.7 L115.2,580.3 L117.6,580.2 L118.5,581.2 L120.1,580.6 L120.7,579.2 L122.9,576.7 L123.9,574.1 L125.7,576.2 L125.2,579 L124,581 Z"/><path class="land" d="M141.7,548.9 L140.7,549.4 L139.4,548.7 L138.9,545.2 L139.5,543.6 L140.6,543.2 L141.5,546.2 L142.2,547.4 L141.7,548.9 Z"/><path class="land" d="M149.5,537.3 L149.7,538 L147.3,537.5 L146.4,534.7 L147.9,535.2 L148.4,536.2 L149.5,537.3 Z"/><path class="land" d="M152.6,534.2 L150.6,536.7 L148.4,534.5 L145.7,533 L147,532.6 L147.7,532 L147.8,531.1 L149.5,529.7 L152.9,528.6 L154,528.5 L155.2,527.5 L155.6,526.6 L158.3,524.9 L158.9,526.4 L158.8,527.5 L157.2,528.1 L155.6,529.6 L154.1,531.5 L152.7,532.3 L152.6,534.2 Z"/><path class="land" d="M180.7,472.5 L178,473.1 L176.5,472.4 L175.1,468.7 L177.7,466.4 L181.2,468.7 L181.9,469.3 L180.7,472.5 Z"/><path class="land" d="M188.8,468.4 L186.7,468.7 L186.7,467 L188.3,463.1 L188.5,460.2 L190.1,456.5 L190.7,455.7 L191.8,456.6 L191.2,461 L189.6,464.4 L188.8,468.4 Z"/><path class="land" d="M159,430.5 L158.3,431.1 L158.7,428.7 L160.7,426.6 L160.8,428 L159,430.5 Z"/><path class="land" d="M174.9,407.5 L172.8,407.6 L171.9,407.3 L171.6,406.3 L174.6,404.4 L176.9,404.7 L175.8,406.5 L174.9,407.5 Z"/><path class="land" d="M167.8,413.3 L165.9,414.4 L165.6,413.4 L164.8,412.9 L166.2,411.4 L165.3,409.8 L166.3,406.1 L166,404.5 L169.8,404 L170.5,405.4 L170.6,410 L167.8,413.3 Z"/><path class="land" d="M133.7,396.7 L134.7,397.5 L136,397 L137.1,396.9 L137.9,397.3 L138.9,399.4 L139.2,400.6 L137.5,400.8 L136.7,401.1 L135.8,402.6 L134.4,402 L133.5,401.3 L133.3,400.3 L133.7,396.7 Z"/><path class="land" d="M402.1,388.5 L400.5,387.8 L400.4,386.9 L401.3,386.3 L402.9,387.3 L402.1,388.5 Z"/><path class="land" d="M143.6,395 L142.2,392.6 L141.7,391.6 L142.6,391.1 L144.4,386.2 L144.7,388.1 L145.4,390.1 L146.1,390.4 L145.4,391.8 L144.4,392.3 L143.6,395 Z"/><path class="land" d="M153.6,383.4 L151.9,384.9 L150.7,384.9 L151.8,383.2 L151.9,382.4 L152.9,380.2 L154.7,379.4 L155.4,379.3 L154,381.6 L153.6,383.4 Z"/><path class="land" d="M160.9,367.6 L159.2,368.9 L158,367.9 L158.6,365.2 L159,364.3 L160.4,365.2 L160.9,367.6 Z"/><path class="land" d="M194,372 L197.2,372.9 L198.6,373 L199.8,372.6 L201.8,371.4 L203.8,370.5 L205.2,371 L206.5,372 L207.2,373.5 L206.9,375 L204.6,378.4 L202.7,381.9 L207,382.6 L211.3,382.5 L210.3,384.7 L210.2,386.6 L211.5,387.5 L212.6,388.7 L212.3,389.8 L211.7,390.9 L214,392.6 L213.9,393.7 L213.2,394.8 L207.4,402.4 L205.6,406.2 L204.4,410.4 L203.4,413.5 L202.5,416.7 L201.9,420.2 L200.8,423.7 L201.2,426.9 L200.8,430.1 L197.9,438.1 L195.8,438 L193.1,437 L191.5,437.2 L190.6,438.9 L192.2,442.6 L187.4,446.9 L182.2,449.8 L182.2,448.5 L182.7,447.5 L183.4,446.6 L184,445.6 L184.7,442.2 L184.4,438.8 L182.8,434.5 L182.7,432.9 L183.8,432.3 L184.5,432.1 L184.9,430.1 L184.4,429.1 L182.9,428.7 L181.5,428.7 L180.5,430.3 L179.1,433.4 L178.5,436.5 L178.8,438.2 L179.4,439.7 L181.3,442.3 L180.7,443.8 L179.9,444.9 L173.2,442.3 L171.8,442.1 L170.6,441.5 L169.3,438 L172,437.2 L172.8,436.7 L173.1,435.6 L173.5,432.2 L172.2,429.4 L171.2,428.3 L170.3,427.2 L170.8,424.8 L170.5,421.7 L170.4,417.5 L170.9,416.8 L173.4,415.9 L175.3,413.6 L176.9,411.1 L179.2,406.5 L181.2,401.6 L179.3,401.4 L177.7,400.5 L179.5,398.1 L178.9,395.2 L176.4,391.6 L174.9,387.4 L172.7,385.5 L171.5,384.8 L170,385.8 L168.8,387 L169.9,389.8 L169.8,392.2 L170,394.6 L171.1,394.8 L172.5,394.2 L173.6,394.6 L174.3,395.9 L174.4,397.5 L174,399.1 L172.9,399.9 L171.7,399.9 L170.4,399 L169.4,397.7 L167.1,397 L164.6,398.5 L162.2,401.5 L160.2,403.1 L161.2,400.8 L161.6,398.4 L160.6,396.7 L158.3,393.9 L157.8,392.3 L157.7,390.3 L158.1,388.4 L160.4,390.6 L161.7,393.4 L163.4,394.6 L165.6,394.6 L163.9,390.5 L163.3,389.5 L160.9,387.6 L157.7,384.5 L155.7,383.1 L156.4,379.8 L157.6,379.2 L158.6,379.3 L162,380.5 L162.4,378.9 L161.9,378 L161.6,377 L163.8,375.6 L167.5,374.5 L168.3,373.9 L168.9,372.8 L169.8,372.2 L172.4,372.2 L174.5,371.1 L176.3,368.1 L176.8,366.4 L177.4,365.1 L181.9,362.6 L183,362.3 L185.9,362.6 L188.7,363.9 L190,366.8 L191.2,369.9 L194,372 Z"/><path class="land" d="M220.2,361.7 L221.4,362.8 L224.1,362.4 L223.7,363.7 L222.5,364.7 L220.2,363.9 L218.8,363.9 L218.6,362.3 L220.2,361.7 Z"/><path class="land" d="M227.7,356.6 L227,357.8 L224.9,357.5 L225.7,356.4 L226.4,355.2 L227.3,356.3 Z"/><path class="land" d="M148.5,356.4 L146.9,357.6 L146.2,355.7 L146.9,350.4 L149.9,351.5 L149.8,353.1 L148.5,356.4 Z"/><path class="land" d="M270.4,352.4 L273.7,353.6 L277.1,353.3 L277.1,358.8 L277.6,360.6 L278.5,362.3 L278,364.7 L279.6,365.5 L275,368.2 L270.9,371.9 L269.2,374.3 L267.7,376.9 L266.8,379.7 L266.2,382.7 L264.8,381.5 L260.8,376.7 L258.3,375.3 L254.3,374.6 L253,374.8 L244.7,379.3 L243.6,382.6 L241.3,387.7 L240.2,389.3 L239,389.8 L238.2,390.6 L237.3,394.9 L234.7,397.5 L233.1,397.6 L230.4,396.9 L229.2,397.3 L230.8,393.1 L228.3,392.6 L225.7,392.7 L225.6,389.9 L224.1,388.4 L225.2,386.4 L225.3,384.7 L225.9,383.8 L226.2,382.5 L226.1,381.3 L224.5,381 L223.5,380.2 L223.7,377.2 L222.8,377.1 L220.6,377.6 L215.9,379.9 L214.6,379.9 L216.6,378.3 L220.7,376 L222.6,374.7 L226.7,371.1 L229.2,369.4 L230.6,366.4 L231,364.5 L231.9,362.9 L232.6,360.3 L234,359.4 L236.3,357.2 L237.6,357.4 L239.1,360.2 L241,362.3 L242.5,362.1 L245,361 L246.2,360.8 L249.2,360.9 L251.8,359.6 L252.9,358 L253.3,356 L252.3,352.8 L253.6,353.1 L254.8,352.9 L257.6,350.9 L260.6,349.6 L263.7,349.3 L267.1,350.5 L270.4,352.4 Z"/><path class="land" d="M270.3,345.5 L269.4,346 L267.9,347.4 L267.6,346 L266.4,345.2 L269.7,344 L270.8,344.4 L270.3,345.5 Z"/><path class="land" d="M284.2,351.4 L281.6,354 L279.4,353.8 L278.2,352.7 L277.9,351.2 L280,349 L281.9,345.9 L283.5,344.5 L284.9,343.7 L286,343.7 L283.6,348.1 L284.2,351.4 Z"/><path class="land" d="M151,349.5 L150.5,350.9 L148.9,349.9 L148.2,348.9 L149.7,344.4 L149.5,342.7 L149.6,341.8 L152.6,339.4 L153.3,340.6 L153,341.6 L153.2,343.8 L150.9,347.6 L151,349.5 Z"/><path class="land" d="M392.9,338.2 L392.6,339.7 L391.3,339.3 L390.7,338.4 L390.8,336.8 L392.1,336.8 L392.9,338.2 Z"/><path class="land" d="M246.7,293.8 L245.6,294.9 L243.6,294.6 L242.4,293 L242.8,291.1 L244.9,289.7 L247,292.5 L246.7,293.8 Z"/><path class="land" d="M366.2,245.2 L363.9,245.2 L364.7,244.2 L364.8,242.9 L365.6,240.7 L363.8,240 L363.9,237.4 L365.3,235 L369,231 L370,230.3 L370.1,232 L369,236.1 L368.8,237.5 L371.7,237.8 L369.8,242.7 L366.2,245.2 Z"/><path class="land" d="M435.4,138.4 L436.4,139 L440.9,137.4 L440,142 L439.5,146.7 L439.9,154.4 L440.3,157.9 L441.1,161.3 L443,163.7 L445.5,165.4 L449.1,170.9 L451,177.6 L452.4,180.9 L453.4,184.3 L453.7,185.9 L453.8,187.5 L453.5,189.6 L453.8,191.4 L453.4,196.8 L451.8,203.2 L451.6,206.4 L450.2,207 L449.3,208.5 L448.6,209.2 L447.8,209.7 L446.6,209.9 L445.8,210.5 L445.4,212.2 L444.9,213.8 L443.9,215.3 L443.1,216.9 L442.4,220.8 L442.2,224.8 L441.2,227.7 L438.8,228.4 L436,228.3 L432.5,229.6 L431.8,230.4 L429,235.3 L428.2,238.2 L428.2,241.3 L429,245.1 L430,248.9 L430.8,255.8 L430,266.4 L429.2,269.8 L427.4,272.1 L426.1,273.2 L424.9,274.5 L423.5,277.9 L421,284.8 L420.8,286.6 L420.8,288.4 L420.1,290.7 L419.7,293 L420.1,295.7 L420.9,298.2 L424.2,304.6 L425.5,306.5 L426.9,308.2 L421.3,310.1 L420.3,311 L416.9,314.7 L415.8,318.1 L415.9,322 L415.4,323.4 L414.4,324.6 L413.5,325.4 L409.7,327.1 L407.3,328.9 L405,331.6 L404,333 L402.2,332.6 L401.1,331.3 L402.2,329.7 L401.8,327.8 L402.4,323 L401.8,321.1 L403.7,319.6 L404.6,317.3 L406.6,315.4 L408,313.8 L408.2,312.4 L407,311 L405.6,309.9 L403.8,309.9 L402,310.2 L400.8,311.6 L400.4,313.5 L400.5,314.4 L400.3,315.1 L397.5,317.7 L397.9,320.4 L398.7,321.8 L399.8,322.4 L399.5,323.4 L398.1,325.5 L397.2,325.7 L395.5,322.7 L393.3,321 L390.6,321.1 L387.9,321.7 L385.8,323.7 L385.1,325.4 L384.7,327.1 L384.8,331.3 L384,334.9 L382.3,338 L381.5,339.1 L379.4,341.2 L378,341.5 L377,340.5 L376.2,339.1 L377.2,333.8 L377.2,330.8 L379.6,329.3 L377.6,327.1 L375.2,326.3 L371.8,327.4 L370.8,328.7 L370.1,330.4 L368.3,332.6 L366.3,334.6 L364,338.1 L362.4,342.2 L357.4,340.8 L354.6,340.5 L351.9,340.6 L346.9,340.1 L341.5,340.9 L335.4,342.6 L335.7,341.4 L340.8,338.9 L341,338.2 L340.5,336.9 L339.2,336.8 L336.2,337.3 L334.7,337.1 L334,335.6 L333,335 L332.5,338.4 L331.8,338.8 L330.8,338 L331.1,335.9 L330.4,332.6 L330.3,330.7 L331.4,328.9 L330.3,328.2 L329.2,328.5 L327.7,329.3 L326.4,330.5 L323.7,336.3 L322.7,339.7 L324.7,342.4 L330.1,346.1 L331,347 L331,348.6 L330.4,350.3 L328.9,351.1 L322.9,352.3 L317.8,354.8 L316.3,357.2 L311.6,366.8 L307.9,373.3 L302.5,375.5 L296.7,373.5 L295.3,371.2 L294.2,368.4 L292,365.9 L290.1,363.2 L288.9,359.9 L289.1,354.6 L288.3,351.4 L289,350.6 L292.2,348.6 L293.3,347.6 L295.1,345 L295.7,343.6 L295.8,341.5 L294.4,340.4 L290.6,340.5 L286.9,341.1 L284.2,340.2 L280.7,337.6 L279.6,337.1 L275.9,336.9 L273.2,337.4 L270.5,338.3 L267.8,338.6 L266.8,339.1 L263.6,342.3 L261.1,344.2 L258.9,345.2 L254.1,345.5 L251.7,346.1 L249.2,347.2 L245.9,348.5 L242.9,349.7 L241.2,351 L238.3,350.2 L232.4,352.4 L229.6,352.7 L226.6,351.5 L223.9,349.5 L221.3,350.3 L219.5,353.3 L218.7,359.1 L217.6,361.8 L217.3,364.9 L216,364.4 L208.1,358.7 L201.2,359.5 L199.6,360 L197.5,361.1 L195.4,361.6 L193.4,360.8 L191.5,359.5 L189.7,359.9 L187.8,360.8 L187.1,352.2 L187.5,351.1 L188.6,349.6 L189.9,348.3 L193,347.8 L196.1,348.3 L198.3,347.7 L200.2,346 L202.2,343.5 L204.4,341.6 L207.4,340 L210.3,338.2 L212.9,335.7 L215.4,333 L217.6,331 L220,329.3 L223.7,325.3 L228.7,320.8 L230.6,317.4 L231.7,316.5 L236,314.6 L241.6,313.2 L244.2,313.3 L246.9,316.2 L248.3,315.8 L249.7,315.1 L252.6,314.6 L255.6,315.1 L258.5,315.1 L261.4,314.8 L267,313.8 L269.9,312.6 L272.8,311.1 L283,310.1 L290,307.6 L291.1,307.7 L292.2,308.3 L292.3,310.2 L291.4,312.2 L292.3,313.5 L293.7,314.2 L300.3,314.4 L302.2,314.9 L304.9,313.5 L307.5,311.8 L310.3,309.5 L312.2,306.9 L310.4,303.7 L310,300.2 L311.5,296.4 L313.6,293.2 L316.2,291.3 L318.5,289.1 L323.2,282.7 L326.6,277.6 L327.9,271.3 L327.1,263.9 L330.1,258.4 L333,257.4 L338.6,254.9 L341.6,254.2 L342.1,255.3 L342,256.7 L337.5,261.4 L335,263.3 L333.5,263.9 L332.1,264.7 L331.5,266.3 L333.7,269.1 L334.3,271.1 L334.2,273 L334.3,274.8 L336.9,276.7 L339.8,277.3 L341,277.3 L342.1,276.8 L345.5,272.1 L346.2,271.3 L355.8,267.9 L360.5,265.3 L363.1,264.7 L365.6,263.3 L371.1,258.1 L373.1,255.7 L374.9,253 L376.4,249.9 L377.6,246.6 L379.1,244.5 L387.8,239.5 L390.6,236.8 L391.5,235.5 L392.6,231.7 L393.4,227.8 L394.4,224.7 L395.8,221.8 L397.8,218.8 L399.9,216.1 L401.2,213.3 L403,206.6 L403.8,202.9 L404.4,201.5 L405.4,200.4 L406.2,199 L406.8,197.4 L407.1,195.8 L407.5,191 L407.2,187.2 L405.8,184 L404.6,183.1 L403.3,183.1 L401.4,183.3 L399.7,182 L400.1,180.9 L401.7,180.7 L402.9,180.1 L403.7,179 L405.3,175.6 L406.2,171.8 L406.3,170.2 L405.1,167.2 L404.1,163.6 L404.1,161.7 L405.1,159.4 L406.6,157.6 L408,157.2 L409.4,157.1 L410.8,156.4 L412,155.3 L412.7,154.2 L413.8,151.2 L414.2,149.4 L413.5,144.8 L414.2,143.5 L415.2,142.7 L416.5,143.3 L417.9,143.4 L419.5,143.2 L421,143.7 L421.3,144.9 L422.2,152.8 L422.8,153.9 L423.9,154.7 L425.2,154.6 L426.2,153.4 L427,151.7 L428.4,151.4 L432.8,153.1 L434.3,151.9 L435.4,149.9 L436.2,146.5 L435.8,143.4 L434.7,142.3 L433.7,142.5 L432.7,143.3 L431.6,143.8 L425.1,145.4 L425.2,142 L426.6,136.8 L427.3,135.2 L428.4,134.4 L431.1,135.3 L432.5,135.9 L435.4,138.4 Z"/><path class="land" d="M393.5,117.1 L392.3,117 L391.8,114.7 L392.3,113.5 L393.8,112.7 L395.3,112.5 L394,116.6 Z"/><path class="land" d="M437,25.7 L435.4,25.9 L433.4,24.7 L433.2,23.1 L434.6,21.9 L436,22.3 L437.4,24 L437.8,24.8 L437,25.7 Z"/><path class="land" d="M431.7,19.3 L430.8,21.2 L429.5,18.4 L429.3,15.3 L430,15.3 L431.3,15.8 L431.6,17.3 L431.7,19.3 Z"/><path class="land" d="M497.8,55.9 L500.8,56 L502.1,55.9 L504.4,56.3 L513.6,60.9 L516.3,61.5 L519.2,61.6 L521.2,61.2 L522.9,59.9 L528.4,54.4 L534.2,49.4 L534.9,50.9 L534.4,52.5 L531.9,57.1 L529,63.3 L528.4,66.5 L529.3,69.5 L531.1,72.1 L532.6,75.5 L534.2,80.4 L536.5,81 L537.7,81 L540,79.6 L542.2,77.8 L544,77.5 L546,77.9 L543.4,79.1 L541,80.7 L538.9,83.7 L538.1,84.2 L535.7,84 L534.3,84.1 L531.5,85.4 L529,86.8 L526.7,88.5 L524.1,89.4 L521.4,89.6 L517.1,91.1 L514.4,91.2 L509.2,89.9 L506.7,90.3 L501.2,93 L496.3,97 L491.9,101.5 L488.3,106.9 L486.8,109.8 L485.9,112.9 L485.8,115 L485.5,117 L484.7,118.4 L483.6,119.5 L480.6,118.9 L475.7,116 L466.2,111.8 L456.1,105.3 L450.4,102.1 L439.7,103.1 L429.6,109.2 L428.7,108.7 L424.8,104.5 L423,102.8 L420.7,102.3 L419.1,102.4 L417.5,102.7 L415.2,104.9 L414.3,106.4 L413.7,108.2 L413.5,109.5 L413.8,110.7 L415.9,113.5 L418.6,115.6 L419.8,116 L422.4,115.8 L423.5,116 L427.8,120.2 L432.5,124.1 L433.6,125.4 L431.8,126.8 L429.9,127.4 L427.7,127.2 L425.5,126.7 L421.8,125.1 L420.2,126.5 L417.7,129.4 L416.3,132.5 L415.2,134 L412.4,135.9 L409.5,136.9 L408,136.5 L406.8,135.4 L406.1,133.9 L405.8,132.3 L406.4,128.7 L407.9,125.4 L408.5,122.1 L407.3,117.5 L406.5,116.5 L403.4,113.8 L402,111.2 L401.6,107.9 L401.8,106.1 L402.6,102 L403.3,100 L404.7,99.3 L406.3,98.9 L408.7,97.5 L411.3,95.6 L413.8,93.5 L416.3,90.8 L417.6,88 L415.5,84.4 L415,82.3 L415.3,80.3 L417.6,79.3 L420,80.1 L424.7,83 L425.6,83.3 L428.8,83.4 L433.3,84 L435.8,83.9 L437.1,83.5 L438.9,81.1 L439.8,78 L439.5,74 L439.5,70.1 L440.7,66.9 L444.4,61.8 L445.4,58.8 L445.8,51.5 L447.1,48.2 L448.2,44.9 L448.7,37.9 L447.2,31.1 L445.7,27.8 L443.9,24.6 L444.2,21.6 L445.6,18.8 L445.6,18 L446,17.3 L448.6,16.7 L449.9,16.1 L451,14.8 L452.5,14 L453.5,14.8 L454.3,16.2 L458.1,19.5 L463.9,25.6 L470.9,34.8 L475.2,39.2 L479.8,43.3 L484.9,47.5 L490.3,51 L493.7,52.7 L496.2,55.4 L497.8,55.9 Z"/><g class="pin" data-r="tohoku" tabindex="0" transform="translate(426.8,231.7)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="niigata" tabindex="0" transform="translate(382.6,242.2)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="tokyo" tabindex="0" transform="translate(398.7,309.3)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">3</text></g>
-<g class="pin" data-r="hyogo" tabindex="0" transform="translate(278.6,313.5)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g><g class="pin" data-r="kyoto" tabindex="0" transform="translate(305,304)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="setouchi" tabindex="0" transform="translate(263.0,349.9)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="kyushu" tabindex="0" transform="translate(186.7,363.7)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g><g class="labels"><text class="plabel" data-r="tohoku" data-ox="17" data-oy="4" data-anchor="start" x="443.8" y="235.7" text-anchor="start">东北</text><text class="plabel" data-r="niigata" data-ox="17" data-oy="4" data-anchor="start" x="399.6" y="246.2" text-anchor="start">新潟</text><text class="plabel" data-r="tokyo" data-ox="18" data-oy="4" data-anchor="start" x="416.7" y="313.3" text-anchor="start">东京</text><text class="plabel" data-r="hyogo" data-ox="-17" data-oy="4" data-anchor="end" x="261.6" y="317.5" text-anchor="end">兵库·城崎</text><text class="plabel" data-r="kyoto" data-ox="2" data-oy="24" data-anchor="middle" x="307" y="328" text-anchor="middle">京都</text><text class="plabel" data-r="setouchi" data-ox="17" data-oy="4" data-anchor="start" x="280" y="353.9" text-anchor="start">濑户内</text><text class="plabel" data-r="kyushu" data-ox="17" data-oy="4" data-anchor="start" x="203.7" y="367.7" text-anchor="start">北九州</text></g></svg><span class="motto">一地一冊</span><span class="legend">纹样 · 青海波</span></div>
-      <div class="roam-row"><button class="roam-chip" data-r="roam-jp">全国书柜<span class="rc-n">6</span></button></div>
+      <div class="map-wrap"><svg class="wm" viewBox="0 0 400 300" aria-hidden="true"><g fill="none" stroke="#26221C" stroke-width="3"><path d="M110 240 L195 116 L280 240 Z"/><path d="M163 168 q32 20 64 0"/><path d="M296 152 h88 M304 152 v64 M376 152 v64 M290 140 q50 -16 100 0 M340 140 v12"/></g></svg><svg class="map" viewBox="0 0 560 666" role="img" aria-label="japan标准示意地图"><path class="land" d="M19,652.4 L17.5,652.8 L15.7,652.3 L14,652.1 L14,651.2 L15.7,650.3 L15.8,649 L20.1,649.9 L20,651 L19,652.4 Z"/><path class="land" d="M28.7,645.3 L27.3,650 L26.1,650.7 L24.9,650.3 L23.7,647.7 L24.6,646.7 L25.8,647.2 L26.7,647 L28.9,643.1 L28.7,645.3 Z"/><path class="land" d="M56.4,638.4 L54.3,639.2 L52.2,638.8 L52.5,634.6 L53.3,635.1 L53.7,636.6 L55.4,637.4 L56.4,638.4 Z"/><path class="land" d="M458.5,582.1 L456.5,578.9 L457.8,579.3 L458.8,581.1 L458.5,582.1 Z"/><path class="land" d="M124,581 L121.7,582.4 L120.8,584 L118.7,584.6 L116.6,586.9 L114.6,587.3 L114.6,589.2 L115.5,590.8 L114.1,591.1 L112.7,593 L112.6,594.4 L113.1,595.5 L111.2,597.7 L109.4,597.8 L109.3,596 L109.5,594.7 L111.2,591.4 L111.2,587.6 L112.8,587.2 L116,583.9 L116.4,582.8 L115.1,581.7 L115.2,580.3 L117.6,580.2 L118.5,581.2 L120.1,580.6 L120.7,579.2 L122.9,576.7 L123.9,574.1 L125.7,576.2 L125.2,579 L124,581 Z"/><path class="land" d="M141.7,548.9 L140.7,549.4 L139.4,548.7 L138.9,545.2 L139.5,543.6 L140.6,543.2 L141.5,546.2 L142.2,547.4 L141.7,548.9 Z"/><path class="land" d="M149.5,537.3 L149.7,538 L147.3,537.5 L146.4,534.7 L147.9,535.2 L148.4,536.2 L149.5,537.3 Z"/><path class="land" d="M152.6,534.2 L150.6,536.7 L148.4,534.5 L145.7,533 L147,532.6 L147.7,532 L147.8,531.1 L149.5,529.7 L152.9,528.6 L154,528.5 L155.2,527.5 L155.6,526.6 L158.3,524.9 L158.9,526.4 L158.8,527.5 L157.2,528.1 L155.6,529.6 L154.1,531.5 L152.7,532.3 L152.6,534.2 Z"/><path class="land" d="M180.7,472.5 L178,473.1 L176.5,472.4 L175.1,468.7 L177.7,466.4 L181.2,468.7 L181.9,469.3 L180.7,472.5 Z"/><path class="land" d="M188.8,468.4 L186.7,468.7 L186.7,467 L188.3,463.1 L188.5,460.2 L190.1,456.5 L190.7,455.7 L191.8,456.6 L191.2,461 L189.6,464.4 L188.8,468.4 Z"/><path class="land" d="M159,430.5 L158.3,431.1 L158.7,428.7 L160.7,426.6 L160.8,428 L159,430.5 Z"/><path class="land" d="M174.9,407.5 L172.8,407.6 L171.9,407.3 L171.6,406.3 L174.6,404.4 L176.9,404.7 L175.8,406.5 L174.9,407.5 Z"/><path class="land" d="M167.8,413.3 L165.9,414.4 L165.6,413.4 L164.8,412.9 L166.2,411.4 L165.3,409.8 L166.3,406.1 L166,404.5 L169.8,404 L170.5,405.4 L170.6,410 L167.8,413.3 Z"/><path class="land" d="M133.7,396.7 L134.7,397.5 L136,397 L137.1,396.9 L137.9,397.3 L138.9,399.4 L139.2,400.6 L137.5,400.8 L136.7,401.1 L135.8,402.6 L134.4,402 L133.5,401.3 L133.3,400.3 L133.7,396.7 Z"/><path class="land" d="M402.1,388.5 L400.5,387.8 L400.4,386.9 L401.3,386.3 L402.9,387.3 L402.1,388.5 Z"/><path class="land" d="M143.6,395 L142.2,392.6 L141.7,391.6 L142.6,391.1 L144.4,386.2 L144.7,388.1 L145.4,390.1 L146.1,390.4 L145.4,391.8 L144.4,392.3 L143.6,395 Z"/><path class="land" d="M153.6,383.4 L151.9,384.9 L150.7,384.9 L151.8,383.2 L151.9,382.4 L152.9,380.2 L154.7,379.4 L155.4,379.3 L154,381.6 L153.6,383.4 Z"/><path class="land" d="M160.9,367.6 L159.2,368.9 L158,367.9 L158.6,365.2 L159,364.3 L160.4,365.2 L160.9,367.6 Z"/><path class="land" d="M194,372 L197.2,372.9 L198.6,373 L199.8,372.6 L201.8,371.4 L203.8,370.5 L205.2,371 L206.5,372 L207.2,373.5 L206.9,375 L204.6,378.4 L202.7,381.9 L207,382.6 L211.3,382.5 L210.3,384.7 L210.2,386.6 L211.5,387.5 L212.6,388.7 L212.3,389.8 L211.7,390.9 L214,392.6 L213.9,393.7 L213.2,394.8 L207.4,402.4 L205.6,406.2 L204.4,410.4 L203.4,413.5 L202.5,416.7 L201.9,420.2 L200.8,423.7 L201.2,426.9 L200.8,430.1 L197.9,438.1 L195.8,438 L193.1,437 L191.5,437.2 L190.6,438.9 L192.2,442.6 L187.4,446.9 L182.2,449.8 L182.2,448.5 L182.7,447.5 L183.4,446.6 L184,445.6 L184.7,442.2 L184.4,438.8 L182.8,434.5 L182.7,432.9 L183.8,432.3 L184.5,432.1 L184.9,430.1 L184.4,429.1 L182.9,428.7 L181.5,428.7 L180.5,430.3 L179.1,433.4 L178.5,436.5 L178.8,438.2 L179.4,439.7 L181.3,442.3 L180.7,443.8 L179.9,444.9 L173.2,442.3 L171.8,442.1 L170.6,441.5 L169.3,438 L172,437.2 L172.8,436.7 L173.1,435.6 L173.5,432.2 L172.2,429.4 L171.2,428.3 L170.3,427.2 L170.8,424.8 L170.5,421.7 L170.4,417.5 L170.9,416.8 L173.4,415.9 L175.3,413.6 L176.9,411.1 L179.2,406.5 L181.2,401.6 L179.3,401.4 L177.7,400.5 L179.5,398.1 L178.9,395.2 L176.4,391.6 L174.9,387.4 L172.7,385.5 L171.5,384.8 L170,385.8 L168.8,387 L169.9,389.8 L169.8,392.2 L170,394.6 L171.1,394.8 L172.5,394.2 L173.6,394.6 L174.3,395.9 L174.4,397.5 L174,399.1 L172.9,399.9 L171.7,399.9 L170.4,399 L169.4,397.7 L167.1,397 L164.6,398.5 L162.2,401.5 L160.2,403.1 L161.2,400.8 L161.6,398.4 L160.6,396.7 L158.3,393.9 L157.8,392.3 L157.7,390.3 L158.1,388.4 L160.4,390.6 L161.7,393.4 L163.4,394.6 L165.6,394.6 L163.9,390.5 L163.3,389.5 L160.9,387.6 L157.7,384.5 L155.7,383.1 L156.4,379.8 L157.6,379.2 L158.6,379.3 L162,380.5 L162.4,378.9 L161.9,378 L161.6,377 L163.8,375.6 L167.5,374.5 L168.3,373.9 L168.9,372.8 L169.8,372.2 L172.4,372.2 L174.5,371.1 L176.3,368.1 L176.8,366.4 L177.4,365.1 L181.9,362.6 L183,362.3 L185.9,362.6 L188.7,363.9 L190,366.8 L191.2,369.9 L194,372 Z"/><path class="land" d="M220.2,361.7 L221.4,362.8 L224.1,362.4 L223.7,363.7 L222.5,364.7 L220.2,363.9 L218.8,363.9 L218.6,362.3 L220.2,361.7 Z"/><path class="land" d="M227.7,356.6 L227,357.8 L224.9,357.5 L225.7,356.4 L226.4,355.2 L227.3,356.3 Z"/><path class="land" d="M148.5,356.4 L146.9,357.6 L146.2,355.7 L146.9,350.4 L149.9,351.5 L149.8,353.1 L148.5,356.4 Z"/><path class="land" d="M270.4,352.4 L273.7,353.6 L277.1,353.3 L277.1,358.8 L277.6,360.6 L278.5,362.3 L278,364.7 L279.6,365.5 L275,368.2 L270.9,371.9 L269.2,374.3 L267.7,376.9 L266.8,379.7 L266.2,382.7 L264.8,381.5 L260.8,376.7 L258.3,375.3 L254.3,374.6 L253,374.8 L244.7,379.3 L243.6,382.6 L241.3,387.7 L240.2,389.3 L239,389.8 L238.2,390.6 L237.3,394.9 L234.7,397.5 L233.1,397.6 L230.4,396.9 L229.2,397.3 L230.8,393.1 L228.3,392.6 L225.7,392.7 L225.6,389.9 L224.1,388.4 L225.2,386.4 L225.3,384.7 L225.9,383.8 L226.2,382.5 L226.1,381.3 L224.5,381 L223.5,380.2 L223.7,377.2 L222.8,377.1 L220.6,377.6 L215.9,379.9 L214.6,379.9 L216.6,378.3 L220.7,376 L222.6,374.7 L226.7,371.1 L229.2,369.4 L230.6,366.4 L231,364.5 L231.9,362.9 L232.6,360.3 L234,359.4 L236.3,357.2 L237.6,357.4 L239.1,360.2 L241,362.3 L242.5,362.1 L245,361 L246.2,360.8 L249.2,360.9 L251.8,359.6 L252.9,358 L253.3,356 L252.3,352.8 L253.6,353.1 L254.8,352.9 L257.6,350.9 L260.6,349.6 L263.7,349.3 L267.1,350.5 L270.4,352.4 Z"/><path class="land" d="M270.3,345.5 L269.4,346 L267.9,347.4 L267.6,346 L266.4,345.2 L269.7,344 L270.8,344.4 L270.3,345.5 Z"/><path class="land" d="M284.2,351.4 L281.6,354 L279.4,353.8 L278.2,352.7 L277.9,351.2 L280,349 L281.9,345.9 L283.5,344.5 L284.9,343.7 L286,343.7 L283.6,348.1 L284.2,351.4 Z"/><path class="land" d="M151,349.5 L150.5,350.9 L148.9,349.9 L148.2,348.9 L149.7,344.4 L149.5,342.7 L149.6,341.8 L152.6,339.4 L153.3,340.6 L153,341.6 L153.2,343.8 L150.9,347.6 L151,349.5 Z"/><path class="land" d="M392.9,338.2 L392.6,339.7 L391.3,339.3 L390.7,338.4 L390.8,336.8 L392.1,336.8 L392.9,338.2 Z"/><path class="land" d="M246.7,293.8 L245.6,294.9 L243.6,294.6 L242.4,293 L242.8,291.1 L244.9,289.7 L247,292.5 L246.7,293.8 Z"/><path class="land" d="M366.2,245.2 L363.9,245.2 L364.7,244.2 L364.8,242.9 L365.6,240.7 L363.8,240 L363.9,237.4 L365.3,235 L369,231 L370,230.3 L370.1,232 L369,236.1 L368.8,237.5 L371.7,237.8 L369.8,242.7 L366.2,245.2 Z"/><path class="land" d="M435.4,138.4 L436.4,139 L440.9,137.4 L440,142 L439.5,146.7 L439.9,154.4 L440.3,157.9 L441.1,161.3 L443,163.7 L445.5,165.4 L449.1,170.9 L451,177.6 L452.4,180.9 L453.4,184.3 L453.7,185.9 L453.8,187.5 L453.5,189.6 L453.8,191.4 L453.4,196.8 L451.8,203.2 L451.6,206.4 L450.2,207 L449.3,208.5 L448.6,209.2 L447.8,209.7 L446.6,209.9 L445.8,210.5 L445.4,212.2 L444.9,213.8 L443.9,215.3 L443.1,216.9 L442.4,220.8 L442.2,224.8 L441.2,227.7 L438.8,228.4 L436,228.3 L432.5,229.6 L431.8,230.4 L429,235.3 L428.2,238.2 L428.2,241.3 L429,245.1 L430,248.9 L430.8,255.8 L430,266.4 L429.2,269.8 L427.4,272.1 L426.1,273.2 L424.9,274.5 L423.5,277.9 L421,284.8 L420.8,286.6 L420.8,288.4 L420.1,290.7 L419.7,293 L420.1,295.7 L420.9,298.2 L424.2,304.6 L425.5,306.5 L426.9,308.2 L421.3,310.1 L420.3,311 L416.9,314.7 L415.8,318.1 L415.9,322 L415.4,323.4 L414.4,324.6 L413.5,325.4 L409.7,327.1 L407.3,328.9 L405,331.6 L404,333 L402.2,332.6 L401.1,331.3 L402.2,329.7 L401.8,327.8 L402.4,323 L401.8,321.1 L403.7,319.6 L404.6,317.3 L406.6,315.4 L408,313.8 L408.2,312.4 L407,311 L405.6,309.9 L403.8,309.9 L402,310.2 L400.8,311.6 L400.4,313.5 L400.5,314.4 L400.3,315.1 L397.5,317.7 L397.9,320.4 L398.7,321.8 L399.8,322.4 L399.5,323.4 L398.1,325.5 L397.2,325.7 L395.5,322.7 L393.3,321 L390.6,321.1 L387.9,321.7 L385.8,323.7 L385.1,325.4 L384.7,327.1 L384.8,331.3 L384,334.9 L382.3,338 L381.5,339.1 L379.4,341.2 L378,341.5 L377,340.5 L376.2,339.1 L377.2,333.8 L377.2,330.8 L379.6,329.3 L377.6,327.1 L375.2,326.3 L371.8,327.4 L370.8,328.7 L370.1,330.4 L368.3,332.6 L366.3,334.6 L364,338.1 L362.4,342.2 L357.4,340.8 L354.6,340.5 L351.9,340.6 L346.9,340.1 L341.5,340.9 L335.4,342.6 L335.7,341.4 L340.8,338.9 L341,338.2 L340.5,336.9 L339.2,336.8 L336.2,337.3 L334.7,337.1 L334,335.6 L333,335 L332.5,338.4 L331.8,338.8 L330.8,338 L331.1,335.9 L330.4,332.6 L330.3,330.7 L331.4,328.9 L330.3,328.2 L329.2,328.5 L327.7,329.3 L326.4,330.5 L323.7,336.3 L322.7,339.7 L324.7,342.4 L330.1,346.1 L331,347 L331,348.6 L330.4,350.3 L328.9,351.1 L322.9,352.3 L317.8,354.8 L316.3,357.2 L311.6,366.8 L307.9,373.3 L302.5,375.5 L296.7,373.5 L295.3,371.2 L294.2,368.4 L292,365.9 L290.1,363.2 L288.9,359.9 L289.1,354.6 L288.3,351.4 L289,350.6 L292.2,348.6 L293.3,347.6 L295.1,345 L295.7,343.6 L295.8,341.5 L294.4,340.4 L290.6,340.5 L286.9,341.1 L284.2,340.2 L280.7,337.6 L279.6,337.1 L275.9,336.9 L273.2,337.4 L270.5,338.3 L267.8,338.6 L266.8,339.1 L263.6,342.3 L261.1,344.2 L258.9,345.2 L254.1,345.5 L251.7,346.1 L249.2,347.2 L245.9,348.5 L242.9,349.7 L241.2,351 L238.3,350.2 L232.4,352.4 L229.6,352.7 L226.6,351.5 L223.9,349.5 L221.3,350.3 L219.5,353.3 L218.7,359.1 L217.6,361.8 L217.3,364.9 L216,364.4 L208.1,358.7 L201.2,359.5 L199.6,360 L197.5,361.1 L195.4,361.6 L193.4,360.8 L191.5,359.5 L189.7,359.9 L187.8,360.8 L187.1,352.2 L187.5,351.1 L188.6,349.6 L189.9,348.3 L193,347.8 L196.1,348.3 L198.3,347.7 L200.2,346 L202.2,343.5 L204.4,341.6 L207.4,340 L210.3,338.2 L212.9,335.7 L215.4,333 L217.6,331 L220,329.3 L223.7,325.3 L228.7,320.8 L230.6,317.4 L231.7,316.5 L236,314.6 L241.6,313.2 L244.2,313.3 L246.9,316.2 L248.3,315.8 L249.7,315.1 L252.6,314.6 L255.6,315.1 L258.5,315.1 L261.4,314.8 L267,313.8 L269.9,312.6 L272.8,311.1 L283,310.1 L290,307.6 L291.1,307.7 L292.2,308.3 L292.3,310.2 L291.4,312.2 L292.3,313.5 L293.7,314.2 L300.3,314.4 L302.2,314.9 L304.9,313.5 L307.5,311.8 L310.3,309.5 L312.2,306.9 L310.4,303.7 L310,300.2 L311.5,296.4 L313.6,293.2 L316.2,291.3 L318.5,289.1 L323.2,282.7 L326.6,277.6 L327.9,271.3 L327.1,263.9 L330.1,258.4 L333,257.4 L338.6,254.9 L341.6,254.2 L342.1,255.3 L342,256.7 L337.5,261.4 L335,263.3 L333.5,263.9 L332.1,264.7 L331.5,266.3 L333.7,269.1 L334.3,271.1 L334.2,273 L334.3,274.8 L336.9,276.7 L339.8,277.3 L341,277.3 L342.1,276.8 L345.5,272.1 L346.2,271.3 L355.8,267.9 L360.5,265.3 L363.1,264.7 L365.6,263.3 L371.1,258.1 L373.1,255.7 L374.9,253 L376.4,249.9 L377.6,246.6 L379.1,244.5 L387.8,239.5 L390.6,236.8 L391.5,235.5 L392.6,231.7 L393.4,227.8 L394.4,224.7 L395.8,221.8 L397.8,218.8 L399.9,216.1 L401.2,213.3 L403,206.6 L403.8,202.9 L404.4,201.5 L405.4,200.4 L406.2,199 L406.8,197.4 L407.1,195.8 L407.5,191 L407.2,187.2 L405.8,184 L404.6,183.1 L403.3,183.1 L401.4,183.3 L399.7,182 L400.1,180.9 L401.7,180.7 L402.9,180.1 L403.7,179 L405.3,175.6 L406.2,171.8 L406.3,170.2 L405.1,167.2 L404.1,163.6 L404.1,161.7 L405.1,159.4 L406.6,157.6 L408,157.2 L409.4,157.1 L410.8,156.4 L412,155.3 L412.7,154.2 L413.8,151.2 L414.2,149.4 L413.5,144.8 L414.2,143.5 L415.2,142.7 L416.5,143.3 L417.9,143.4 L419.5,143.2 L421,143.7 L421.3,144.9 L422.2,152.8 L422.8,153.9 L423.9,154.7 L425.2,154.6 L426.2,153.4 L427,151.7 L428.4,151.4 L432.8,153.1 L434.3,151.9 L435.4,149.9 L436.2,146.5 L435.8,143.4 L434.7,142.3 L433.7,142.5 L432.7,143.3 L431.6,143.8 L425.1,145.4 L425.2,142 L426.6,136.8 L427.3,135.2 L428.4,134.4 L431.1,135.3 L432.5,135.9 L435.4,138.4 Z"/><path class="land" d="M393.5,117.1 L392.3,117 L391.8,114.7 L392.3,113.5 L393.8,112.7 L395.3,112.5 L394,116.6 Z"/><path class="land" d="M437,25.7 L435.4,25.9 L433.4,24.7 L433.2,23.1 L434.6,21.9 L436,22.3 L437.4,24 L437.8,24.8 L437,25.7 Z"/><path class="land" d="M431.7,19.3 L430.8,21.2 L429.5,18.4 L429.3,15.3 L430,15.3 L431.3,15.8 L431.6,17.3 L431.7,19.3 Z"/><path class="land" d="M497.8,55.9 L500.8,56 L502.1,55.9 L504.4,56.3 L513.6,60.9 L516.3,61.5 L519.2,61.6 L521.2,61.2 L522.9,59.9 L528.4,54.4 L534.2,49.4 L534.9,50.9 L534.4,52.5 L531.9,57.1 L529,63.3 L528.4,66.5 L529.3,69.5 L531.1,72.1 L532.6,75.5 L534.2,80.4 L536.5,81 L537.7,81 L540,79.6 L542.2,77.8 L544,77.5 L546,77.9 L543.4,79.1 L541,80.7 L538.9,83.7 L538.1,84.2 L535.7,84 L534.3,84.1 L531.5,85.4 L529,86.8 L526.7,88.5 L524.1,89.4 L521.4,89.6 L517.1,91.1 L514.4,91.2 L509.2,89.9 L506.7,90.3 L501.2,93 L496.3,97 L491.9,101.5 L488.3,106.9 L486.8,109.8 L485.9,112.9 L485.8,115 L485.5,117 L484.7,118.4 L483.6,119.5 L480.6,118.9 L475.7,116 L466.2,111.8 L456.1,105.3 L450.4,102.1 L439.7,103.1 L429.6,109.2 L428.7,108.7 L424.8,104.5 L423,102.8 L420.7,102.3 L419.1,102.4 L417.5,102.7 L415.2,104.9 L414.3,106.4 L413.7,108.2 L413.5,109.5 L413.8,110.7 L415.9,113.5 L418.6,115.6 L419.8,116 L422.4,115.8 L423.5,116 L427.8,120.2 L432.5,124.1 L433.6,125.4 L431.8,126.8 L429.9,127.4 L427.7,127.2 L425.5,126.7 L421.8,125.1 L420.2,126.5 L417.7,129.4 L416.3,132.5 L415.2,134 L412.4,135.9 L409.5,136.9 L408,136.5 L406.8,135.4 L406.1,133.9 L405.8,132.3 L406.4,128.7 L407.9,125.4 L408.5,122.1 L407.3,117.5 L406.5,116.5 L403.4,113.8 L402,111.2 L401.6,107.9 L401.8,106.1 L402.6,102 L403.3,100 L404.7,99.3 L406.3,98.9 L408.7,97.5 L411.3,95.6 L413.8,93.5 L416.3,90.8 L417.6,88 L415.5,84.4 L415,82.3 L415.3,80.3 L417.6,79.3 L420,80.1 L424.7,83 L425.6,83.3 L428.8,83.4 L433.3,84 L435.8,83.9 L437.1,83.5 L438.9,81.1 L439.8,78 L439.5,74 L439.5,70.1 L440.7,66.9 L444.4,61.8 L445.4,58.8 L445.8,51.5 L447.1,48.2 L448.2,44.9 L448.7,37.9 L447.2,31.1 L445.7,27.8 L443.9,24.6 L444.2,21.6 L445.6,18.8 L445.6,18 L446,17.3 L448.6,16.7 L449.9,16.1 L451,14.8 L452.5,14 L453.5,14.8 L454.3,16.2 L458.1,19.5 L463.9,25.6 L470.9,34.8 L475.2,39.2 L479.8,43.3 L484.9,47.5 L490.3,51 L493.7,52.7 L496.2,55.4 L497.8,55.9 Z"/><g class="pin" data-r="tohoku" tabindex="0" transform="translate(426.8,231.7)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >东北</text></g>
+<g class="pin" data-r="niigata" tabindex="0" transform="translate(382.6,242.2)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >新潟</text></g>
+<g class="pin" data-r="tokyo" tabindex="0" transform="translate(398.7,309.3)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text><text class="plabel" x="18" y="4" >东京</text></g>
+<g class="pin" data-r="hyogo" tabindex="0" transform="translate(278.6,313.5)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="-17" y="4" text-anchor="end">兵库·城崎</text></g>
+<g class="pin" data-r="setouchi" tabindex="0" transform="translate(263.0,349.9)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >濑户内</text></g>
+<g class="pin" data-r="kyushu" tabindex="0" transform="translate(186.7,363.7)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >北九州</text></g></svg><span class="motto">一地一冊</span><span class="legend">纹样 · 青海波</span></div>
+      <div class="roam-row"><button class="roam-chip" data-r="roam-jp">全国书柜<span class="rc-n">5</span></button></div>
     </div>
   </section>
 
@@ -619,8 +616,8 @@
         <div class="side-block"><b>暹罗出版观察</b><p>清迈的老牌英文城志，与曼谷的创意文化旗舰。</p></div>
         <div class="side-block"><b>书柜速览</b><p><span data-count="thailand">—</span> 种刊物 · <span data-shelves="thailand">—</span> 个书柜<br>档案暂存 2 种，均已完整收录</p></div>
       </aside>
-      <div class="map-wrap"><svg class="wm" viewBox="0 0 400 300" aria-hidden="true"><g fill="none" stroke="#26221C" stroke-width="3"><path d="M110 240 v-52 l10 -14 l10 14 v52"/><path d="M120 174 v-22"/><path d="M96 240 h48"/><path d="M190 240 v-70 l12 -16 l12 16 v70"/><path d="M202 154 v-26"/><path d="M172 240 h60"/><path d="M280 240 v-44 l9 -12 l9 12 v44"/><path d="M289 188 v-18"/><path d="M268 240 h42"/></g></svg><svg class="map" viewBox="0 0 430 772" role="img" aria-label="thailand标准示意地图"><path class="land" d="M125.3,713.9 L124.4,714.2 L122.6,710.1 L124.9,704.2 L127.2,711.4 L125.3,713.9 Z"/><path class="land" d="M96.9,660 L98.1,666.1 L96.4,664.8 L94.9,662.2 L94.9,658.3 L96.9,660 Z"/><path class="land" d="M73.2,642.8 L72.6,643.6 L70.2,634 L73.8,636.6 L73.2,642.8 Z"/><path class="land" d="M64.3,644.4 L63.8,648.1 L61.8,648.1 L59.8,650.4 L58.9,650.7 L57.2,643.2 L59.1,632.6 L60.1,631.1 L61.5,633.9 L65.6,635.2 L63.8,641.3 L64.3,644.4 Z"/><path class="land" d="M59.4,586.5 L56.6,587.1 L57,584.3 L57.7,582.6 L59.1,582.1 L59.6,585.1 L59.4,586.5 Z"/><path class="land" d="M145.1,559.6 L145.4,562.5 L144.3,565.9 L139.9,567.9 L138.4,565.2 L138.8,560.9 L139.4,559.9 L143.8,560.1 L145.1,559.6 Z"/><path class="land" d="M145.3,554.1 L144.8,554.9 L142.9,553.3 L141.6,551.5 L140.9,549.2 L143.8,549.3 L145.2,551.4 L145.3,554.1 Z"/><path class="land" d="M268.4,454.4 L267.6,459.6 L264.9,457.5 L265.5,454.8 L266.6,453.6 L268.4,454.4 Z"/><path class="land" d="M259.7,438.7 L259.9,439.9 L257.3,439 L256.5,439.4 L253.6,439.1 L252.2,432.1 L252.4,430.5 L254.5,431 L257.3,434.4 L258.8,436.8 L259.7,438.7 Z"/><path class="land" d="M141.9,16.3 L147.7,19.4 L147.3,22.4 L148.5,23 L150.2,21.6 L152.3,18.3 L154.6,16.4 L157.2,15.9 L159.8,18.2 L162.7,23.2 L165.6,26.1 L167,26.4 L168,28.7 L168.1,30.9 L166.7,35.6 L164.4,41 L161,47.6 L162.1,53.3 L166.7,57.8 L172.1,60.5 L177.9,59.8 L180.9,58.4 L183.4,56.3 L185.8,55.2 L188.7,55 L197.8,56.5 L200.6,58.1 L201.1,61.2 L199.9,69.2 L201.3,75.1 L203.9,81.2 L204.2,86.9 L201,96.1 L198.4,104.9 L195.5,109.2 L193.3,111.9 L192.6,113.8 L192.8,115.6 L194.8,118.2 L197,121.6 L197.6,124.9 L197.3,128.9 L195.8,134.4 L190.3,146.3 L185.9,157 L188.2,159.2 L192.5,160.7 L195.4,162.3 L198.5,161.3 L204.9,154.9 L210.4,150.2 L217.3,145.5 L223.8,141.6 L226.5,138.4 L228,134.4 L230.1,132.8 L232.9,133.7 L236.4,131.9 L240.6,127.5 L243.9,125.4 L246.2,125.8 L250.2,128.5 L256.1,133.7 L261.3,136.8 L265.8,137.8 L268,139.7 L267.9,142.6 L268.9,144.4 L271.1,145.2 L272,144.9 L271.8,143.5 L273.8,141.5 L278.2,138.8 L282.6,137.2 L287.2,136.7 L290.1,134.6 L292,129.1 L294.8,124.9 L297.3,123 L300.4,122 L301.2,120.7 L299.7,119 L299.8,117.2 L301.6,115.5 L305.4,114.7 L311.3,115 L318.2,116.8 L326.1,120.1 L331.3,121.2 L333.8,120 L338.6,125.1 L345.7,136.6 L351.9,145.3 L357,151.2 L362.4,155.7 L368.1,158.9 L372.2,163.2 L375.9,171.3 L373.1,182.5 L372.4,192.2 L372.7,204.1 L376,213.3 L382.4,219.6 L386.1,224.8 L387.1,228.7 L392.1,232 L400.9,234.8 L404.6,237.4 L403.1,239.6 L403,242.3 L404.2,245.3 L407.3,247.8 L412.2,249.8 L415.1,251.8 L416,254 L415.9,257.6 L414.8,262.5 L412.7,266.3 L409.8,268.9 L409.4,271 L408.7,274.2 L408.7,280.7 L410.8,285 L411.4,290.5 L410.3,295 L409.2,304.1 L409,307.7 L408,310.7 L405.4,313.7 L401.5,316.4 L396.7,318.9 L393.7,320 L393.1,320.5 L391,323.3 L388.4,326 L386.5,326 L385,324.6 L384,322.8 L383.4,319 L378.9,317.1 L374.1,315.9 L364.2,317.8 L356.2,318.8 L347.3,317.5 L338.8,319.2 L335.3,319.4 L331.3,319.2 L327.4,319.2 L323.7,318.6 L316.8,316.2 L314.1,316.4 L308.6,318.4 L302.8,319.7 L297.3,320.7 L289.1,324.7 L283.2,330.5 L281.4,334.7 L278.5,338.8 L274.4,345.4 L269.1,351.7 L265.4,354.5 L266.4,356.2 L265.5,358.3 L259.8,359.2 L255.3,359.6 L254.5,360.6 L255,373.2 L256.6,378 L259.5,383.8 L261.4,387 L262.8,396.4 L263.2,404.4 L269.6,409.4 L273.2,413.3 L275.7,416.6 L274.8,418.8 L273.3,425.2 L274.8,433.6 L283.6,451.6 L284.4,452.9 L283.3,453 L281.9,449.5 L277.4,443.7 L276.1,437.5 L270.8,430.6 L267.8,427.9 L266.9,430.2 L265.2,432.6 L260.1,429.1 L255.6,425.4 L251.5,418.2 L251,419.9 L250.1,421.4 L245.5,415.8 L240.6,411.3 L236.3,409.7 L233.6,408.2 L231,405.9 L225.5,403.4 L212,406.9 L194.7,404.2 L188.1,406.8 L185.4,405.2 L183.7,402.1 L185.3,396.9 L185.7,386 L187.7,378.3 L186.7,372.5 L187.7,369.8 L188.5,366 L185.8,364.5 L173.6,361.5 L171,359.2 L167.8,361.9 L153.2,363.4 L147.6,365.6 L142.5,370 L141.2,375.5 L144.2,379.1 L146.1,385.5 L140.8,399.3 L139.9,403.4 L142,420.2 L141.2,429.5 L138.3,435.7 L133.8,441.3 L131.9,450.7 L128.3,455.1 L123.6,465.1 L120.4,477.6 L118.1,483.4 L116.7,494 L106.9,510.1 L104.6,519.2 L101.1,522.7 L102.3,525.4 L102.5,530 L101.3,542.1 L100.9,552.2 L102.4,557.6 L107.1,568.3 L106,571.4 L105.4,575.8 L109.4,577.8 L112.2,578.4 L128.3,573.3 L133.7,574.6 L135.7,579.3 L137.1,583.4 L139.8,605.7 L141.2,609.8 L144.4,613.7 L148,617.9 L149.2,617.2 L149.4,615.6 L149.6,613.9 L152.8,618.1 L155.3,626 L163.7,667.5 L166.2,672.8 L168.2,678.4 L163.1,675.7 L161.7,666.4 L160.2,662.6 L158.4,662 L155.5,662 L155.3,660.4 L157.5,657.4 L157.1,653.8 L154.2,650.8 L149.4,653.2 L149.5,659.6 L151.7,664.6 L159.8,675.7 L162.3,680.4 L165.5,681.7 L170.2,681 L175.8,685.7 L180.2,690.1 L191.2,696.8 L197.8,696.1 L205,694.4 L209.8,694.9 L214.5,696.6 L220.2,702.2 L229.2,716.3 L243.9,728 L242.3,730.9 L241.6,735.3 L235.8,741.2 L234.9,744.6 L232.8,748.9 L228.8,751.3 L225.3,751.7 L223.3,751.3 L221.9,750.4 L219.6,746.3 L218.4,745.1 L217.4,744.8 L210,747.6 L202.8,750.8 L201.5,753.6 L199.6,756.8 L197.5,758.1 L195.9,758.4 L194.3,756.5 L191.5,754 L189.4,751.7 L190,747.9 L194,742.3 L194.5,738.5 L194,731.8 L192.9,727.9 L191.8,727.8 L189.8,727.2 L184.2,727.8 L181.4,723.5 L180.3,718.7 L178.4,717 L176.5,716 L172.3,717.6 L169.1,716.6 L158.5,712.5 L154.4,705.8 L152.2,705.6 L150.3,706.3 L149.5,707.9 L148.4,715.6 L147.5,717.9 L135.3,702.4 L126.9,696 L128.1,684.5 L125.5,682.2 L122.4,682 L120,678.8 L122.1,671.9 L118.8,673.2 L114.2,673 L110.5,671.1 L107.7,661.6 L105.9,658.6 L102,653.7 L96.8,653.7 L95.1,651.3 L95.6,645.1 L91.8,641.3 L86.9,638.3 L82.8,636.5 L78.7,626.5 L75.4,624.1 L72.6,622.1 L68.7,623.5 L67.5,627 L64.9,630.5 L62,630.1 L59.3,628.1 L56,618.2 L55.5,612.1 L56.2,600.8 L60.3,590.7 L62.5,574.5 L66,564.3 L68.4,560.9 L71.8,547 L78.6,529.2 L79.4,525.4 L80.8,521.1 L81.8,517.1 L82.1,510.7 L81.3,507.4 L81.3,505.5 L82.7,503.1 L87.6,499.1 L94.3,492.5 L102.3,483.1 L110.5,468.8 L114.6,460.5 L116.3,457.6 L118.1,456.7 L120.9,453.9 L122.9,450.7 L123,449.1 L118.5,433.6 L115.6,428.5 L114.1,422.5 L113.3,418.2 L112.2,414.3 L112.8,410.5 L111.2,408.2 L107.5,405.2 L103.8,400.9 L101.5,393.7 L101.5,389.7 L99.1,386.2 L98.3,382.5 L99.7,379.1 L101.6,376 L101.4,362.7 L100.7,358.8 L99.7,351.7 L97.3,346.3 L93.8,340.1 L89.8,334.9 L79.5,325.5 L72.2,319.3 L68.5,313.6 L63.9,307.1 L60.6,302.4 L56.4,296.4 L54.3,288.3 L53.1,279.7 L53.7,276.8 L55.7,274.9 L58.4,273.4 L60.5,273.1 L66.4,269.1 L70.6,269.4 L71.5,268.6 L71.9,266.8 L71.4,258.9 L71.6,248.4 L72.4,239.8 L73.2,234.2 L84.2,227.6 L86.5,224.8 L87.6,221.7 L87.6,219 L86.7,216.9 L85.1,215.7 L78,221.4 L76.6,220.1 L73.3,210.8 L71.9,208 L69.9,204.6 L67.7,199.9 L67.4,191.7 L65.8,187.6 L56.9,179 L52.9,174.3 L47.5,167.6 L41,159.5 L34.4,152.1 L31.3,147.3 L30.2,146.3 L29.8,144.4 L31.8,139.3 L30.8,134.2 L27.5,127.3 L26.1,123.1 L26.6,121.4 L25,120.8 L21.3,121.2 L17.7,117.9 L14.3,111.2 L14,110 L15.1,110 L19.4,111.2 L20.9,111 L23.9,109.4 L28.5,107.8 L31.2,107.3 L32.1,106.4 L32.5,104.8 L30.2,89.1 L30.5,85.9 L34.9,79.1 L34.4,72.3 L35.5,62.6 L40.4,55.9 L44,52.8 L45.2,48 L46.8,47 L49.8,47.3 L56.1,50.9 L58.7,51.1 L62.5,51 L66.6,50.7 L68.5,50.4 L81.4,46.9 L84.3,46.5 L87,47 L89,46.8 L91,45.2 L92.5,42.3 L94.1,33.3 L95,31.7 L96.7,30.4 L99.4,29.5 L102.6,29.6 L106.9,31.3 L109.5,31.4 L112.5,30.7 L115,29.4 L116.7,27.8 L117.5,25.9 L116.8,22.2 L114.9,17.6 L118.9,18.1 L124.1,19.2 L128.1,19 L130.7,18.2 L133.2,16 L136.4,14 L139.5,14.5 L141.9,16.3 Z"/><g class="pin" data-r="chiangmai" tabindex="0" transform="translate(92.6,96.3)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="bangkok" tabindex="0" transform="translate(166.0,349.5)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g><g class="labels"><text class="plabel" data-r="chiangmai" data-ox="17" data-oy="4" data-anchor="start" x="109.6" y="100.3" text-anchor="start">清迈</text><text class="plabel" data-r="bangkok" data-ox="17" data-oy="4" data-anchor="start" x="183" y="353.5" text-anchor="start">曼谷</text></g></svg><span class="motto">塔尖下的記錄</span><span class="legend">纹样 · 塔尖纹</span></div>
+      <div class="map-wrap"><svg class="wm" viewBox="0 0 400 300" aria-hidden="true"><g fill="none" stroke="#26221C" stroke-width="3"><path d="M110 240 v-52 l10 -14 l10 14 v52"/><path d="M120 174 v-22"/><path d="M96 240 h48"/><path d="M190 240 v-70 l12 -16 l12 16 v70"/><path d="M202 154 v-26"/><path d="M172 240 h60"/><path d="M280 240 v-44 l9 -12 l9 12 v44"/><path d="M289 188 v-18"/><path d="M268 240 h42"/></g></svg><svg class="map" viewBox="0 0 430 772" role="img" aria-label="thailand标准示意地图"><path class="land" d="M125.3,713.9 L124.4,714.2 L122.6,710.1 L124.9,704.2 L127.2,711.4 L125.3,713.9 Z"/><path class="land" d="M96.9,660 L98.1,666.1 L96.4,664.8 L94.9,662.2 L94.9,658.3 L96.9,660 Z"/><path class="land" d="M73.2,642.8 L72.6,643.6 L70.2,634 L73.8,636.6 L73.2,642.8 Z"/><path class="land" d="M64.3,644.4 L63.8,648.1 L61.8,648.1 L59.8,650.4 L58.9,650.7 L57.2,643.2 L59.1,632.6 L60.1,631.1 L61.5,633.9 L65.6,635.2 L63.8,641.3 L64.3,644.4 Z"/><path class="land" d="M59.4,586.5 L56.6,587.1 L57,584.3 L57.7,582.6 L59.1,582.1 L59.6,585.1 L59.4,586.5 Z"/><path class="land" d="M145.1,559.6 L145.4,562.5 L144.3,565.9 L139.9,567.9 L138.4,565.2 L138.8,560.9 L139.4,559.9 L143.8,560.1 L145.1,559.6 Z"/><path class="land" d="M145.3,554.1 L144.8,554.9 L142.9,553.3 L141.6,551.5 L140.9,549.2 L143.8,549.3 L145.2,551.4 L145.3,554.1 Z"/><path class="land" d="M268.4,454.4 L267.6,459.6 L264.9,457.5 L265.5,454.8 L266.6,453.6 L268.4,454.4 Z"/><path class="land" d="M259.7,438.7 L259.9,439.9 L257.3,439 L256.5,439.4 L253.6,439.1 L252.2,432.1 L252.4,430.5 L254.5,431 L257.3,434.4 L258.8,436.8 L259.7,438.7 Z"/><path class="land" d="M141.9,16.3 L147.7,19.4 L147.3,22.4 L148.5,23 L150.2,21.6 L152.3,18.3 L154.6,16.4 L157.2,15.9 L159.8,18.2 L162.7,23.2 L165.6,26.1 L167,26.4 L168,28.7 L168.1,30.9 L166.7,35.6 L164.4,41 L161,47.6 L162.1,53.3 L166.7,57.8 L172.1,60.5 L177.9,59.8 L180.9,58.4 L183.4,56.3 L185.8,55.2 L188.7,55 L197.8,56.5 L200.6,58.1 L201.1,61.2 L199.9,69.2 L201.3,75.1 L203.9,81.2 L204.2,86.9 L201,96.1 L198.4,104.9 L195.5,109.2 L193.3,111.9 L192.6,113.8 L192.8,115.6 L194.8,118.2 L197,121.6 L197.6,124.9 L197.3,128.9 L195.8,134.4 L190.3,146.3 L185.9,157 L188.2,159.2 L192.5,160.7 L195.4,162.3 L198.5,161.3 L204.9,154.9 L210.4,150.2 L217.3,145.5 L223.8,141.6 L226.5,138.4 L228,134.4 L230.1,132.8 L232.9,133.7 L236.4,131.9 L240.6,127.5 L243.9,125.4 L246.2,125.8 L250.2,128.5 L256.1,133.7 L261.3,136.8 L265.8,137.8 L268,139.7 L267.9,142.6 L268.9,144.4 L271.1,145.2 L272,144.9 L271.8,143.5 L273.8,141.5 L278.2,138.8 L282.6,137.2 L287.2,136.7 L290.1,134.6 L292,129.1 L294.8,124.9 L297.3,123 L300.4,122 L301.2,120.7 L299.7,119 L299.8,117.2 L301.6,115.5 L305.4,114.7 L311.3,115 L318.2,116.8 L326.1,120.1 L331.3,121.2 L333.8,120 L338.6,125.1 L345.7,136.6 L351.9,145.3 L357,151.2 L362.4,155.7 L368.1,158.9 L372.2,163.2 L375.9,171.3 L373.1,182.5 L372.4,192.2 L372.7,204.1 L376,213.3 L382.4,219.6 L386.1,224.8 L387.1,228.7 L392.1,232 L400.9,234.8 L404.6,237.4 L403.1,239.6 L403,242.3 L404.2,245.3 L407.3,247.8 L412.2,249.8 L415.1,251.8 L416,254 L415.9,257.6 L414.8,262.5 L412.7,266.3 L409.8,268.9 L409.4,271 L408.7,274.2 L408.7,280.7 L410.8,285 L411.4,290.5 L410.3,295 L409.2,304.1 L409,307.7 L408,310.7 L405.4,313.7 L401.5,316.4 L396.7,318.9 L393.7,320 L393.1,320.5 L391,323.3 L388.4,326 L386.5,326 L385,324.6 L384,322.8 L383.4,319 L378.9,317.1 L374.1,315.9 L364.2,317.8 L356.2,318.8 L347.3,317.5 L338.8,319.2 L335.3,319.4 L331.3,319.2 L327.4,319.2 L323.7,318.6 L316.8,316.2 L314.1,316.4 L308.6,318.4 L302.8,319.7 L297.3,320.7 L289.1,324.7 L283.2,330.5 L281.4,334.7 L278.5,338.8 L274.4,345.4 L269.1,351.7 L265.4,354.5 L266.4,356.2 L265.5,358.3 L259.8,359.2 L255.3,359.6 L254.5,360.6 L255,373.2 L256.6,378 L259.5,383.8 L261.4,387 L262.8,396.4 L263.2,404.4 L269.6,409.4 L273.2,413.3 L275.7,416.6 L274.8,418.8 L273.3,425.2 L274.8,433.6 L283.6,451.6 L284.4,452.9 L283.3,453 L281.9,449.5 L277.4,443.7 L276.1,437.5 L270.8,430.6 L267.8,427.9 L266.9,430.2 L265.2,432.6 L260.1,429.1 L255.6,425.4 L251.5,418.2 L251,419.9 L250.1,421.4 L245.5,415.8 L240.6,411.3 L236.3,409.7 L233.6,408.2 L231,405.9 L225.5,403.4 L212,406.9 L194.7,404.2 L188.1,406.8 L185.4,405.2 L183.7,402.1 L185.3,396.9 L185.7,386 L187.7,378.3 L186.7,372.5 L187.7,369.8 L188.5,366 L185.8,364.5 L173.6,361.5 L171,359.2 L167.8,361.9 L153.2,363.4 L147.6,365.6 L142.5,370 L141.2,375.5 L144.2,379.1 L146.1,385.5 L140.8,399.3 L139.9,403.4 L142,420.2 L141.2,429.5 L138.3,435.7 L133.8,441.3 L131.9,450.7 L128.3,455.1 L123.6,465.1 L120.4,477.6 L118.1,483.4 L116.7,494 L106.9,510.1 L104.6,519.2 L101.1,522.7 L102.3,525.4 L102.5,530 L101.3,542.1 L100.9,552.2 L102.4,557.6 L107.1,568.3 L106,571.4 L105.4,575.8 L109.4,577.8 L112.2,578.4 L128.3,573.3 L133.7,574.6 L135.7,579.3 L137.1,583.4 L139.8,605.7 L141.2,609.8 L144.4,613.7 L148,617.9 L149.2,617.2 L149.4,615.6 L149.6,613.9 L152.8,618.1 L155.3,626 L163.7,667.5 L166.2,672.8 L168.2,678.4 L163.1,675.7 L161.7,666.4 L160.2,662.6 L158.4,662 L155.5,662 L155.3,660.4 L157.5,657.4 L157.1,653.8 L154.2,650.8 L149.4,653.2 L149.5,659.6 L151.7,664.6 L159.8,675.7 L162.3,680.4 L165.5,681.7 L170.2,681 L175.8,685.7 L180.2,690.1 L191.2,696.8 L197.8,696.1 L205,694.4 L209.8,694.9 L214.5,696.6 L220.2,702.2 L229.2,716.3 L243.9,728 L242.3,730.9 L241.6,735.3 L235.8,741.2 L234.9,744.6 L232.8,748.9 L228.8,751.3 L225.3,751.7 L223.3,751.3 L221.9,750.4 L219.6,746.3 L218.4,745.1 L217.4,744.8 L210,747.6 L202.8,750.8 L201.5,753.6 L199.6,756.8 L197.5,758.1 L195.9,758.4 L194.3,756.5 L191.5,754 L189.4,751.7 L190,747.9 L194,742.3 L194.5,738.5 L194,731.8 L192.9,727.9 L191.8,727.8 L189.8,727.2 L184.2,727.8 L181.4,723.5 L180.3,718.7 L178.4,717 L176.5,716 L172.3,717.6 L169.1,716.6 L158.5,712.5 L154.4,705.8 L152.2,705.6 L150.3,706.3 L149.5,707.9 L148.4,715.6 L147.5,717.9 L135.3,702.4 L126.9,696 L128.1,684.5 L125.5,682.2 L122.4,682 L120,678.8 L122.1,671.9 L118.8,673.2 L114.2,673 L110.5,671.1 L107.7,661.6 L105.9,658.6 L102,653.7 L96.8,653.7 L95.1,651.3 L95.6,645.1 L91.8,641.3 L86.9,638.3 L82.8,636.5 L78.7,626.5 L75.4,624.1 L72.6,622.1 L68.7,623.5 L67.5,627 L64.9,630.5 L62,630.1 L59.3,628.1 L56,618.2 L55.5,612.1 L56.2,600.8 L60.3,590.7 L62.5,574.5 L66,564.3 L68.4,560.9 L71.8,547 L78.6,529.2 L79.4,525.4 L80.8,521.1 L81.8,517.1 L82.1,510.7 L81.3,507.4 L81.3,505.5 L82.7,503.1 L87.6,499.1 L94.3,492.5 L102.3,483.1 L110.5,468.8 L114.6,460.5 L116.3,457.6 L118.1,456.7 L120.9,453.9 L122.9,450.7 L123,449.1 L118.5,433.6 L115.6,428.5 L114.1,422.5 L113.3,418.2 L112.2,414.3 L112.8,410.5 L111.2,408.2 L107.5,405.2 L103.8,400.9 L101.5,393.7 L101.5,389.7 L99.1,386.2 L98.3,382.5 L99.7,379.1 L101.6,376 L101.4,362.7 L100.7,358.8 L99.7,351.7 L97.3,346.3 L93.8,340.1 L89.8,334.9 L79.5,325.5 L72.2,319.3 L68.5,313.6 L63.9,307.1 L60.6,302.4 L56.4,296.4 L54.3,288.3 L53.1,279.7 L53.7,276.8 L55.7,274.9 L58.4,273.4 L60.5,273.1 L66.4,269.1 L70.6,269.4 L71.5,268.6 L71.9,266.8 L71.4,258.9 L71.6,248.4 L72.4,239.8 L73.2,234.2 L84.2,227.6 L86.5,224.8 L87.6,221.7 L87.6,219 L86.7,216.9 L85.1,215.7 L78,221.4 L76.6,220.1 L73.3,210.8 L71.9,208 L69.9,204.6 L67.7,199.9 L67.4,191.7 L65.8,187.6 L56.9,179 L52.9,174.3 L47.5,167.6 L41,159.5 L34.4,152.1 L31.3,147.3 L30.2,146.3 L29.8,144.4 L31.8,139.3 L30.8,134.2 L27.5,127.3 L26.1,123.1 L26.6,121.4 L25,120.8 L21.3,121.2 L17.7,117.9 L14.3,111.2 L14,110 L15.1,110 L19.4,111.2 L20.9,111 L23.9,109.4 L28.5,107.8 L31.2,107.3 L32.1,106.4 L32.5,104.8 L30.2,89.1 L30.5,85.9 L34.9,79.1 L34.4,72.3 L35.5,62.6 L40.4,55.9 L44,52.8 L45.2,48 L46.8,47 L49.8,47.3 L56.1,50.9 L58.7,51.1 L62.5,51 L66.6,50.7 L68.5,50.4 L81.4,46.9 L84.3,46.5 L87,47 L89,46.8 L91,45.2 L92.5,42.3 L94.1,33.3 L95,31.7 L96.7,30.4 L99.4,29.5 L102.6,29.6 L106.9,31.3 L109.5,31.4 L112.5,30.7 L115,29.4 L116.7,27.8 L117.5,25.9 L116.8,22.2 L114.9,17.6 L118.9,18.1 L124.1,19.2 L128.1,19 L130.7,18.2 L133.2,16 L136.4,14 L139.5,14.5 L141.9,16.3 Z"/><g class="pin" data-r="chiangmai" tabindex="0" transform="translate(92.6,96.3)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >清迈</text></g>
+<g class="pin" data-r="bangkok" tabindex="0" transform="translate(166.0,349.5)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >曼谷</text></g></svg><span class="motto">塔尖下的記錄</span><span class="legend">纹样 · 塔尖纹</span></div>
     </div>
   </section>
 
@@ -639,10 +636,10 @@
         <div class="side-block"><b>南洋出版观察</b><p>南洋华人社区的在地声音——槟城书柜含中英两种视角。</p></div>
         <div class="side-block"><b>书柜速览</b><p><span data-count="sgmy">—</span> 种刊物 · <span data-shelves="sgmy">—</span> 个书柜<br>东马（沙巴、砂拉越）暂无收录</p></div>
       </aside>
-      <div class="map-wrap"><svg class="map" viewBox="0.0 68.8 584.8 665.8" role="img" aria-label="sgmy标准示意地图"><path class="land" d="M524.8,530.1 L519.8,531.2 L516.8,530.5 L515.3,526.3 L519.5,517.2 L521.0,515.7 L524.8,525.9 L524.8,530.1 Z"/><path class="land" d="M225.3,503.5 L220.4,505.4 L220.0,502.7 L220.8,498.9 L224.6,495.5 L226.5,497.4 L225.3,503.5 Z"/><path class="land" d="M119.3,265.6 L116.7,268.3 L109.4,266.8 L110.6,249.7 L114.8,247.8 L121.6,250.8 L124.6,253.5 L119.3,265.6 Z"/><path class="land" d="M74.1,144.8 L81.3,155.8 L77.5,160.7 L76.0,161.9 L71.4,160.4 L67.3,164.5 L63.1,165.7 L59.3,157.7 L54.3,154.7 L53.2,149.7 L59.7,148.6 L63.8,150.5 L71.4,146.7 L74.1,144.8 Z"/><path class="land" d="M147.8,144.4 L154.7,146.3 L163.4,143.3 L167.2,145.2 L171.4,148.6 L173.7,158.5 L179.7,167.6 L191.5,166.1 L195.7,167.6 L198.4,167.6 L200.6,175.6 L201.8,189.2 L200.6,197.2 L191.9,208.6 L190.8,216.2 L195.3,221.2 L201.0,226.5 L204.4,230.3 L207.9,229.5 L212.4,226.9 L216.2,220.4 L219.3,214.3 L234.5,207.9 L250.0,202.2 L251.9,202.9 L254.6,205.6 L259.5,213.9 L262.6,215.5 L266.8,216.6 L274.0,215.5 L282.7,210.9 L287.3,201.8 L289.2,194.9 L301.3,182.8 L302.9,173.7 L306.3,167.6 L324.1,171.8 L330.6,174.8 L350.7,207.1 L377.0,229.5 L388.4,237.9 L397.1,241.7 L408.9,253.8 L419.1,269.0 L441.6,311.6 L445.4,330.2 L446.9,358.7 L441.9,401.7 L436.2,422.9 L437.4,433.2 L445.4,448.8 L443.1,463.2 L444.6,475.4 L444.2,509.2 L448.8,519.5 L454.1,525.5 L482.6,545.7 L484.5,553.3 L498.6,578.7 L524.4,634.2 L531.6,659.3 L530.9,666.1 L527.4,668.8 L519.8,671.1 L513.8,666.1 L511.5,662.7 L512.2,658.5 L509.6,654.4 L503.5,649.0 L499.7,644.5 L500.8,652.1 L500.8,662.0 L493.2,662.7 L483.0,659.7 L470.4,662.3 L455.2,674.5 L448.4,674.9 L442.7,664.6 L440.0,657.4 L435.5,652.5 L388.0,627.0 L370.5,620.5 L352.3,601.2 L310.8,579.9 L284.2,559.4 L273.2,546.4 L246.2,535.0 L234.5,521.7 L228.8,519.1 L223.1,514.1 L229.1,501.2 L226.9,487.5 L223.4,476.1 L204.4,453.7 L195.3,437.8 L177.5,422.2 L170.2,413.1 L163.4,402.8 L167.6,399.0 L171.8,396.7 L168.0,389.1 L157.7,375.8 L153.1,360.6 L153.1,331.7 L138.3,291.5 L126.2,235.2 L128.1,215.8 L125.0,194.2 L116.7,174.0 L106.0,159.2 L101.8,147.1 L103.7,142.1 L106.4,126.5 L107.9,123.5 L112.1,122.0 L116.7,122.4 L125.4,136.0 L147.8,144.4 Z"/><path class="land" d="M498.6,674.5 L483.4,681.3 L465.9,675.3 L471.6,665.0 L483.0,662.7 L492.5,665.8 L497.8,668.4 L501.6,671.1 L498.6,674.5 Z"/><g class="pin" data-r="penang" tabindex="0" transform="translate(123.5,253.5)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">3</text></g>
-<g class="pin" data-r="selangor" tabindex="0" transform="translate(264.9,487.9)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="muar" tabindex="0" transform="translate(357.6,595.5)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g>
-<g class="pin" data-r="singapore" tabindex="0" transform="translate(483.4,672.6)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text></g><g class="labels"><text class="plabel" data-r="penang" data-ox="18" data-oy="4" data-anchor="start" x="141.5" y="257.5" text-anchor="start">槟城</text><text class="plabel" data-r="selangor" data-ox="17" data-oy="4" data-anchor="start" x="281.9" y="491.9" text-anchor="start">雪兰莪</text><text class="plabel" data-r="muar" data-ox="17" data-oy="4" data-anchor="start" x="374.6" y="599.5" text-anchor="start">麻河流域</text><text class="plabel" data-r="singapore" data-ox="17" data-oy="4" data-anchor="start" x="500.4" y="676.6" text-anchor="start">新加坡</text></g></svg><span class="motto">在南洋寫字</span><span class="legend">纹样 · 娘惹瓷砖</span></div>
+      <div class="map-wrap"><svg class="map" viewBox="0.0 68.8 584.8 665.8" role="img" aria-label="sgmy标准示意地图"><path class="land" d="M524.8,530.1 L519.8,531.2 L516.8,530.5 L515.3,526.3 L519.5,517.2 L521.0,515.7 L524.8,525.9 L524.8,530.1 Z"/><path class="land" d="M225.3,503.5 L220.4,505.4 L220.0,502.7 L220.8,498.9 L224.6,495.5 L226.5,497.4 L225.3,503.5 Z"/><path class="land" d="M119.3,265.6 L116.7,268.3 L109.4,266.8 L110.6,249.7 L114.8,247.8 L121.6,250.8 L124.6,253.5 L119.3,265.6 Z"/><path class="land" d="M74.1,144.8 L81.3,155.8 L77.5,160.7 L76.0,161.9 L71.4,160.4 L67.3,164.5 L63.1,165.7 L59.3,157.7 L54.3,154.7 L53.2,149.7 L59.7,148.6 L63.8,150.5 L71.4,146.7 L74.1,144.8 Z"/><path class="land" d="M147.8,144.4 L154.7,146.3 L163.4,143.3 L167.2,145.2 L171.4,148.6 L173.7,158.5 L179.7,167.6 L191.5,166.1 L195.7,167.6 L198.4,167.6 L200.6,175.6 L201.8,189.2 L200.6,197.2 L191.9,208.6 L190.8,216.2 L195.3,221.2 L201.0,226.5 L204.4,230.3 L207.9,229.5 L212.4,226.9 L216.2,220.4 L219.3,214.3 L234.5,207.9 L250.0,202.2 L251.9,202.9 L254.6,205.6 L259.5,213.9 L262.6,215.5 L266.8,216.6 L274.0,215.5 L282.7,210.9 L287.3,201.8 L289.2,194.9 L301.3,182.8 L302.9,173.7 L306.3,167.6 L324.1,171.8 L330.6,174.8 L350.7,207.1 L377.0,229.5 L388.4,237.9 L397.1,241.7 L408.9,253.8 L419.1,269.0 L441.6,311.6 L445.4,330.2 L446.9,358.7 L441.9,401.7 L436.2,422.9 L437.4,433.2 L445.4,448.8 L443.1,463.2 L444.6,475.4 L444.2,509.2 L448.8,519.5 L454.1,525.5 L482.6,545.7 L484.5,553.3 L498.6,578.7 L524.4,634.2 L531.6,659.3 L530.9,666.1 L527.4,668.8 L519.8,671.1 L513.8,666.1 L511.5,662.7 L512.2,658.5 L509.6,654.4 L503.5,649.0 L499.7,644.5 L500.8,652.1 L500.8,662.0 L493.2,662.7 L483.0,659.7 L470.4,662.3 L455.2,674.5 L448.4,674.9 L442.7,664.6 L440.0,657.4 L435.5,652.5 L388.0,627.0 L370.5,620.5 L352.3,601.2 L310.8,579.9 L284.2,559.4 L273.2,546.4 L246.2,535.0 L234.5,521.7 L228.8,519.1 L223.1,514.1 L229.1,501.2 L226.9,487.5 L223.4,476.1 L204.4,453.7 L195.3,437.8 L177.5,422.2 L170.2,413.1 L163.4,402.8 L167.6,399.0 L171.8,396.7 L168.0,389.1 L157.7,375.8 L153.1,360.6 L153.1,331.7 L138.3,291.5 L126.2,235.2 L128.1,215.8 L125.0,194.2 L116.7,174.0 L106.0,159.2 L101.8,147.1 L103.7,142.1 L106.4,126.5 L107.9,123.5 L112.1,122.0 L116.7,122.4 L125.4,136.0 L147.8,144.4 Z"/><path class="land" d="M498.6,674.5 L483.4,681.3 L465.9,675.3 L471.6,665.0 L483.0,662.7 L492.5,665.8 L497.8,668.4 L501.6,671.1 L498.6,674.5 Z"/><g class="pin" data-r="penang" tabindex="0" transform="translate(123.5,253.5)"><circle class="hit" r="20"/><circle class="ring" r="12"/><circle class="core" r="8"/><text class="pcount" y="3.5">2</text><text class="plabel" x="18" y="4" >槟城</text></g>
+<g class="pin" data-r="selangor" tabindex="0" transform="translate(264.9,487.9)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >雪兰莪</text></g>
+<g class="pin" data-r="muar" tabindex="0" transform="translate(357.6,595.5)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >麻河流域</text></g>
+<g class="pin" data-r="singapore" tabindex="0" transform="translate(483.4,672.6)"><circle class="hit" r="20"/><circle class="ring" r="11"/><circle class="core" r="7"/><text class="pcount" y="3.5">1</text><text class="plabel" x="17" y="4" >新加坡</text></g></svg><span class="motto">在南洋寫字</span><span class="legend">纹样 · 娘惹瓷砖</span></div>
     </div>
   </section>
 
@@ -744,32 +741,6 @@ const DATA = [
   ]
  },
  {
-  "id": "jiaozuo",
-  "region": "焦作",
-  "map": "china",
-  "pubs": [
-   {
-    "t": "《大南坡：共振村声》",
-    "p": "河南焦作修武县",
-    "y": "2024 年 5 月",
-    "f": "单册",
-    "s": "",
-    "i": "策展人、乡村建设者左靖主编的艺术乡建实践记录。左靖团队自2019年起在河南修武县大南坡村发起了「大南坡计划」，以「关系生产、空间生产、文化生产、产品生产」四个领域为框架，强调社区内外联结是艺术乡建的基础。全书涵盖空间改造、社区营造、乡土美育、怀梆戏、展览实践等内容，书名取自左靖2016年在浙江青田看到的「共振村声」四字。",
-    "l": [
-     [
-      "碧山杂志书《新书预告｜大南坡：共振村声》",
-      "https://mp.weixin.qq.com/s/gRBhCToG567eNAclFgMklw"
-     ],
-     [
-      "Local本地《大南坡背后的故事》",
-      "https://mp.weixin.qq.com/s/Zyubsp7Pn6VealJEqBt_-A"
-     ]
-    ],
-    "cover": "covers/c135.jpg"
-   }
-  ]
- },
- {
   "id": "shanghai",
   "region": "上海",
   "map": "china",
@@ -792,29 +763,6 @@ const DATA = [
      ]
     ],
     "cover": "covers/c004.jpeg"
-   },
-   {
-    "t": "《Ketchup》（日文）",
-    "p": "上海",
-    "y": "创刊 2021 年 4 月",
-    "f": "季刊",
-    "s": "",
-    "i": "日本建筑师藤本祐太主编的关注上海文化的日文独立杂志。缘起于他发现日本朋友完全不了解中国和上海的文化，遂以自己最喜欢的杂志为行动方式。刊名取自番茄酱：它是日式意面的灵魂调味，又发源自中国福建，是日本与中国的融合。杂志内容围绕主编在上海的生活圈和朋友圈展开，比如乌鲁木齐中路上的店铺、日本人在上海的房间、上海人的穿搭。",
-    "l": [
-     [
-      "乌云装扮者《这本日文杂志，全部关于上海》",
-      "https://mp.weixin.qq.com/s/rk3eGVyhGmP0stGVFyOiQw"
-     ],
-     [
-      "热爱实验《这位日本建筑师眼中的上海，是怎样的？》",
-      "https://mp.weixin.qq.com/s/plHDiTEi3Vr8Ja745LKxlA"
-     ],
-     [
-      "Instagram @ketchup_magazine_shanghai",
-      "https://www.instagram.com/ketchup_magazine_shanghai/"
-     ]
-    ],
-    "cover": "covers/c138.jpg"
    },
    {
     "t": "《古北古北》",
@@ -894,28 +842,6 @@ const DATA = [
      ]
     ],
     "cover": "covers/c007.jpg"
-   }
-  ]
- },
- {
-  "id": "huzhou",
-  "region": "湖州",
-  "map": "china",
-  "pubs": [
-   {
-    "t": "《天荒坪云南烧烤完全指南》",
-    "p": "湖州安吉天荒坪镇",
-    "y": "2024 年",
-    "f": "单册",
-    "s": "",
-    "i": "DN余村数字游民KC发起的在地文化 zine，由DN 余村发起的「The Place Lab」在地研究计划支持。缘起KC初到天荒坪时对「一座浙北小镇为何有十几家云南烧烤」的好奇，他历时半年调研天荒坪云南烧烤三十年的前世今生——从1992年天荒坪抽水蓄能电站修建时两千多名云南籍工人进驻横路村，到1993年第一家有字号的「阿琴烧烤」开业，再到电站竣工后工人撤出而烧烤本地化生根，最终成为「安吉特色」。除了关于云南烧烤的历史梳理和个体故事外，还有实用性极强的烧烤百科和烧烤地图。",
-    "l": [
-     [
-      "DNCN《为什么一座浙北小镇会有十几家“云南烧烤”》",
-      "https://mp.weixin.qq.com/s/3NyxrkB4cmTKSgyGlz_eqQ"
-     ]
-    ],
-    "cover": "covers/c136.jpg"
    }
   ]
  },
@@ -1161,36 +1087,6 @@ const DATA = [
   ]
  },
  {
-  "id": "zhangzhou",
-  "region": "漳州",
-  "map": "china",
-  "pubs": [
-   {
-    "t": "《城关阿志》",
-    "p": "福建漳州县城",
-    "y": "创刊 2022 年 7 月",
-    "f": "不定期（共出版 2 期）",
-    "s": "已停刊",
-    "i": "90后插画师大爱JUNE（方爱琼）发起的漳州县城在地刊物。缘起 2021 年年底她行走于漳州七个县城（平和、漳浦、云霄、东山、诏安、南靖、华安），与城关在地青年对话，以插画、口述、撰稿形式展开县城青年的日常生活与小镇人情味。首刊采访七位在地青年（创业、体制内、上班族），第二期转向离乡县城青年的「流动」与地方拉扯。采访后还附有当地人的私人吃逛推荐清单。",
-    "l": [
-     [
-      "门口《新刊「城关阿志」》",
-      "https://mp.weixin.qq.com/s/yHcP0FnaizuI1yfRNkntgQ"
-     ],
-     [
-      "门口《「城关阿志」—— 流动！》",
-      "https://mp.weixin.qq.com/s/t-fOVsIlOxtNLMaZaZUvgg"
-     ],
-     [
-      "私家地理《县城里的年轻人》",
-      "https://mp.weixin.qq.com/s/FN3Uon9JXsjm2k22TDkpzw"
-     ]
-    ],
-    "cover": "covers/c132.jpg"
-   }
-  ]
- },
- {
   "id": "quanzhou",
   "region": "泉州",
   "map": "china",
@@ -1300,7 +1196,7 @@ const DATA = [
    {
     "t": "《星球雷达》",
     "p": "湖南长沙",
-    "y": "2021 年",
+    "y": " 2021 年",
     "f": "年刊",
     "s": "",
     "i": "P8星球落地的城市书。作者用一年时间在长沙走街串巷，「建构出附近，建构出关系」，分「野生城市痕迹、人工城市痕迹、寻迹城市驻民」三大板块，收录21篇文章。实体刊2021年2月在长沙首发，2022年2月发布第二期《打开被折叠的城市》。",
@@ -1381,7 +1277,7 @@ const DATA = [
       "https://www.xiaohongshu.com/explore/697cc119000000001a02680b"
      ]
     ],
-    "cover": "covers/c131.jpg"
+    "cover": ""
    }
   ]
  },
@@ -1393,7 +1289,7 @@ const DATA = [
    {
     "t": "《阔目 Monsoon Fish》（前身《回南天》）",
     "p": "潮汕、闽南、南洋",
-    "y": "2026 年 1 月",
+    "y": " 2026 年 1 月",
     "f": "不定期",
     "s": "",
     "i": "一本从潮汕、闽南出发、面向南中国海的文化小志，自我定位「介乎独立小志（zine）与杂志之间」——以小体量存在，尽量尊重作者与设计师的个人表达。「阔目」是潮汕美食鱼饭的重要原材料、一种随季风洄游的鱼类，借此意象呈现先辈穿马六甲、过印度洋下南洋形成的跨地域族群文化。Vol.2《何以普度？》于2026年2月发行，同月15日在潮州古城办「南洋之声」两天线下派对；坚持「实体刊物与实体空间共存」。",
@@ -1426,28 +1322,6 @@ const DATA = [
      ]
     ],
     "cover": "covers/c020.jpg"
-   }
-  ]
- },
- {
-  "id": "guiyang",
-  "region": "贵阳",
-  "map": "china",
-  "pubs": [
-   {
-    "t": "《出山》",
-    "p": "贵州贵阳",
-    "y": "创刊 2021 年",
-    "f": "单册",
-    "s": "",
-    "i": "多彩贵州出品的贵州在地刊物，以贵州文化旅游为切入点，讲透贵州故事，主编为客居贵州十多年的广东人袁銮。创刊号「城市边界论·贵阳」聚焦贵阳城市边界的历史变迁——从五个城门的九里围城到现代都市，六百多年的年轮在城池边界的推演中渐次展开。刊物邀请绘图师、插画师、建筑师参与创意重构，并首次刊出多份有历史价值的老影像档案。",
-    "l": [
-     [
-      "3type《一本属于贵州的独立刊物：出山》",
-      "https://mp.weixin.qq.com/s/ECMYnSVDVGI-Gf0mPjHQ9g"
-     ]
-    ],
-    "cover": "covers/c134.jpg"
    }
   ]
  },
@@ -1640,44 +1514,6 @@ const DATA = [
     "cover": "covers/c025.jpg"
    },
    {
-    "t": "《种植香港》",
-    "p": "香港",
-    "y": "创刊 2016 年 11 月",
-    "f": "二十四节气（共出版 4 期）",
-    "s": "已停刊",
-    "i": "香港繁华背后农业式微，几乎无人触碰。农业杂志《种植香港》创刊号以「立秋」为题，整本杂志的编辑团队全部义务参与，记录香港老农、采访年轻农人，尝试透过农业，说土地、文化、生命、政治、经济、食物、以及品味。第四期主题为「小满」聚焦农区蕉径，尝试呈现蕉径今昔面貌以及探索其水源命脉，与读者一同认识蕉径。",
-    "l": [
-     [
-      "种植香港官网",
-      "https://www.plantinghk.com/"
-     ],
-     [
-      "Facebook @種植香港",
-      "https://www.facebook.com/plantinghk"
-     ]
-    ],
-    "cover": "covers/c028.jpg"
-   },
-   {
-    "t": "《四十一報》",
-    "p": "香港深水埗区",
-    "y": "创刊 2017 年 4 月",
-    "f": "不定期",
-    "s": "",
-    "i": "由美荷樓生活馆出版（美荷楼于1954年建成时名为H座，1973年石硖尾邨重编时改称为41座美荷楼，报名由此而来）。除回顾及介绍本馆的社区文化保育活动外，更希望与深水埗区加强连系，从多角度探讨区内不同的议题。前 12 期的主题均以单字命名——如「味」「尋」「忘」「徙」「鬼」「衣」等，第 13 期开始以某条街和店铺作为主题，最新的第 21 期主题为「童年玩樂」。",
-    "l": [
-     [
-      "美荷樓生活館《四十一報》",
-      "https://www.yha.org.hk/zh/our-services/mei-ho-house-revitalisation-project/post-41/"
-     ],
-     [
-      "《四十一報》第21期 PDF",
-      "https://www.yha.org.hk/wp-content/uploads/2017/03/Post41-21-_-E-version.pdf"
-     ]
-    ],
-    "cover": "covers/c137.jpg"
-   },
-   {
     "t": "《就係香港 Being Hong Kong》",
     "p": "香港",
     "y": "创刊 2018 年",
@@ -1718,6 +1554,25 @@ const DATA = [
      ]
     ],
     "cover": "covers/c027.jpeg"
+   },
+   {
+    "t": "《种植香港》",
+    "p": "香港",
+    "y": "创刊 2016 年 11 月",
+    "f": "二十四节气（共出版 4 期）",
+    "s": "已停刊",
+    "i": "香港繁华背后农业式微，几乎无人触碰。农业杂志《种植香港》创刊号以「立秋」为题，整本杂志的编辑团队全部义务参与，记录香港老农、采访年轻农人，尝试透过农业，说土地、文化、生命、政治、经济、食物、以及品味。第四期主题为「小满」聚焦农区蕉径，尝试呈现蕉径今昔面貌以及探索其水源命脉，与读者一同认识蕉径。",
+    "l": [
+     [
+      "种植香港官网",
+      "https://www.plantinghk.com/"
+     ],
+     [
+      "Facebook @種植香港",
+      "https://www.facebook.com/plantinghk"
+     ]
+    ],
+    "cover": "covers/c028.jpg"
    },
    {
     "t": "《香港職人》",
@@ -2693,7 +2548,7 @@ const DATA = [
    {
     "t": "在地Real Local：北投・天母",
     "p": "台北北投、天母",
-    "y": "2019 年 11 月",
+    "y": " 2019 年 11 月",
     "f": "单册",
     "s": "",
     "i": "《在地 real local》延续《本地 The Place》系列刊物精神，深探小区域的真实生活面貌，走进藏身城市空间的街头巷弄，重新梳理历史脉络。有感于北投拥有在大台北独树一帜的历史发展及自然景观，而紧邻的天母则以多元的人口组成著称，文化样貌格外纷呈，本次由在地方深耕多年的在地人吴思瑶领头策划，编集者新闻团队与北投、天母地方人士共同合作，发掘那些在北投、天母努力实践与定义美好生活的人与事物。",
@@ -3287,7 +3142,7 @@ const DATA = [
    {
     "t": "《鹽埕微醺》",
     "p": "高雄盐埕",
-    "y": "2018 年 1 月",
+    "y": " 2018 年 1 月",
     "f": "单册",
     "s": "",
     "i": "讲述越战期间美军靠港带来的七贤三路酒吧街文化。刻意减少历史文献比例，把重心放在美军与吧女这两个为当地经济贡献最大的职业，辅以老店职人的趣闻轶事，还与在地创意酒吧合作开发三款以酒吧街历史为底的调酒。",
@@ -3583,28 +3438,6 @@ const DATA = [
   ]
  },
  {
-  "id": "kyoto",
-  "region": "京都",
-  "map": "japan",
-  "pubs": [
-   {
-    "t": "《月刊京都》",
-    "p": "日本京都",
-    "y": "创刊 1950 年",
-    "f": "月刊",
-    "s": "",
-    "i": "由京都出版社白川书院出版的京都观光与美术随笔志，面向热爱京都的居民和旅行者，从不同角度发现和讨论只有京都人才知道的话题和不为人知的故事、史迹、美术、料理和季节风景。至今持续出版 70 余年，最新刊第 902 期的主题为「午餐指南」。",
-    "l": [
-     [
-      "月刊京都官网",
-      "https://www.gekkan-kyoto.net/"
-     ]
-    ],
-    "cover": "covers/c140.jpg"
-   }
-  ]
- },
- {
   "id": "tokyo",
   "region": "东京",
   "map": "japan",
@@ -3658,25 +3491,6 @@ const DATA = [
      ]
     ],
     "cover": "covers/c107.jpg"
-   },
-   {
-    "t": "《DEEPTOKYOmagazine》",
-    "p": "日本东京",
-    "y": "创刊 2025 年 6 月",
-    "f": "不定期",
-    "s": "",
-    "i": "KNAX 出品的日英双语媒体，以「从东京分享世界尚未发现的深层日本文化」为理念。创刊号的内容涵盖艺术、音乐、时尚、漫画、玩具、夜生活、复古文化和本土品牌，从本地人的视角出发，深入游客不易抵达的街区和创作现场，呈现东京表层之下的丰富面貌。",
-    "l": [
-     [
-      "DEEPTOKYO 官网",
-      "https://deeptokyo.jp/en/"
-     ],
-     [
-      "Facebook @DEEPTOKYOmagazine",
-      "https://www.facebook.com/DEEPTOKYOmagazine/"
-     ]
-    ],
-    "cover": "covers/c141.jpg"
    }
   ]
  },
@@ -3861,21 +3675,6 @@ const DATA = [
      ]
     ],
     "cover": "covers/c041.jpg"
-   },
-   {
-    "t": "《THE NEW JAPAN》",
-    "p": "日本地方",
-    "y": "创刊 2025 年 10 月",
-    "f": "半年刊",
-    "s": "",
-    "i": "NOT A HOTEL 出版的日英双语杂志，致力于发掘日本乡间那些被忽视的文化活动，呈现地方的能量与美感。首期聚焦于日本最西南端的八重山群岛，用文字与照片叙述岛屿的历史、手艺与日常生活。由杂志还延伸出了定制旅行服务 THE NEW JAPAN JOURNEY。",
-    "l": [
-     [
-      "THE NEW JAPAN 官网",
-      "https://thenewjapan.com/en"
-     ]
-    ],
-    "cover": "covers/c139.jpg"
    }
   ],
   "sub": "一行一册、走遍列岛的刊物",
@@ -3911,7 +3710,7 @@ const DATA = [
    {
     "t": "《a day》（泰文）",
     "p": "曼谷",
-    "y": "创刊 2000 年",
+    "y": "创刊 2000 年 ",
     "f": "月刊",
     "s": "已停刊",
     "i": "曼谷创意文化的代表刊物，「二十多年来讲述泰国与世界各地的启发性故事」，被视为塑造泰国年轻世代生活方式与审美的媒体；从杂志扩展为网站、社群、活动的全平台品牌，旗下另有免费周刊《a day BULLETIN》。",
@@ -3967,25 +3766,6 @@ const DATA = [
      ]
     ],
     "cover": "covers/c115.jpg"
-   },
-   {
-    "t": "《掺掺槟城》（中国出版）",
-    "p": "马来西亚槟城乔治市",
-    "y": "2025 年 10 月",
-    "f": "单册",
-    "s": "",
-    "i": "关于槟城在地饮食文化的一本 zine。「掺掺」在闽南话里有混合、杂糅的意思，槟城的华人们常说「掺掺」——甜的可以掺咸的，虾面可以掺卤面，像是一种「合并同类项」的哲学，更是一整套世界观。这本小书便是在「掺掺」文化下，对槟城在地饮食故事的多元化叙述。",
-    "l": [
-     [
-      "小红书 @掺掺CHAMCHAM",
-      "https://www.xiaohongshu.com/user/profile/641934cf0000000011023309"
-     ],
-     [
-      "盘菜生书店《掺掺槟城》",
-      "https://www.xiaohongshu.com/discovery/item/6974badc0000000022030f4b"
-     ]
-    ],
-    "cover": "covers/c133.jpg"
    }
   ]
  },
@@ -4115,110 +3895,6 @@ document.querySelectorAll('.panel').forEach(pn=>{
   pn.querySelector('.map-card').append(nav);
 });
 
-/* ===== 地图标签自动避让（一劳永逸方案）
-   原理：1) 所有城市名标签从 pin 内部抽出，统一放进最后绘制的 <g class="labels"> 顶层，
-          从根本上消除「后绘制的圆点盖住先绘制标签」的 z 序遮挡；
-        2) 加载时用贪心 + 迭代松弛 + 多顺序重启，为每个标签在 8 方位 × 6 档外扩
-          共 49 个候选位中挑选与所有圆点、所有其他标签零碰撞的位置。
-   今后新增/删除 pin 或刊物，标签会自动重排，无需再手工调整坐标。 ===== */
-function textW(str,fs){
-  let w=0;
-  for(const ch of str) w += /[\u3000-\u303f\uff00-\uffef\u4e00-\u9fff]/.test(ch) ? fs*1.04 : (ch===' ' ? fs*0.3 : fs*0.56);
-  return w;
-}
-const LADDER=[0,6,12,19,27,36];
-function placeLabels(panel){
-  const svg=panel.querySelector('svg.map'); if(!svg) return;
-  const mob=matchMedia('(max-width:760px)').matches;
-  const fs=mob?15:12, H=fs*1.02, GAP=3;
-  const pins=[...svg.querySelectorAll('.pin')].map(p=>{
-    const t=(p.getAttribute('transform')||'').match(/translate\(([-\d.]+),\s*([-\d.]+)\)/); if(!t) return null;
-    const ring=p.querySelector('.ring');
-    const r=(ring?parseFloat(ring.getAttribute('r')||11):11)+(mob?2:0)+GAP;
-    return {id:p.dataset.r,x:+t[1],y:+t[2],r};
-  }).filter(Boolean);
-  const pinBoxes=pins.map(p=>({x0:p.x-p.r,y0:p.y-p.r,x1:p.x+p.r,y1:p.y+p.r,id:p.id}));
-  const labels=[...svg.querySelectorAll('.labels .plabel')].map(el=>{
-    const pin=pins.find(p=>p.id===el.dataset.r); if(!pin) return null;
-    return {el,pin,id:el.dataset.r,x:pin.x,y:pin.y,r:pin.r,w:textW(el.textContent,fs),
-            ox:+el.dataset.ox,oy:+el.dataset.oy,oa:el.dataset.anchor||'start'};
-  }).filter(Boolean);
-  if(!labels.length) return;
-  const mk=(o,c)=>{
-    const x0 = c.a==='end' ? o.x+c.dx-o.w : (c.a==='middle' ? o.x+c.dx-o.w/2 : o.x+c.dx);
-    return {x0:x0-1, y0:o.y+c.dy-H-1, x1:x0+o.w+1, y1:o.y+c.dy+2};
-  };
-  const hit=(a,b)=>!(a.x1<=b.x0||b.x1<=a.x0||a.y1<=b.y0||b.y1<=a.y0);
-  const cands=o=>{
-    const R=o.r,out=[{dx:o.ox,dy:o.oy,a:o.oa,cost:0.004}];
-    for(const e of LADDER){
-      out.push({dx:R+e,          dy:H*0.32,            a:'start', cost:e*0.012});
-      out.push({dx:-(R+e),       dy:H*0.32,            a:'end',   cost:e*0.012});
-      out.push({dx:0,            dy:R+H*0.6+e*0.9,     a:'middle',cost:e*0.012});
-      out.push({dx:0,            dy:-(R+2+e*0.9),      a:'middle',cost:e*0.012});
-      out.push({dx:R+e*0.9,      dy:-(R*0.6+e*0.7),    a:'start', cost:e*0.014});
-      out.push({dx:R+e*0.9,      dy:H*1.4+e*0.75,      a:'start', cost:e*0.014});
-      out.push({dx:-(R+e*0.9),   dy:-(R*0.6+e*0.7),    a:'end',   cost:e*0.014});
-      out.push({dx:-(R+e*0.9),   dy:H*1.4+e*0.75,      a:'end',   cost:e*0.014});
-    }
-    return out;
-  };
-  labels.forEach(o=>{o.C=cands(o);});
-  const score=(o,c,others)=>{
-    const box=mk(o,c); let sc=0;
-    for(const pb of pinBoxes){ if(pb.id===o.id){ if(hit(box,pb)) sc+=2; continue; } if(hit(box,pb)) sc+=3; }
-    for(const b of others) if(hit(box,b)) sc+=5;
-    return sc + c.cost;
-  };
-  const near=o=>pins.filter(p=>p.id!==o.id&&Math.hypot(p.x-o.x,p.y-o.y)<80).length;
-  const orders=[[...labels].sort((a,b)=>near(b)-near(a)),[...labels].sort((a,b)=>near(a)-near(b))];
-  let seed=[...(panel.dataset.map||'m')].reduce((h,ch)=>h*31+ch.charCodeAt(0),7)>>>0;
-  const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
-  for(let r=0;r<6;r++){const sh=[...labels];for(let i=sh.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[sh[i],sh[j]]=[sh[j],sh[i]];}orders.push(sh);}
-  let best=null;
-  for(const ord of orders){
-    const pos=new Map(), boxes=[];
-    for(const o of ord){
-      const others=boxes.slice(); let bs=Infinity,bt=null;
-      for(const c of o.C){ const sc=score(o,c,others); if(sc<bs){bs=sc;bt={c,box:mk(o,c)};} if(sc<=c.cost+1e-9) break; }
-      pos.set(o.id,bt); boxes.push(bt.box);
-    }
-    for(let it=0;it<30;it++){
-      let ch=false;
-      for(const o of ord){
-        const others=[]; for(const [k,v] of pos) if(k!==o.id) others.push(v.box);
-        const cur=pos.get(o.id); let bs=Infinity,bt=cur;
-        for(const c of o.C){ const sc=score(o,c,others); if(sc<bs){bs=sc;bt={c,box:mk(o,c)};} if(sc<=c.cost+1e-9) break; }
-        if(bt!==cur){pos.set(o.id,bt);ch=true;}
-      }
-      if(!ch) break;
-    }
-    const final=labels.map(o=>pos.get(o.id).box);
-    let coll=0;
-    final.forEach((b,i)=>{ for(const pb of pinBoxes){ if(pb.id===labels[i].id) continue; if(hit(b,pb)) coll++; } });
-    for(let i=0;i<final.length;i++) for(let j=i+1;j<final.length;j++) if(hit(final[i],final[j])) coll++;
-    if(!best || coll<best.coll) best={pos,coll};
-    if(best.coll===0) break;
-  }
-  labels.forEach(o=>{
-    const c=best.pos.get(o.id).c;
-    o.el.setAttribute('x',o.x+c.dx);
-    o.el.setAttribute('y',o.y+c.dy);
-    o.el.setAttribute('text-anchor',c.a);
-  });
-}
-function wireLabelHover(){
-  document.querySelectorAll('.panel').forEach(pn=>{
-    const svg=pn.querySelector('svg.map'); if(!svg) return;
-    svg.querySelectorAll('.pin').forEach(p=>{
-      const lab=svg.querySelector('.labels .plabel[data-r="'+p.dataset.r+'"]');
-      if(!lab) return;
-      const on=()=>lab.classList.add('hl'), off=()=>lab.classList.remove('hl');
-      p.addEventListener('mouseenter',on); p.addEventListener('mouseleave',off);
-      p.addEventListener('focus',on); p.addEventListener('blur',off);
-    });
-  });
-}
 function switchMap(id,btn){
   setAmbient(id);
   if(id==='china') requestAnimationFrame(()=>{
@@ -4232,12 +3908,12 @@ function switchMap(id,btn){
 
 /* ================= 更新啦 ================= */
 const UPDATES = [
-  {d:'2026 年 8 月 22 日', items:[
-    ['kyoto','京都','《月刊京都》'],
-    ['tokyo','东京','《DEEPTOKYOmagazine》'],
-    ['roam-jp','日本全国','《THE NEW JAPAN》'],
-    ['shanghai','上海','《Ketchup》'],
-    ['hk','香港','《四十一報》']
+  {d:'2026 年 8 月 8 日', items:[
+    ['yantai','烟台','《芝罘历史文化》'],
+    ['qingdao','青岛','《市南人文历史研究》'],
+    ['wenzhou','温州','《瓯风》'],
+    ['fuzhou','福州','《诸神的游戏》'],
+    ['lasa','藏地','《松赞Songtsam》']
   ]}
   /* 新批次往数组头部追加：{d:'日期', items:[[regionId,'地域','《刊名》'],…]} */
 ];
@@ -4411,12 +4087,6 @@ if(matchMedia('(max-width:760px)').matches){
 
 /* 默认显示第一张地图 + 深链支持 */
 switchMap('china', tabsEl.firstChild);
-wireLabelHover();
-document.querySelectorAll('.panel').forEach(placeLabels);
-/* 视口断点变化时（桌面↔移动）重排标签 */
-matchMedia('(max-width:760px)').addEventListener('change',()=>{
-  document.querySelectorAll('.panel').forEach(placeLabels);
-});
 function applyHash(){
   const h = decodeURIComponent(location.hash.slice(1));
   if(!h) return;
