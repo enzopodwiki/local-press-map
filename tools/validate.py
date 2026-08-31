@@ -42,10 +42,10 @@ def main():
     if dup:
         err(f'刊物标题重复：{dup}')
 
-    # 2. 页面总数与 DATA 一致
+    # 2. 页面总数与 DATA 一致（页面若保留「地图总录」徽章则校验之）
     m = re.search(r'<b id="stat-total">(\d+)</b>', html)
-    if not m or int(m.group(1)) != total:
-        err(f'页面「地图总录」统计（{m.group(1) if m else "无"}）≠ 数据总数（{total}）')
+    if m and int(m.group(1)) != total:
+        err(f'页面「地图总录」统计（{m.group(1)}）≠ 数据总数（{total}）')
 
     # 3. 地图 pin 数量与数据一致
     for r in data:

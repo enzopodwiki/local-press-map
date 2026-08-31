@@ -55,7 +55,7 @@
   header,nav.tabs,main,footer,.stats-line{position:relative;z-index:1}
   /* ---------- 刊头 ---------- */
   header{padding:52px 24px 8px;max-width:1180px;margin:0 auto}
-  .masthead-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .masthead-row{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
   .masthead{
     font-size:clamp(44px,7.4vw,84px);font-weight:900;letter-spacing:.04em;line-height:1.04;
     position:relative;z-index:0;color:var(--ink);
@@ -405,11 +405,7 @@
 </header>
 
 <div class="stats-line">
-  <span class="chip alt">地图总录 <b id="stat-total">169</b> 种</span>
-
-  <span class="chip"><b id="stat-shelves">—</b> 个书柜</span>
   <span class="chip push" style="opacity:.85">Created by <a href="https://www.xiaohongshu.com/user/profile/5fb103fc000000000101ca7e" target="_blank" rel="noopener">Enzo</a></span>
-  <span class="chip" style="opacity:.75">整理时间 · 2026 年 8 月</span>
 </div>
 
 <div class="toolbar">
@@ -4295,8 +4291,6 @@ renderUpdates();
 
 /* ================= 统计 ================= */
 const totalPubs = DATA.reduce((n,d)=>n+d.pubs.length,0);
-const _ss=document.getElementById('stat-shown'); if(_ss) _ss.textContent = totalPubs;
-document.getElementById('stat-shelves').textContent = DATA.length;
 document.querySelectorAll('[data-count]').forEach(el=>{
   const m = el.dataset.count;
   el.textContent = DATA.filter(d=>d.map===m).reduce((n,d)=>n+d.pubs.length,0);

@@ -136,7 +136,8 @@ def render(data):
     total = sum(len(r['pubs']) for r in data)
     html = html.replace('const DATA = __DATA__;',
                         'const DATA = ' + json.dumps(data, ensure_ascii=False, indent=1) + ';')
-    html = html.replace('<b id="stat-total">__TOTAL__</b>', f'<b id="stat-total">{total}</b>')
+    if '__TOTAL__' in html:  # 页面保留「地图总录」徽章时回填总数
+        html = html.replace('<b id="stat-total">__TOTAL__</b>', f'<b id="stat-total">{total}</b>')
     for rg in data:
         pat = re.compile(r'(<g class="pin" data-r="' + re.escape(rg['id']) +
                          r'"[^>]*>.*?<text class="pcount" y="3\.5">)\d+(</text>)', re.S)
