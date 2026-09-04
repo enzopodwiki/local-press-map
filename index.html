@@ -4436,7 +4436,7 @@ if(matchMedia('(max-width:760px)').matches){
 const searchWrap = document.getElementById('search-wrap');
 const searchInput = document.getElementById('search-input');
 const searchPanel = document.getElementById('search-panel');
-searchInput.placeholder = `搜索 ${totalPubs} 种刊物…`;
+searchInput.placeholder = `搜索 ${totalPubs} 种刊物 • 刊名 / 城市 / 关键词`;
 let searchHits = [], searchIdx = -1;
 
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
