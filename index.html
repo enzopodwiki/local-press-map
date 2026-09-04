@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>在地刊物地图</title>
+<meta name="description" content="把华语与东亚地区的在地刊物标在五张手绘示意地图上：中国大陆与港澳、台湾、日本、新马、泰国。每根图钉是一座城市的书柜，点开即可翻阅；支持全站搜索与刊物级分享链接。">
+<meta property="og:title" content="在地刊物地图">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://enzopodwiki.github.io/local-press-map/">
+<meta property="og:site_name" content="在地刊物地图">
+<meta property="og:description" content="每根图钉是一座城市的书柜：中国大陆与港澳、台湾、日本、新马、泰国的在地刊物，点开即可翻阅，支持全站搜索。">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23D94A2B'/%3E%3Ctext x='32' y='46' font-size='38' text-anchor='middle' fill='%23F6F0E1' font-family='serif' font-weight='900'%3E刊%3C/text%3E%3C/svg%3E">
 <style>
   :root{
     --paper:#F6F0E1;
@@ -383,6 +392,7 @@
 <body>
 <div class="ambient" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
+<noscript><div style="position:fixed;left:0;right:0;bottom:0;z-index:99;background:#D94A2B;color:#fff;padding:10px 16px;font-weight:700;font-size:14px">此页面需要启用 JavaScript 才能加载地图与书柜数据。</div></noscript>
 
 <header>
   <div class="masthead-row">
@@ -661,7 +671,7 @@
 </main>
 
 <!-- ============ 抽屉 ============ -->
-<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="在地刊物书柜">
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="在地刊物书柜" tabindex="-1">
   <div class="drawer-head">
     <div class="dh-bar" id="dh-bar"></div>
     <div>
@@ -698,7 +708,7 @@ const DATA = [
     "l": [
      [
       "TimeOut 中国官网",
-      "http://www.timeoutcn.com/m/timeOutAboutUs.html"
+      "https://www.timeoutcn.com/m/timeOutAboutUs.html"
      ],
      [
       "微博 @TimeOut北京",
@@ -1156,7 +1166,7 @@ const DATA = [
     "l": [
      [
       "微博 @搜街SOGUIDE",
-      "http://t.sina.com.cn/soguide"
+      "https://t.sina.com.cn/soguide"
      ],
      [
       "艺术西区《消失了的搜街》",
@@ -4296,10 +4306,12 @@ const drawer = document.getElementById('drawer');
 const shelfRow = document.getElementById('shelf-row');
 const detailEl = document.getElementById('detail');
 let cur = null;
+let lastFocus = null;
 
 function openRegion(rid, idx=0){
   const g = DATA.find(d=>d.id===rid);
   if(!g) return;
+  if(!drawer.classList.contains('on')) lastFocus = document.activeElement;
   cur = {group:g, idx:Math.min(Math.max(idx,0), g.pubs.length-1)};
   const acc = getComputedStyle(document.querySelector(`.panel[data-map="${g.map}"]`)).getPropertyValue('--acc');
   drawer.style.setProperty('--acc', acc);
@@ -4308,6 +4320,7 @@ function openRegion(rid, idx=0){
   renderShelf();
   renderDetail();
   drawer.classList.add('on');
+  drawer.focus({preventScroll:true});
 }
 
 /* 深链同步：#书柜id/第几本（replaceState 不触发 hashchange，避免回环） */
@@ -4345,10 +4358,16 @@ function renderShelf(){
     const b = document.createElement('div');
     b.className = 'book' + (i===cur.idx?' active':'');
     b.style.setProperty('--tilt', TILTS[i%TILTS.length]+'deg');
+    b.tabIndex = 0;
+    b.setAttribute('role','button');
+    b.setAttribute('aria-label', pub.t.replace(/[《》]/g,''));
+    b.setAttribute('aria-current', i===cur.idx ? 'true' : 'false');
     b.innerHTML = `
       <div class="bcover" style="background:color-mix(in srgb, ${c} 13%, var(--paper))">${coverHTML(pub,false,true)}</div>
       <div class="bname">${pub.t.replace(/[《》]/g,'')}</div>`;
-    b.addEventListener('click',()=>{cur.idx=i;renderShelf();renderDetail();});
+    const pick = ()=>{cur.idx=i;renderShelf();renderDetail();};
+    b.addEventListener('click',pick);
+    b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();}});
     shelfRow.appendChild(b);
   });
 }
@@ -4396,8 +4415,20 @@ function step(d){
 function closeDrawer(){
   drawer.classList.remove('on');
   cur = null;
+  /* 焦点还原到打开书柜前的元素（如地图图钉） */
+  if(lastFocus && lastFocus.isConnected){ try{ lastFocus.focus({preventScroll:true}); }catch(_){} }
+  lastFocus = null;
 }
 document.getElementById('dh-close').addEventListener('click',closeDrawer);
+/* 焦点圈闭：Tab 在抽屉内部循环，不落到页面底层的地图 */
+drawer.addEventListener('keydown', e=>{
+  if(e.key !== 'Tab' || !drawer.classList.contains('on')) return;
+  const f = drawer.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
+  if(!f.length) return;
+  const first = f[0], last = f[f.length-1];
+  if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+});
 document.addEventListener('keydown',e=>{
   /* 搜索快捷键：/ 或 Ctrl/Cmd+K */
   const typing = e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName);
@@ -4446,27 +4477,44 @@ function hl(text, q){
   return esc(text.slice(0,i)) + '<b>' + esc(text.slice(i, i+q.length)) + '</b>' + esc(text.slice(i+q.length));
 }
 
+/* 地图级别名：让「马来西亚」这类国名也能命中「新马」这类书柜简称 */
+const MAP_ALIAS = {
+  china: ['大陆', '中国'],
+  taiwan: ['台湾'],
+  japan: ['日本'],
+  sgmy: ['马来西亚', '马来', '沙巴', '砂拉越', '新加坡'],
+  thailand: ['泰国'],
+};
+
 function doSearch(q){
   q = q.trim();
   searchIdx = -1;
   if(!q){ searchHits=[]; renderResults(''); return; }
   const kw = q.toLowerCase();
-  const hits = [];
+  const strong = [], weak = [];
   for(const g of DATA){
+    const aliases = (MAP_ALIAS[g.map] || []).map(s=>s.toLowerCase());
+    const rg = g.region.toLowerCase();
     for(let i=0;i<g.pubs.length;i++){
       const p = g.pubs[i];
-      const t=p.t.toLowerCase(), pl=(p.p||'').toLowerCase(), rg=g.region.toLowerCase(), it=p.i.toLowerCase();
-      let score;
-      if(t.includes(kw))          score = t.indexOf(kw);
-      else if(pl.includes(kw))    score = 100 + pl.indexOf(kw);
-      else if(rg.includes(kw))    score = 200 + rg.indexOf(kw);
-      else if(it.includes(kw))    score = 300 + it.indexOf(kw);
+      const t = p.t.toLowerCase(), pl = (p.p||'').toLowerCase(), it = p.i.toLowerCase();
+      let score, why;
+      if(t.includes(kw))            { score = t.indexOf(kw);        why = '刊名'; }
+      else if(pl.includes(kw))      { score = 100 + pl.indexOf(kw); why = '地点'; }
+      else if(rg.includes(kw) || aliases.some(a=>a.includes(kw) || kw.includes(a)))
+                                    { score = 200 + rg.indexOf(kw); why = '书柜'; }
+      else if(it.includes(kw))      { score = 300 + it.indexOf(kw); why = '简介'; }
       else continue;
-      hits.push({g, i, p, score});
+      (why === '简介' ? weak : strong).push({g, i, p, score, why});
     }
   }
-  hits.sort((a,b)=>a.score-b.score);
-  searchHits = hits.slice(0, 40);
+  strong.sort((a,b)=>a.score-b.score);
+  weak.sort((a,b)=>a.score-b.score);
+  /* 简介是几百字长文，动辄提及异地（如北京刊物的团队里有马来西亚人）：
+     强命中（刊名/地点/书柜）足够时不再补充，不足时也最多补 6 条并标注「简介提及」 */
+  if(strong.length >= 8) weak.length = 0;
+  else weak.length = Math.min(weak.length, 6);
+  searchHits = strong.concat(weak).slice(0, 40);
   renderResults(q);
 }
 
@@ -4477,7 +4525,7 @@ function renderResults(q){
     ? searchHits.map((h,n)=>`
       <button class="sr" role="option" aria-selected="false" data-n="${n}">
         <span class="sr-t">${hl(h.p.t, q)}</span>
-        <span class="sr-m">${h.g.region}${h.p.y ? ' · '+h.p.y.replace(/\s/g,'').slice(0,10) : ''}${h.p.s ? ' · '+h.p.s : ''}</span>
+        <span class="sr-m">${h.g.region}${h.p.y ? ' · '+h.p.y.replace(/\s/g,'').slice(0,10) : ''}${h.p.s ? ' · '+h.p.s : ''}${h.why === '简介' ? ' · 简介提及' : ''}</span>
       </button>`).join('')
     : `<div class="sr-empty">没有找到与「${esc(q)}」相关的刊物</div>`;
   searchPanel.hidden = false;
