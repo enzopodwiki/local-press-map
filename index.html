@@ -73,10 +73,10 @@
   .chip{border:2px solid var(--ink);padding:5px 12px;font-weight:700;background:var(--paper);box-shadow:3px 3px 0 rgba(38,34,28,.14)}
   .chip.alt{background:var(--ink);color:var(--paper)}
   .credit{display:inline-flex;align-items:center;gap:5px;margin-top:14px;opacity:.85;font-size:13px}
-  /* ===== 工具行：左「更新啦」+ 右搜索框并排；两个面板都在文档流内撑开，只推不盖 ===== */
+  /* ===== 工具行：左搜索框 + 右「更新啦」并排；两个面板都在文档流内撑开，只推不盖 ===== */
   .toolbar{max-width:1180px;margin:14px auto 0;padding:0 24px;display:flex;align-items:flex-start;gap:24px}
-  .tape-wrap{position:relative;z-index:30;flex:0 0 auto;margin-top:2px}
-  .search-wrap{position:relative;z-index:30;margin-left:auto;flex:0 0 auto;
+  .tape-wrap{position:relative;z-index:30;flex:0 0 auto;margin-top:2px;margin-left:auto}
+  .search-wrap{position:relative;z-index:30;flex:0 0 auto;
     display:flex;flex-direction:column;align-items:flex-end;pointer-events:none}
   .search-box{position:relative;width:400px;pointer-events:auto}
   #search-input{
@@ -333,7 +333,7 @@
     .masthead{font-size:38px}
     .chip{font-size:10.5px;padding:4px 8px}
     .toolbar{padding:0 14px;flex-direction:column;align-items:stretch;gap:10px}
-    .search-wrap{margin-left:0}
+    .tape-wrap{margin-left:0}
     .search-box,.search-panel{width:100%}
     .search-box kbd{display:none}
     #search-input{padding:11px 14px;font-size:16px}   /* ≥16px 防 iOS 聚焦自动放大 */
@@ -400,7 +400,6 @@
 </header>
 
 <div class="toolbar">
-  <div class="tape-wrap" id="update-strip" aria-label="刊物更新记录"></div>
   <div class="search-wrap" id="search-wrap">
     <div class="search-box">
       <input id="search-input" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search"
@@ -409,6 +408,7 @@
     </div>
     <div class="search-panel" id="search-panel" role="listbox" aria-label="搜索结果" hidden></div>
   </div>
+  <div class="tape-wrap" id="update-strip" aria-label="刊物更新记录"></div>
 </div>
 
 <nav class="tabs" id="tabs"></nav>
