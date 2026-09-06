@@ -1,6 +1,6 @@
 name: fetch-issues
 
-# 「新刊上线」：双周抓取信源，发现新刊公告后更新 data/new_issues.json 并开草稿 PR 供人工确认。
+# 「新刊速递」：双周抓取信源，发现新刊公告后更新 data/new_issues.json 并开草稿 PR 供人工确认。
 # GitHub Actions 没有原生双周 cron：每周一触发，脚本内用 ISO 周数奇偶（偶数周）过滤。
 
 on:
@@ -60,11 +60,11 @@ jobs:
           BRANCH="bot/new-issues"
           git checkout -B "$BRANCH" origin/main
           git add data/new_issues.json
-          git commit -m "新刊上线：$(date -u +%F) 抓取到新公告"
+          git commit -m "新刊速递：$(date -u +%F) 抓取到新公告"
           git push --force origin "$BRANCH"
           PR_NUM=$(gh pr list --state open --head "$BRANCH" --json number -q '.[0].number // empty')
           if [ -n "$PR_NUM" ]; then
             gh pr edit "$PR_NUM" --body-file /tmp/fetch_report.md
           else
-            gh pr create --draft --title "新刊上线 · 发现新刊物公告" --body-file /tmp/fetch_report.md
+            gh pr create --draft --title "新刊速递 · 发现新刊物公告" --body-file /tmp/fetch_report.md
           fi

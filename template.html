@@ -82,7 +82,7 @@
   .chip{border:2px solid var(--ink);padding:5px 12px;font-weight:700;background:var(--paper);box-shadow:3px 3px 0 rgba(38,34,28,.14)}
   .chip.alt{background:var(--ink);color:var(--paper)}
   .credit{display:inline-flex;align-items:center;gap:5px;margin-top:14px;opacity:.85;font-size:13px;border-radius:10px}
-  /* ===== 工具行：左搜索框 + 右「更新啦」并排；两个面板都在文档流内撑开，只推不盖 ===== */
+  /* ===== 工具行：左搜索框 + 右「收录上新」并排；两个面板都在文档流内撑开，只推不盖 ===== */
   .toolbar{max-width:1180px;margin:14px auto 0;padding:0 24px;display:flex;align-items:flex-start;gap:24px}
   .tape-wrap{position:relative;z-index:30;flex:0 0 auto;margin-top:2px;margin-left:auto}
   .search-wrap{position:relative;z-index:30;flex:0 0 auto;
@@ -113,11 +113,14 @@
   .sr-t b{color:var(--red)}
   .sr-m{display:block;font-size:11px;opacity:.62;margin-top:2px;letter-spacing:.02em}
   .sr-empty{padding:16px;font-size:13px;opacity:.6;text-align:center}
-  /* 更新啦 · 胶带卷（样式见上方工具行；面板在文档流内撑开，只推不盖，不遮挡任何内容） */
+  /* 收录上新 · 胶带卷（样式见上方工具行；面板在文档流内撑开，只推不盖，不遮挡任何内容） */
   .tape{display:inline-flex;align-items:center;border:none;background:none;padding:0}
   .tape-band{padding:8px 18px;border:2.5px solid var(--ink);border-radius:999px;background:linear-gradient(180deg,#E97458,var(--red) 45%,#B23A20);color:#fff;font-weight:900;font-size:12.5px;letter-spacing:.05em;box-shadow:3px 3px 0 rgba(38,34,28,.18)}
   .tape-band b{background:#fff;color:var(--red);border-radius:50%;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;padding:0 4px;margin:0 2px}
   .tape:hover .tape-band{filter:brightness(1.07)}
+  /* 「新刊速递」（自动抓取的新刊公告）模块的绿色变体，与红色收录上新区分 */
+  .tape-band--fresh{background:linear-gradient(180deg,#3FA47A,#0E8A5F 45%,#0A6B49)}
+  .tape-band--fresh b{color:#0E8A5F}
   .tape-panel{position:static;margin-top:10px;width:340px;border:2.5px solid var(--ink);background:var(--paper);box-shadow:6px 6px 0 rgba(38,34,28,.18);padding:12px 16px;max-height:min(430px,62vh);overflow:auto}
   .up-head{font-size:13px;font-weight:700;letter-spacing:.02em}
   .up-head b{font-size:14px;font-weight:900}
@@ -418,7 +421,7 @@
     </div>
     <div class="search-panel" id="search-panel" role="listbox" aria-label="搜索结果" hidden></div>
   </div>
-  <div class="tape-wrap" id="update-strip" aria-label="刊物更新记录"></div>
+  <div class="tape-wrap" id="update-strip" aria-label="收录上新"></div>
 </div>
 
 <nav class="tabs" id="tabs"></nav>
@@ -855,7 +858,7 @@ function switchMap(id,btn){
   closeDrawer();
 }
 
-/* ================= 更新啦 ================= */
+/* ================= 收录上新 ================= */
 const UPDATES = [
   {d:'2026 年 8 月 22 日', items:[
     ['kyoto','京都','《月刊京都》'],
@@ -878,7 +881,7 @@ function renderUpdates(){
     </div>`;
   el.innerHTML=`
     <button class="tape" id="tape-btn" aria-expanded="false">
-      <span class="tape-band">更新啦 · ${short} 更新 <b>${first.items.length}</b> 种 ▾</span>
+      <span class="tape-band">收录上新 · ${short} 更新 <b>${first.items.length}</b> 种 ▾</span>
     </button>
     <div class="tape-panel" hidden>${UPDATES.map(batch).join('')}</div>`;
   const btn=el.querySelector('#tape-btn'), panel=el.querySelector('.tape-panel');
@@ -1045,7 +1048,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight') step(1);
 });
 
-/* ================= 绑定地图交互（仅限地图元素；「更新啦」与搜索结果各自带书目标定位） ================= */
+/* ================= 绑定地图交互（仅限地图元素；「收录上新」与搜索结果各自带书目标定位） ================= */
 document.querySelectorAll('.panel [data-r]').forEach(el=>{
   const open = ()=>openRegion(el.dataset.r);
   el.addEventListener('click',open);

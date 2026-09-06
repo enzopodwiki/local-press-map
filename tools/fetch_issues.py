@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""「新刊上线」抓取器
+"""「新刊速递」抓取器
 
 按 data/sources.json 的监控清单逐刊抓取信源，提取新刊发布的消息（期数 + 当期主题），
 与 data/new_issues.json 里的历史记录去重后合并，把新发现打印成 Markdown 摘要。
@@ -236,7 +236,7 @@ def main():
 
     # —— Markdown 摘要（stdout → PR 描述）——
     now = datetime.now(TZ_CN).strftime('%F %R')
-    lines = [f'## 新刊上线 · 抓取报告（{now}）', '']
+    lines = [f'## 新刊速递 · 抓取报告（{now}）', '']
     if new_items:
         lines.append(f'发现 **{len(new_items)}** 条新公告：')
         lines.append('')
