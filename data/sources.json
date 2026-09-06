@@ -8,15 +8,29 @@
   "note": "GitHub Actions 每周一 01:00 UTC（北京 09:00）触发，周数奇偶判断只跑双周"
  },
  "summary": {
-  "monitored": 71,
-  "by_method": {
-   "official": 27,
-   "wechat": 17,
-   "rss": 16,
-   "platform": 7,
-   "social": 3,
-   "manual": 1
-  },
+  "monitored": 70,
+  "by_method": [
+   [
+    "official",
+    27
+   ],
+   [
+    "wechat",
+    17
+   ],
+   [
+    "rss",
+    16
+   ],
+   [
+    "platform",
+    7
+   ],
+   [
+    "social",
+    3
+   ]
+  ],
   "channels_with_feed": 16,
   "unreachable_channels": 16,
   "note": "method 为每刊最优通道：rss>official>platform>wechat>social；wechat 表示需为该刊物定位公众号并配置桥接"
@@ -763,22 +777,6 @@
    ]
   },
   {
-   "t": "《文化桃園》",
-   "shelf": "台湾 · 北部",
-   "freq": "年刊",
-   "method": "manual",
-   "channels": [
-    {
-     "name": "桃园市文化局",
-     "url": "https://culture.tycg.gov.tw/",
-     "adapter": "official",
-     "status": 0,
-     "note": "不可达（探测失败，需复核是下线还是网络原因）",
-     "usable": "unverified"
-    }
-   ]
-  },
-  {
    "t": "《貢丸湯》",
    "shelf": "台湾 · 北部",
    "freq": "季刊",
@@ -1323,6 +1321,25 @@
      "usable": "ok"
     }
    ]
+  }
+ ],
+ "excluded": [
+  {
+   "t": "《文化桃園》",
+   "shelf": "台湾 · 北部",
+   "freq": "年刊",
+   "method": "manual",
+   "channels": [
+    {
+     "name": "桃园市文化局",
+     "url": "https://culture.tycg.gov.tw/",
+     "adapter": "official",
+     "status": 0,
+     "note": "不可达（探测失败，需复核是下线还是网络原因）",
+     "usable": "unverified"
+    }
+   ],
+   "reason": "用户指定不抓取（2026-09-06）：唯一通道为 gov 站且探测未达"
   }
  ]
 }

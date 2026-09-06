@@ -1,0 +1,70 @@
+name: fetch-issues
+
+# 「新刊上线」：双周抓取信源，发现新刊公告后更新 data/new_issues.json 并开草稿 PR 供人工确认。
+# GitHub Actions 没有原生双周 cron：每周一触发，脚本内用 ISO 周数奇偶（偶数周）过滤。
+
+on:
+  schedule:
+    - cron: '0 1 * * 1'   # 周一 01:00 UTC = 北京时间 09:00
+  workflow_dispatch: {}    # 支持在 Actions 页手动触发（首次跑全量用）
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: 双周判断（ISO 周数为偶数才跑）
+        id: parity
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          WEEK=$(date -u +%-V)
+          echo "week=$WEEK" >> "$GITHUB_OUTPUT"
+          if [ "$EVENT" = "workflow_dispatch" ] || [ $((WEEK % 2)) -eq 0 ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 抓取新刊公告
+        if: steps.parity.outputs.run == 'true'
+        id: fetch
+        run: |
+          python3 tools/fetch_issues.py > /tmp/fetch_report.md
+          cat /tmp/fetch_report.md
+          if [ -n "$(git status --porcelain data/new_issues.json)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 有新发现时更新草稿 PR
+        if: steps.fetch.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BRANCH="bot/new-issues"
+          git checkout -B "$BRANCH" origin/main
+          git add data/new_issues.json
+          git commit -m "新刊上线：$(date -u +%F) 抓取到新公告"
+          git push --force origin "$BRANCH"
+          PR_NUM=$(gh pr list --state open --head "$BRANCH" --json number -q '.[0].number // empty')
+          if [ -n "$PR_NUM" ]; then
+            gh pr edit "$PR_NUM" --body-file /tmp/fetch_report.md
+          else
+            gh pr create --draft --title "新刊上线 · 发现新刊物公告" --body-file /tmp/fetch_report.md
+          fi

@@ -22,7 +22,8 @@
 ```
 data/在地刊物地图.md    内容唯一数据源：刊物条目（标题/地点/年份/频率/停刊/介绍/信源/封面）
 data/regions.json      结构数据：52 个书柜的分组、顺序、地图归属（新增地区时才改）
-data/sources.json      「新刊上线」监控清单：71 种在刊刊物的信源通道、适配方式与探测状态
+data/sources.json      「新刊上线」监控清单：70 种在刊刊物的信源通道、适配方式与探测状态
+data/new_issues.json   「新刊上线」抓取历史（发现过的公告按刊物去重落在这里）
 template.html          版式模板：页面的一切，除了数据（DATA 与总数是占位符）
 tools/build.py         构建脚本：数据源 + 模板 → index.html
 tools/validate.py      校验脚本：数据一致性体检（CI 也会跑）
@@ -45,9 +46,13 @@ template.html      ─┘         ↑
 python3 tools/build.py             # 构建并覆盖 index.html
 python3 tools/build.py --check     # 只校验 index.html 是否与数据源一致（不写文件）
 python3 tools/validate.py          # 数据体检：0 错误才允许提交
+python3 tools/fetch_issues.py      # 「新刊上线」抓取（双周，CI 自动跑；也可手动跑）
 ```
 
-CI（.github/workflows/validate.yml）会在每次 push 时自动跑 `--check` 和校验。
+CI（.github/workflows/validate.yml）会在每次 push 时自动跑 `--check` 和校验；
+.github/workflows/fetch-issues.yml 在双周一上午抓取信源，发现新刊公告后自动开
+草稿 PR（报告含期数、主题、来源链接与警告），人工确认合并即完成一次「新刊上线」；
+Actions 页也可手动触发（workflow_dispatch）补跑。
 
 ## 如何新增一本刊物
 
