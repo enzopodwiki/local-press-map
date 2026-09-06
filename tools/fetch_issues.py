@@ -179,6 +179,15 @@ def extract_from_channel(channel, pub):
     return scan_html(final, data)[:MAX_ITEMS_PER_CHANNEL], []
 
 
+def clean_theme(theme, title):
+    """标题形如《貢丸湯》第30期《貢丸湯》〈…〉时，主题会残留重复刊名，清掉。"""
+    nm = title.replace('《', '').replace('》', '')
+    t = (theme or '').strip()
+    if nm and t.startswith(nm):
+        t = t[len(nm):].lstrip('》〉」』 　·：:－-')
+    return t.strip()
+
+
 def item_key(item):
     base = item['url'].split('#')[0].rstrip('/')
     return (item['issue'] or '?') + '|' + base
@@ -224,7 +233,8 @@ def main():
                      if ((cand['issue'] or '?'), cand['url'].split('#')[0].rstrip('/')) not in seen]
             for cand in fresh:
                 item = {'issue': cand['issue'], 'title': cand['title'], 'url': cand['url'],
-                        'theme': cand.get('theme', ''), 'foundAt': datetime.now(TZ_CN).strftime('%F'),
+                        'theme': clean_theme(cand.get('theme', ''), p['t']),
+                        'foundAt': datetime.now(TZ_CN).strftime('%F'),
                         'channel': c['url']}
                 new_items.append((p, item))
 
@@ -238,8 +248,8 @@ def main():
             batch = {'d': d, 'items': []}
             batches.insert(0, batch)
         for p, item in new_items:
-            batch['items'].append({'t': p['t'], 'issue': item['issue'], 'theme': item['theme'],
-                                   'title': item['title'], 'url': item['url']})
+            batch['items'].append({'t': p['t'], 'shelf': p['shelf'], 'issue': item['issue'],
+                                   'theme': item['theme'], 'title': item['title'], 'url': item['url']})
         history['lastRun'] = datetime.now(TZ_CN).strftime('%F %R %z')
         HISTORY_PATH.write_text(json.dumps(history, ensure_ascii=False, indent=1) + '\n',
                                 encoding='utf-8')

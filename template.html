@@ -909,14 +909,19 @@ function renderFresh(){
   if(!FRESH_ISSUES.length){el.style.display='none';return;}
   const first=FRESH_ISSUES[0];
   const short=first.d.split('-').map((s,i)=>i===0?s:String(+s)).join('.');
-  const line=it=>{
-    const tag=it.issue?`第${it.issue}期`:'新公告';
-    const body=it.theme?`${it.t.replace(/[《》]/g,'')} · ${it.theme}`:it.t;
-    return {tag, body, t:it.t};
-  };
+  /* 条目格式：地域《刊物名》第N期 主题；整行链接到公告网页 */
   const batch=b=>`
     <div class="up-batch">
-      ${b.items.map(it=>{const l=line(it);return `<button class="up-line" data-t="${l.t}"><i>${l.tag}</i><span>${l.body}</span></button>`;}).join('')}
+      ${b.items.map(it=>{
+        const issue=it.issue?` 第${it.issue}期`:'';
+        let th=(it.theme||'').trim();
+        const nm=it.t.replace(/[《》]/g,'');
+        if(nm && th.startsWith(nm)) th=th.slice(nm.length).replace(/^[》〉」』\s　·：:－-]+/,'');
+        const body=`《${nm}》${issue}${th?' · '+th:''}`;
+        return it.url
+          ? `<a class="up-line" href="${it.url}" target="_blank" rel="noopener"><i>${it.shelf}</i><span>${body} ↗</span></a>`
+          : `<span class="up-line"><i>${it.shelf}</i><span>${body}</span></span>`;
+      }).join('')}
     </div>`;
   el.innerHTML=`
     <button class="tape" id="fresh-btn" aria-expanded="false">
@@ -925,14 +930,6 @@ function renderFresh(){
     <div class="tape-panel" hidden>${FRESH_ISSUES.map(batch).join('')}</div>`;
   const btn=el.querySelector('#fresh-btn'), panel=el.querySelector('.tape-panel');
   btn.addEventListener('click',()=>{panel.hidden=!panel.hidden;btn.setAttribute('aria-expanded',String(!panel.hidden));});
-  el.querySelectorAll('.up-line').forEach(b=>b.addEventListener('click',()=>{
-    const g=DATA.find(d=>d.pubs.some(p=>p.t===b.dataset.t));
-    if(!g) return;
-    panel.hidden=true;
-    switchMap(g.map, document.querySelector(`.tab[data-map="${g.map}"]`));
-    const idx=g.pubs.findIndex(p=>p.t===b.dataset.t);
-    openRegion(g.id, idx<0?0:idx);   // 深链到出新刊的那本
-  }));
 }
 renderFresh();
 
