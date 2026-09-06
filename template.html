@@ -909,6 +909,16 @@ function renderFresh(){
   if(!FRESH_ISSUES.length){el.style.display='none';return;}
   const first=FRESH_ISSUES[0];
   const short=first.d.split('-').map((s,i)=>i===0?s:String(+s)).join('.');
+  /* 地域标：台湾各分区/全台/全国书柜归入大区（中国大陆、台湾北部…全台、日本全国），
+     其余书柜（香港、澳门、东京、京都、清迈…）保持书柜名 */
+  const tagFor=it=>{
+    const g=DATA.find(d=>d.pubs.some(p=>p.t===it.t));
+    if(!g) return it.shelf||'';
+    const zones={'tw-all':'全台','tw-north':'台湾北部','tw-central':'台湾中部',
+                 'tw-south':'台湾南部','tw-east':'台湾东部','tw-islands':'台湾离岛',
+                 'roam-jp':'日本全国'};
+    return zones[g.id] || (g.map==='china'?'中国大陆':g.region);
+  };
   /* 条目格式：地域《刊物名》第N期 主题；整行链接到公告网页 */
   const batch=b=>`
     <div class="up-batch">
@@ -919,8 +929,8 @@ function renderFresh(){
         if(nm && th.startsWith(nm)) th=th.slice(nm.length).replace(/^[》〉」』\s　·：:－-]+/,'');
         const body=`《${nm}》${issue}${th?' · '+th:''}`;
         return it.url
-          ? `<a class="up-line" href="${it.url}" target="_blank" rel="noopener"><i>${it.shelf}</i><span>${body} ↗</span></a>`
-          : `<span class="up-line"><i>${it.shelf}</i><span>${body}</span></span>`;
+          ? `<a class="up-line" href="${it.url}" target="_blank" rel="noopener"><i>${tagFor(it)}</i><span>${body} ↗</span></a>`
+          : `<span class="up-line"><i>${tagFor(it)}</i><span>${body}</span></span>`;
       }).join('')}
     </div>`;
   el.innerHTML=`
