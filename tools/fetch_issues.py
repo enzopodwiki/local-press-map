@@ -188,6 +188,34 @@ def clean_theme(theme, title):
     return t.strip()
 
 
+# 价格（NT$200 / ¥1,500 / 1,200円…）不属于「主题」，一律剔除
+PRICE_RE = re.compile(
+    r'(?:NT\s?\$|HK\$|US\$|S\$|RM|¥|￥|€)\s?[\d,]+(?:\.\d+)?|\d{1,3}(?:,\d{3})+円|\d+\s?円',
+    re.I)
+# 主题里不允许出现的表述（创刊/上市/发售等事件词、购买引导）：整个条目视为无效
+THEME_FORBIDDEN_RE = re.compile(
+    r'^(?:創刊|创刊|復刊|复刊|新刊上市|上市|発売|发售|好評発売中|最新刊のご購入|ご購入はこちら)[!！。.\s]*$')
+
+
+def clean_display_theme(theme, title):
+    """页面展示用的主题：去重复刊名、去价格；无效主题返回空串。"""
+    nm = title.replace('《', '').replace('》', '')
+    nmc = re.sub(r'\s+', '', nm).lower()
+    t = clean_theme(theme, title)
+    t = PRICE_RE.sub(' ', t)
+
+    # 剥离引用刊名自身的书名号段（如 雑誌『DEEPTOKYOmagazine 』創刊！）
+    def drop_self(m):
+        inner = re.sub(r'\s+', '', m.group(1) or m.group(2) or '')
+        return ' ' if nmc and nmc in inner.lower() else m.group(0)
+    t = re.sub(r'[『「《]([^』」》]{0,40})[』」》]', drop_self, t)
+    t = re.sub(r'^(?:雑誌|杂志)\s*', '', t.strip())
+    t = re.sub(r'\s+', ' ', t).strip(' 　·：:－-~〜')
+    if not t or THEME_FORBIDDEN_RE.fullmatch(t):
+        return ''
+    return t
+
+
 def issue_rank(issue):
     """期数排序权重：纯数字比大小，N年N月号折算为序，无期数为 -1。"""
     if not issue:
@@ -246,15 +274,21 @@ def main():
             fresh_all.extend((p, c, cand) for cand in candidates
                              if ((cand['issue'] or '?'), cand['url'].split('#')[0].rstrip('/')) not in seen)
 
-    # 抓取原则：每刊只取最新一期（期数最大者；全部无期数时取第一条）
+    # 抓取原则：每刊只取最新一期（期数最大者）。条目须能解析出期数、且清洗后
+    # 有实质主题（价格/创刊上市等事件词/购买引导一律不得出现），否则整条舍弃。
     grouped = {}
     for p, c, cand in fresh_all:
+        if issue_rank(cand['issue']) < 0:
+            continue
         grouped.setdefault(p['t'], (p, []))[1].append((c, cand))
     new_items = []
     for t, (p, cands) in grouped.items():
         best_c, best = max(cands, key=lambda x: issue_rank(x[1]['issue']))
+        theme = clean_display_theme(best.get('theme', ''), t)
+        if not theme:
+            continue
         item = {'issue': best['issue'], 'title': best['title'], 'url': best['url'],
-                'theme': clean_theme(best.get('theme', ''), t),
+                'theme': theme,
                 'foundAt': datetime.now(TZ_CN).strftime('%F'),
                 'channel': best_c['url']}
         new_items.append((p, item))
