@@ -245,7 +245,8 @@
      "url": "http://www.fjhomeland.cn",
      "adapter": "official",
      "status": 403,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "official"
     },
     {
      "name": "微博 @HOMELAND家园",
@@ -296,7 +297,8 @@
      "url": "https://www.sohu.com/a/449308848_699297",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -365,7 +367,8 @@
      "url": "https://www.thepaper.cn/newsDetail_forward_2927808",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -393,7 +396,8 @@
      "url": "https://www.xiaoyuzhoufm.com/episode/645388537d934b8505944b20",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -426,14 +430,16 @@
      "url": "https://book.douban.com/subject/24698875/",
      "adapter": "platform",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     },
     {
      "name": "豆瓣读书",
      "url": "https://book.douban.com/subject/24698875/",
      "adapter": "platform",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -453,7 +459,8 @@
      "url": "https://book.douban.com/series/32685",
      "adapter": "platform",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -481,7 +488,8 @@
      "url": "https://citymagazine.hk",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -496,7 +504,8 @@
      "url": "https://cache.org.hk",
      "adapter": "official",
      "status": 406,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "official"
     },
     {
      "name": "Facebook @長春社文化古蹟資源中心",
@@ -522,7 +531,8 @@
      "adapter": "official",
      "status": 200,
      "feed": "https://www.yha.org.hk/feed/",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -538,14 +548,16 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://beinghongkong.com/rss",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "就係香港网店",
      "url": "https://shop.beinghongkong.com",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "Instagram @beinghongkong",
@@ -566,14 +578,16 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://islanders.space/rss",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "明周文化《坪洲地圖雜誌出刊》",
      "url": "https://www.mpweekly.com/culture/%e8%a8%ad%e8%a8%88/islanders-%e5%9f%8e%e5%b8%82%e7%a0%94%e7%a9%b6-%e5%85%ac%e5%85%b1%e7%a9%ba%e9%96%93-148036",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -588,14 +602,16 @@
      "url": "https://www.library.gov.mo/zh-hant/aboutus/library-publications/periodical",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "澳门人出版社",
      "url": "https://osmacanese.com/index.php/magazine/magazine-chengyushu/",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -610,15 +626,16 @@
      "url": "https://www.agriharvest.tw/archives/category/agri-monthly/magazines/",
      "adapter": "official",
      "status": 429,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "official"
     },
     {
      "name": "Readmoo图书页",
      "url": "https://readmoo.com/mag/187",
      "adapter": "rss",
      "status": 200,
-     "feed": "https://readmoo.com/rss",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -633,7 +650,8 @@
      "url": "https://www.taiwan-panorama.com/en/Home/About",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -648,14 +666,16 @@
      "url": "https://fountain.org.tw/magazine/rebirth",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "中央社《「新活水」復刊邁50期》",
      "url": "https://www.cna.com.tw/news/acul/202511200397.aspx",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -671,7 +691,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://tienfa.tw/feed/",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "Facebook @靛花 tien faˊ",
@@ -696,8 +717,8 @@
      "url": "https://www.openbook.org.tw/article/p-69352",
      "adapter": "rss",
      "status": 200,
-     "feed": "https://www.openbook.org.tw/rss.xml",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -712,14 +733,16 @@
      "url": "https://www.newsmarket.com.tw/blog/205023/",
      "adapter": "official",
      "status": 403,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "secondhand"
     },
     {
      "name": "博客来图书页",
      "url": "https://www.books.com.tw/products/0010957788",
      "adapter": "platform",
      "status": 403,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "secondhand"
     }
    ]
   },
@@ -734,7 +757,8 @@
      "url": "https://www.travel.taipei/zh-tw/pictorial",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -749,7 +773,8 @@
      "url": "https://www.citilens.cc/nest16-welovejudong",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -765,14 +790,16 @@
      "adapter": "official",
      "status": 0,
      "note": "不可达（探测失败，需复核是下线还是网络原因）",
-     "usable": "unverified"
+     "usable": "unverified",
+     "grade": "official"
     },
     {
      "name": "嘖嘖募资页",
      "url": "https://www.zeczec.com/projects/tkufieldstudio",
      "adapter": "platform",
      "status": 403,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "official"
     }
    ]
   },
@@ -787,7 +814,8 @@
      "url": "https://shop.citilens.cc/categories/magazine",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -802,7 +830,8 @@
      "url": "https://www.merit-times.com.tw/NewsPage.aspx?unid=578879",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -817,7 +846,8 @@
      "url": "https://medium.com/p/e99ff6b0adca",
      "adapter": "rss",
      "status": 403,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "secondhand"
     }
    ]
   },
@@ -833,14 +863,16 @@
      "adapter": "official",
      "status": 0,
      "note": "不可达（探测失败，需复核是下线还是网络原因）",
-     "usable": "unverified"
+     "usable": "unverified",
+     "grade": "secondhand"
     },
     {
      "name": "见域 Citilens 官网",
      "url": "https://www.citilens.cc/topic_list_sub/83",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -855,7 +887,8 @@
      "url": "https://www.citilens.cc/topic_list_sub/98",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -870,7 +903,8 @@
      "url": "https://www.behance.net/gallery/178832029/Smaaaaahan",
      "adapter": "official",
      "status": 403,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "official"
     },
     {
      "name": "Facebook @见域",
@@ -891,7 +925,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://fhccr.org.tw/feed",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -907,14 +942,16 @@
      "adapter": "official",
      "status": 0,
      "note": "不可达（探测失败，需复核是下线还是网络原因）",
-     "usable": "unverified"
+     "usable": "unverified",
+     "grade": "official"
     },
     {
      "name": "wow!La Vie《台灣公部門刊物美學》",
      "url": "https://www.wowlavie.com/article/ae1902452",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -929,7 +966,8 @@
      "url": "https://www.kaofarmers.tw/",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -944,7 +982,8 @@
      "url": "https://www.wowlavie.com/article/ae1902452",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -959,14 +998,16 @@
      "url": "https://www.wowlavie.com/article/ae1902452",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     },
     {
      "name": "Shopping Design《屏東縣刊改版》",
      "url": "https://www.shoppingdesign.com.tw/post/view/4970",
      "adapter": "official",
      "status": 302,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -982,14 +1023,16 @@
      "adapter": "official",
      "status": 0,
      "note": "不可达（探测失败，需复核是下线还是网络原因）",
-     "usable": "unverified"
+     "usable": "unverified",
+     "grade": "official"
     },
     {
      "name": "嘖嘖募资页",
      "url": "https://www.zeczec.com/projects/divinationstudio2026",
      "adapter": "platform",
      "status": 403,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "official"
     }
    ]
   },
@@ -1005,14 +1048,16 @@
      "adapter": "platform",
      "status": 0,
      "note": "不可达（探测失败，需复核是下线还是网络原因）",
-     "usable": "unverified"
+     "usable": "unverified",
+     "grade": "official"
     },
     {
      "name": "issuu（第010輯）",
      "url": "https://issuu.com/idit007/docs/_010-_",
      "adapter": "platform",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1032,7 +1077,8 @@
      "url": "https://www.books.com.tw/products/R030094584",
      "adapter": "platform",
      "status": 403,
-     "usable": "blocked_probe"
+     "usable": "blocked_probe",
+     "grade": "secondhand"
     }
    ]
   },
@@ -1060,7 +1106,8 @@
      "url": "https://www.gekkan-kyoto.net/",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1076,14 +1123,16 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://papersky.jp/feed/",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "magCulture《Lucas B.B, Papersky》",
      "url": "https://magculture.com/blogs/journal/lucas-b-b-papersky",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -1099,7 +1148,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://www.d-department.com/rss.xml",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1115,7 +1165,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://ritokei.com/feed",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1131,7 +1182,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://turns.jp/feed",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1146,7 +1198,8 @@
      "url": "https://qdymag.com/",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "Facebook @qdymag",
@@ -1166,7 +1219,8 @@
      "url": "https://tohokutaberu.me/",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1181,14 +1235,16 @@
      "url": "https://books-onsen.com/",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "《進擊的日本地方刊物》",
      "url": "https://book.douban.com/subject/30282518/",
      "adapter": "platform",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "secondhand"
     }
    ]
   },
@@ -1204,7 +1260,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://deeptokyo.jp/feed/",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "Facebook @DEEPTOKYOmagazine",
@@ -1224,7 +1281,8 @@
      "url": "https://thenewjapan.com/en",
      "adapter": "official",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1240,7 +1298,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://www.penangmonthly.com/rss",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1260,7 +1319,8 @@
      "url": "https://issuu.com/cityeye",
      "adapter": "platform",
      "status": 200,
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1276,7 +1336,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://mynahmag.com/rss",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     },
     {
      "name": "Facebook @mynahmag",
@@ -1302,7 +1363,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://www.muarrivertimes.com/feed",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   },
@@ -1318,7 +1380,8 @@
      "adapter": "rss",
      "status": 200,
      "feed": "https://www.chiangmaicitylife.com/feed/",
-     "usable": "ok"
+     "usable": "ok",
+     "grade": "official"
     }
    ]
   }

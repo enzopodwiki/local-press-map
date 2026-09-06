@@ -188,6 +188,16 @@ def clean_theme(theme, title):
     return t.strip()
 
 
+def issue_rank(issue):
+    """期数排序权重：纯数字比大小，N年N月号折算为序，无期数为 -1。"""
+    if not issue:
+        return -1
+    m = re.fullmatch(r'(\d{4})年(\d{1,2})月号', issue)
+    if m:
+        return int(m.group(1)) * 12 + int(m.group(2))
+    return int(issue) if re.fullmatch(r'\d{1,4}', issue) else -1
+
+
 def item_key(item):
     base = item['url'].split('#')[0].rstrip('/')
     return (item['issue'] or '?') + '|' + base
@@ -205,7 +215,8 @@ def main():
     hist = history.setdefault('history', {})
     batches = history.setdefault('batches', [])  # [{'d': 'YYYY-MM-DD', 'items': [...]}]，最新在前
 
-    jobs = []  # (pub, channel)
+    jobs = []            # 可自动抓取的 (pub, channel)：仅官方通道
+    pending_confirm = []  # 二手信源：不自动采信，报告里列出让人类确认
     for p in sources['pubs']:
         if p['method'] not in ('rss', 'official', 'platform'):
             continue
@@ -214,9 +225,12 @@ def main():
         for c in p['channels']:
             if c.get('usable') == 'dead' or c.get('adapter') not in ('rss', 'official', 'platform'):
                 continue
+            if c.get('grade') == 'secondhand':
+                pending_confirm.append((p, c))   # 抓取原则：二手信源必须经人工确认
+                continue
             jobs.append((p, c))
 
-    warnings, new_items = [], []
+    warnings, fresh_all = [], []  # fresh_all: (pub, channel, candidate)，去重后的新候选
     with concurrent.futures.ThreadPoolExecutor(max_workers=FETCH_WORKERS) as ex:
         futs = {ex.submit(extract_from_channel, c, p): (p, c) for p, c in jobs}
         for f in concurrent.futures.as_completed(futs):
@@ -229,14 +243,21 @@ def main():
                 continue
             seen = {(r.get('issue') or '?', r['url'].split('#')[0].rstrip('/'))
                     for r in hist.get(p['t'], [])}
-            fresh = [cand for cand in candidates
-                     if ((cand['issue'] or '?'), cand['url'].split('#')[0].rstrip('/')) not in seen]
-            for cand in fresh:
-                item = {'issue': cand['issue'], 'title': cand['title'], 'url': cand['url'],
-                        'theme': clean_theme(cand.get('theme', ''), p['t']),
-                        'foundAt': datetime.now(TZ_CN).strftime('%F'),
-                        'channel': c['url']}
-                new_items.append((p, item))
+            fresh_all.extend((p, c, cand) for cand in candidates
+                             if ((cand['issue'] or '?'), cand['url'].split('#')[0].rstrip('/')) not in seen)
+
+    # 抓取原则：每刊只取最新一期（期数最大者；全部无期数时取第一条）
+    grouped = {}
+    for p, c, cand in fresh_all:
+        grouped.setdefault(p['t'], (p, []))[1].append((c, cand))
+    new_items = []
+    for t, (p, cands) in grouped.items():
+        best_c, best = max(cands, key=lambda x: issue_rank(x[1]['issue']))
+        item = {'issue': best['issue'], 'title': best['title'], 'url': best['url'],
+                'theme': clean_theme(best.get('theme', ''), t),
+                'foundAt': datetime.now(TZ_CN).strftime('%F'),
+                'channel': best_c['url']}
+        new_items.append((p, item))
 
     if new_items:
         for p, item in new_items:
@@ -267,6 +288,11 @@ def main():
             lines.append(f'  [{item["url"]}]({item["url"]})')
     else:
         lines.append('本轮没有发现新的刊物公告。')
+    if pending_confirm:
+        lines += ['', '### 二手信源 · 待人工确认', '',
+                  '以下通道为二手信源（媒体报道/书店页等），按原则不自动采信，确认后请手动登记：', '']
+        lines += [f'- {p["t"]}（{p["shelf"]}）· {c["name"]}：{c["url"]}'
+                  for p, c in pending_confirm]
     if warnings:
         lines += ['', '### 警告', '']
         lines += [f'- {w}' for w in warnings[:30]]
