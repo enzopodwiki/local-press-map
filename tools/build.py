@@ -19,8 +19,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 MD_PATH = ROOT / 'data' / '在地刊物地图.md'
 REGIONS_PATH = ROOT / 'data' / 'regions.json'
+FRESH_PATH = ROOT / 'data' / 'new_issues.json'
 TEMPLATE_PATH = ROOT / 'template.html'
 OUTPUT_PATH = ROOT / 'index.html'
+FRESH_BATCHES = 6  # 页面「新刊速递」模块展示的最近批次数
 
 
 def parse_md(path):
@@ -131,13 +133,19 @@ def assemble_data():
 
 
 def render(data):
-    """注入模板：DATA、总数、各 pin 的数量。"""
+    """注入模板：DATA、总数、各 pin 的数量、新刊速递批次。"""
     html = TEMPLATE_PATH.read_text(encoding='utf-8')
     total = sum(len(r['pubs']) for r in data)
     html = html.replace('const DATA = __DATA__;',
                         'const DATA = ' + json.dumps(data, ensure_ascii=False, indent=1) + ';')
     if '__TOTAL__' in html:  # 页面保留「地图总录」徽章时回填总数
         html = html.replace('<b id="stat-total">__TOTAL__</b>', f'<b id="stat-total">{total}</b>')
+    if '__FRESH__' in html:  # 新刊速递：最近几个抓取批次（new_issues.json 的 batches）
+        batches = []
+        if FRESH_PATH.exists():
+            batches = json.loads(FRESH_PATH.read_text(encoding='utf-8')).get('batches', [])
+        html = html.replace('const FRESH_ISSUES = __FRESH__;',
+                            'const FRESH_ISSUES = ' + json.dumps(batches[:FRESH_BATCHES], ensure_ascii=False, indent=1) + ';')
     for rg in data:
         pat = re.compile(r'(<g class="pin" data-r="' + re.escape(rg['id']) +
                          r'"[^>]*>.*?<text class="pcount" y="3\.5">)\d+(</text>)', re.S)

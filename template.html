@@ -82,9 +82,11 @@
   .chip{border:2px solid var(--ink);padding:5px 12px;font-weight:700;background:var(--paper);box-shadow:3px 3px 0 rgba(38,34,28,.14)}
   .chip.alt{background:var(--ink);color:var(--paper)}
   .credit{display:inline-flex;align-items:center;gap:5px;margin-top:14px;opacity:.85;font-size:13px;border-radius:10px}
-  /* ===== 工具行：左搜索框 + 右「收录上新」并排；两个面板都在文档流内撑开，只推不盖 ===== */
+  /* ===== 工具行：左搜索框 + 居中的「收录上新/新刊速递」胶带组；面板都在文档流内撑开，只推不盖 ===== */
   .toolbar{max-width:1180px;margin:14px auto 0;padding:0 24px;display:flex;align-items:flex-start;gap:24px}
-  .tape-wrap{position:relative;z-index:30;flex:0 0 auto;margin-top:2px;margin-left:auto}
+  .tape-wrap{position:relative;z-index:30;flex:0 0 auto;margin-top:2px;margin-left:auto;margin-right:auto;
+    display:flex;align-items:flex-start;gap:18px}
+  .tape-strip{display:flex;flex-direction:column;align-items:flex-start}
   .search-wrap{position:relative;z-index:30;flex:0 0 auto;
     display:flex;flex-direction:column;align-items:flex-end;pointer-events:none}
   .search-box{position:relative;width:400px;pointer-events:auto}
@@ -122,12 +124,13 @@
   .tape-band--fresh{background:linear-gradient(180deg,#3FA47A,#0E8A5F 45%,#0A6B49)}
   .tape-band--fresh b{color:#0E8A5F}
   .tape-panel{position:static;margin-top:10px;width:340px;border:2.5px solid var(--ink);background:var(--paper);box-shadow:6px 6px 0 rgba(38,34,28,.18);padding:12px 16px;max-height:min(430px,62vh);overflow:auto}
-  .up-head{font-size:13px;font-weight:700;letter-spacing:.02em}
-  .up-head b{font-size:14px;font-weight:900}
   .up-n{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 5px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:900}
   .up-line{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;font-size:12.5px;font-weight:600;padding:4px 2px 4px 12px;margin-top:2px;border-bottom:1.5px dashed rgba(38,34,28,.28);transition:color .12s,background .12s}
   .up-line i{font-style:normal;color:var(--red);font-weight:900;letter-spacing:.08em;flex:0 0 auto}
   .up-line:hover{color:var(--red);background:rgba(217,74,43,.06)}
+  /* 新刊速递面板：绿色语义 */
+  #fresh-strip .up-line i{color:#0E8A5F}
+  #fresh-strip .up-line:hover{color:#0E8A5F;background:rgba(14,138,95,.07)}
   .up-batch + .up-batch{margin-top:10px;border-top:2px solid rgba(38,34,28,.15);padding-top:8px}
   .credit a{color:var(--red);font-weight:900;text-decoration:underline;text-underline-offset:3px}
   /* ---------- 页签 ---------- */
@@ -345,7 +348,7 @@
     .masthead{font-size:38px}
     .chip{font-size:10.5px;padding:4px 8px}
     .toolbar{padding:0 14px;flex-direction:column;align-items:stretch;gap:10px}
-    .tape-wrap{margin-left:0}
+    .tape-wrap{margin-left:0;margin-right:0;flex-wrap:wrap;gap:10px}
     .search-box,.search-panel{width:100%}
     .search-box kbd{display:none}
     #search-input{padding:11px 14px;font-size:16px}   /* ≥16px 防 iOS 聚焦自动放大 */
@@ -421,7 +424,10 @@
     </div>
     <div class="search-panel" id="search-panel" role="listbox" aria-label="搜索结果" hidden></div>
   </div>
-  <div class="tape-wrap" id="update-strip" aria-label="收录上新"></div>
+  <div class="tape-wrap">
+    <div class="tape-strip" id="update-strip" aria-label="收录上新"></div>
+    <div class="tape-strip" id="fresh-strip" aria-label="新刊速递"></div>
+  </div>
 </div>
 
 <nav class="tabs" id="tabs"></nav>
@@ -876,12 +882,11 @@ function renderUpdates(){
   const short=first.d.replace(/ 年 /g,'.').replace(/ 月 /g,'.').replace(/ 日$/,'');
   const batch=b=>`
     <div class="up-batch">
-      <div class="up-head"><b>${b.d}</b> 更新了 <span class="up-n">${b.items.length}</span> 种刊物</div>
       ${b.items.map(it=>`<button class="up-line" data-r="${it[0]}" data-t="${it[2]}"><i>${it[1]}</i>${it[2]}</button>`).join('')}
     </div>`;
   el.innerHTML=`
     <button class="tape" id="tape-btn" aria-expanded="false">
-      <span class="tape-band">收录上新 · ${short} 更新 <b>${first.items.length}</b> 种 ▾</span>
+      <span class="tape-band">收录上新 · ${short} 更新 <b>${first.items.length}</b> 种刊物 ▾</span>
     </button>
     <div class="tape-panel" hidden>${UPDATES.map(batch).join('')}</div>`;
   const btn=el.querySelector('#tape-btn'), panel=el.querySelector('.tape-panel');
@@ -896,6 +901,40 @@ function renderUpdates(){
   }));
 }
 renderUpdates();
+
+/* ================= 新刊速递（双周自动抓取的新刊公告，绿色胶带） ================= */
+const FRESH_ISSUES = __FRESH__;
+function renderFresh(){
+  const el=document.getElementById('fresh-strip');
+  if(!FRESH_ISSUES.length){el.style.display='none';return;}
+  const first=FRESH_ISSUES[0];
+  const short=first.d.split('-').map((s,i)=>i===0?s:String(+s)).join('.');
+  const line=it=>{
+    const tag=it.issue?`第${it.issue}期`:'新公告';
+    const body=it.theme?`${it.t.replace(/[《》]/g,'')} · ${it.theme}`:it.t;
+    return {tag, body, t:it.t};
+  };
+  const batch=b=>`
+    <div class="up-batch">
+      ${b.items.map(it=>{const l=line(it);return `<button class="up-line" data-t="${l.t}"><i>${l.tag}</i><span>${l.body}</span></button>`;}).join('')}
+    </div>`;
+  el.innerHTML=`
+    <button class="tape" id="fresh-btn" aria-expanded="false">
+      <span class="tape-band tape-band--fresh">新刊速递 · ${short} 发布 <b>${first.items.length}</b> 种新刊 ▾</span>
+    </button>
+    <div class="tape-panel" hidden>${FRESH_ISSUES.map(batch).join('')}</div>`;
+  const btn=el.querySelector('#fresh-btn'), panel=el.querySelector('.tape-panel');
+  btn.addEventListener('click',()=>{panel.hidden=!panel.hidden;btn.setAttribute('aria-expanded',String(!panel.hidden));});
+  el.querySelectorAll('.up-line').forEach(b=>b.addEventListener('click',()=>{
+    const g=DATA.find(d=>d.pubs.some(p=>p.t===b.dataset.t));
+    if(!g) return;
+    panel.hidden=true;
+    switchMap(g.map, document.querySelector(`.tab[data-map="${g.map}"]`));
+    const idx=g.pubs.findIndex(p=>p.t===b.dataset.t);
+    openRegion(g.id, idx<0?0:idx);   // 深链到出新刊的那本
+  }));
+}
+renderFresh();
 
 /* ================= 统计 ================= */
 const totalPubs = DATA.reduce((n,d)=>n+d.pubs.length,0);

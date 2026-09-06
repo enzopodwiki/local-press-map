@@ -192,8 +192,9 @@ def main():
 
     sources = json.loads(SOURCES_PATH.read_text(encoding='utf-8'))
     history = json.loads(HISTORY_PATH.read_text(encoding='utf-8')) if HISTORY_PATH.exists() \
-        else {'version': 1, 'history': {}}
+        else {'version': 1, 'history': {}, 'batches': []}
     hist = history.setdefault('history', {})
+    batches = history.setdefault('batches', [])  # [{'d': 'YYYY-MM-DD', 'items': [...]}]，最新在前
 
     jobs = []  # (pub, channel)
     for p in sources['pubs']:
@@ -230,6 +231,15 @@ def main():
     if new_items:
         for p, item in new_items:
             hist.setdefault(p['t'], []).append(item)
+        # 同一天的多条发现归入同一批次；批次列表最新在前，供页面「新刊速递」模块使用
+        d = datetime.now(TZ_CN).strftime('%F')
+        batch = next((b for b in batches if b['d'] == d), None)
+        if batch is None:
+            batch = {'d': d, 'items': []}
+            batches.insert(0, batch)
+        for p, item in new_items:
+            batch['items'].append({'t': p['t'], 'issue': item['issue'], 'theme': item['theme'],
+                                   'title': item['title'], 'url': item['url']})
         history['lastRun'] = datetime.now(TZ_CN).strftime('%F %R %z')
         HISTORY_PATH.write_text(json.dumps(history, ensure_ascii=False, indent=1) + '\n',
                                 encoding='utf-8')
