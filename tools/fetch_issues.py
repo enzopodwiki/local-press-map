@@ -21,6 +21,7 @@ import re
 import ssl
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -43,10 +44,10 @@ CTX = ssl.create_default_context()
 CTX.check_hostname = False
 CTX.verify_mode = ssl.CERT_NONE
 
-# 期数模式：按优先级排列，先命中先得
+# 期数模式：按优先级排列，先命中先得（Vol 不设词边界：中文后跟 vol40 同样可解析）
 ISSUE_PATTERNS = [
     (re.compile(r'第\s*([0-9０-９]{1,4})\s*[期輯辑号]'), 'issue'),
-    (re.compile(r'\b[Vv]ol\.?\s*([0-9]{1,4})\b'), 'vol'),
+    (re.compile(r'[Vv]ol\.?\s*([0-9]{1,4})'), 'vol'),
     (re.compile(r'\b[Ii]ssue\s*([0-9]{1,4})\b'), 'issue'),
     (re.compile(r'\b[Nn]o\.?\s*([0-9]{1,4})\b'), 'no'),
     (re.compile(r'([0-9]{4})\s*年\s*([0-9]{1,2})\s*月号'), 'ym'),
@@ -126,17 +127,39 @@ def parse_feed(xml_text):
 
 ANCHOR_RE = re.compile(r'<a[^>]+href="([^"#]+)"[^>]*>(.*?)</a>', re.S | re.I)
 TAG_RE = re.compile(r'<[^>]+>')
+# 商店/CMS 常把商品路径直接写进 HTML（含 JS 数据），期数与主题就编码在路径里
+SLUG_RE = re.compile(r'(?:products|articles|posts|magazine)/[^\s"\'<>\\]{4,90}')
+TITLE_RE = re.compile(r'<title[^>]*>(.*?)</title>', re.S | re.I)
+OGTITLE_RE = re.compile(r'property="og:title" content="([^"]*)"', re.I)
 
 
-def scan_html(page_url, data):
-    """从 HTML 里提取疑似新刊公告的链接：锚文本含期数或关键词。
-    只保留本站链接与微信文章（过滤掉页脚电商、友站等噪音）。"""
+def page_headline(page_url, data):
+    """取页面 <title> / og:title 作为候选标题。"""
+    text = decode(data)
+    m = OGTITLE_RE.search(text) or TITLE_RE.search(text)
+    if not m:
+        return None
+    title = html.unescape(re.sub(r'\s+', ' ', TAG_RE.sub(' ', m.group(1)))).strip()
+    return title or None
+
+
+def scan_html(page_url, data, pub_title=None):
+    """从官网页面提取新刊候选：
+    1) 锚文本含期数/公告词的链接；
+    2) 内嵌商品路径（URL 解码后常为 貢丸湯vol40〈經典客家味〉-1 这类）；
+    3) 若以上仍无「可解析期数」的候选，跟进站内候选页标题深挖一层。"""
     text = decode(data)
     host = urlparse(page_url).netloc.lower()
-    out = []
+    out, seen_urls = [], set()
+
+    def push(cand):
+        if cand['url'] in seen_urls:
+            return
+        seen_urls.add(cand['url'])
+        out.append(cand)
+
     for href, inner in ANCHOR_RE.findall(text)[:3000]:
-        anchor = TAG_RE.sub(' ', inner)
-        anchor = html.unescape(re.sub(r'\s+', ' ', anchor)).strip()
+        anchor = html.unescape(re.sub(r'\s+', ' ', TAG_RE.sub(' ', inner))).strip()
         if not anchor or len(anchor) > 120:
             continue
         hay = anchor.lower()
@@ -144,12 +167,40 @@ def scan_html(page_url, data):
             continue
         issue, theme = parse_issue(anchor)
         if issue is None and not ANNOUNCE_RE.search(anchor):
-            continue  # 无期数也非明确发布公告的链接不要
+            continue
         target = urljoin(page_url, href)
         t_host = urlparse(target).netloc.lower()
         if t_host != host and 'weixin.qq.com' not in t_host and 'mp.weixin' not in t_host:
             continue
-        out.append({'title': anchor, 'issue': issue, 'theme': theme, 'url': target})
+        push({'title': anchor, 'issue': issue, 'theme': theme, 'url': target})
+
+    # 内嵌路径扫描：不依赖锚文本，直接从 HTML 原文里解码商品/文章路径
+    for m in SLUG_RE.finditer(text):
+        raw = m.group(0)
+        slug = urllib.parse.unquote(raw.split('?')[0])
+        issue, theme = parse_issue(slug)
+        if issue is None:
+            continue
+        url = urljoin(page_url, raw.split('?')[0])
+        push({'title': slug, 'issue': issue, 'theme': theme, 'url': url})
+
+    # 深挖：落地页没有可解析期数的候选时，跟进站内候选链接，用目标页标题再提取
+    if pub_title and not any(c['issue'] for c in out):
+        follow = [c['url'] for c in out
+                  if urlparse(c['url']).netloc == host][:3]
+        if not follow:  # 锚点扫描颗粒太粗时，退而抓取页面里任意同域详情链接
+            follow = [urljoin(page_url, h) for h in re.findall(r'href="(/[^"#?]+)"', text)[:6]
+                      if re.search(r'\d|magazine|product|post|article', h)][:3]
+        for u in follow:
+            _, st, d2 = fetch(u)
+            if not st or st >= 400:
+                continue
+            headline = page_headline(u, d2)
+            if not headline:
+                continue
+            issue, theme = parse_issue(headline)
+            if issue is not None or ANNOUNCE_RE.search(headline):
+                push({'title': headline, 'issue': issue, 'theme': theme, 'url': u})
     return out
 
 
@@ -176,7 +227,7 @@ def extract_from_channel(channel, pub):
                 continue
             candidates.append({'issue': issue, 'theme': theme, 'title': title, 'url': link or final})
         return candidates[:MAX_ITEMS_PER_CHANNEL], []
-    return scan_html(final, data)[:MAX_ITEMS_PER_CHANNEL], []
+    return scan_html(final, data, pub_title=pub['t']), []
 
 
 def clean_theme(theme, title):
@@ -197,11 +248,33 @@ THEME_FORBIDDEN_RE = re.compile(
     r'^(?:創刊|创刊|復刊|复刊|新刊上市|上市|発売|发售|好評発売中|最新刊のご購入|ご購入はこちら)[!！。.\s]*$')
 
 
+# 标题边缘的促销话术（新刊發售／熱賣中／装饰符号…）：反复剥离
+PROMO_EDGE = ('新刊發售', '新刊上市', '新刊発売', '好評発売中', '熱賣中', '热卖中', '発売中',
+              '最新刊', '新刊', '発売', '發售', '发售', '上市', '創刊', '创刊', '復刊', '复刊',
+              '✨', '🔥', '🎉', '📢', '＼', '／', '/', '|')
+
+
+def strip_promo_edges(t):
+    pad = ' 　＼／/|'
+    for _ in range(6):
+        before = t
+        t = t.strip(pad)
+        for tok in PROMO_EDGE:
+            if t.startswith(tok):
+                t = t[len(tok):].strip(pad)
+            if t.endswith(tok):
+                t = t[:len(t) - len(tok)].strip(pad)
+        if t == before:
+            break
+    return t
+
+
 def clean_display_theme(theme, title):
-    """页面展示用的主题：去重复刊名、去价格；无效主题返回空串。"""
+    """页面展示用的主题：去重复刊名、去联名企划标注、去价格与促销话术；无效返回空串。"""
     nm = title.replace('《', '').replace('》', '')
     nmc = re.sub(r'\s+', '', nm).lower()
     t = clean_theme(theme, title)
+    t = re.sub(r'【[^】]*】', ' ', t)          # 【X 和 X 特别企划】类联名标注不属于主题
     t = PRICE_RE.sub(' ', t)
 
     # 剥离引用刊名自身的书名号段（如 雑誌『DEEPTOKYOmagazine 』創刊！）
@@ -211,6 +284,13 @@ def clean_display_theme(theme, title):
     t = re.sub(r'[『「《]([^』」》]{0,40})[』」》]', drop_self, t)
     t = re.sub(r'^(?:雑誌|杂志)\s*', '', t.strip())
     t = re.sub(r'\s+', ' ', t).strip(' 　·：:－-~〜')
+    t = strip_promo_edges(t)
+    t = re.sub(r'\s+', ' ', t).strip(' 　·：:－-~〜')
+    if nmc and t.startswith(nm):               # 促销词剥掉后才露出的重复刊名
+        t = t[len(nm):].lstrip('》〉」』 　·：:－-')
+        t = strip_promo_edges(t)
+    t = re.sub(r'[-－_]\d{1,3}$', '', t)       # 商品路径尾部编号（…〈經典客家味〉-1）
+    t = re.sub(r'\s+', ' ', t).strip(' 　·：:－-~～!！')
     if not t or THEME_FORBIDDEN_RE.fullmatch(t):
         return ''
     return t
@@ -274,18 +354,21 @@ def main():
             fresh_all.extend((p, c, cand) for cand in candidates
                              if ((cand['issue'] or '?'), cand['url'].split('#')[0].rstrip('/')) not in seen)
 
-    # 抓取原则：每刊只取最新一期（期数最大者）。条目须能解析出期数、且清洗后
-    # 有实质主题（价格/创刊上市等事件词/购买引导一律不得出现），否则整条舍弃。
+    # 抓取原则：每刊只取最新一期。期数与主题至少要有一个——都解析不出（或主题
+    # 属于价格/创刊/上市/购买引导等无效表述）的条目整条舍弃；有期数无主题则只展示期数。
+    PUB_EVENT_RE = re.compile(r'新刊|出刊|創刊|创刊|復刊|复刊')
     grouped = {}
     for p, c, cand in fresh_all:
-        if issue_rank(cand['issue']) < 0:
+        has_issue = issue_rank(cand['issue']) >= 0
+        has_event = bool(PUB_EVENT_RE.search(cand['title']))
+        if not (has_issue or has_event):
             continue
-        grouped.setdefault(p['t'], (p, []))[1].append((c, cand))
+        grouped.setdefault(p['t'], (p, []))[1].append((c, cand, has_issue))
     new_items = []
     for t, (p, cands) in grouped.items():
-        best_c, best = max(cands, key=lambda x: issue_rank(x[1]['issue']))
+        best_c, best, best_has_issue = max(cands, key=lambda x: issue_rank(x[1]['issue']))
         theme = clean_display_theme(best.get('theme', ''), t)
-        if not theme:
+        if not theme and not best_has_issue:
             continue
         item = {'issue': best['issue'], 'title': best['title'], 'url': best['url'],
                 'theme': theme,

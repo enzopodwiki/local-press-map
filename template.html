@@ -923,7 +923,7 @@ function renderFresh(){
       ${b.items.map(it=>{
         const issue=it.issue?` 第${it.issue}期`:'';
         let th=(it.theme||'').trim();
-        const nm=it.t.replace(/[《》]/g,'');
+        const nm=it.t.replace(/[《》]/g,'').replace(/（[^）]*）/g,'');   /* 不注明 XX 出版 */
         if(nm && th.startsWith(nm)) th=th.slice(nm.length).replace(/^[》〉」』\s　·：:－-]+/,'');
         const body=`《${nm}》${issue}${th?' · '+th:''}`;
         return it.url
