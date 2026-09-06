@@ -1,7 +1,8 @@
 name: fetch-issues
 
 # 「新刊速递」：双周抓取信源，发现新刊公告后更新 data/new_issues.json 并开草稿 PR 供人工确认。
-# GitHub Actions 没有原生双周 cron：每周一触发，脚本内用 ISO 周数奇偶（偶数周）过滤。
+# GitHub Actions 没有原生双周 cron：每周一触发，脚本内用 ISO 周数奇偶（偶数周）过滤，
+# 即 2026 年的 38、40、42… 周（首个周一 9 月 14 日），每周一北京时间 09:00 触发。
 
 on:
   schedule:
