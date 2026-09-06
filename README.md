@@ -47,6 +47,8 @@ python3 tools/build.py             # 构建并覆盖 index.html
 python3 tools/build.py --check     # 只校验 index.html 是否与数据源一致（不写文件）
 python3 tools/validate.py          # 数据体检：0 错误才允许提交
 python3 tools/fetch_issues.py      # 「新刊速递」抓取（双周，CI 自动跑；也可手动跑）
+python3 tools/fetch_wechat.py <微信文章URL> [--pub 《刊名》]  # 单篇微信文章登记（仅限本机跑）
+python3 tools/fetch_wechat.py --sogou <公众号名> [--account 账号名]  # 搜狗搜索试点（低置信补充）
 ```
 
 CI（.github/workflows/validate.yml）会在每次 push 时自动跑 `--check` 和校验；
@@ -59,7 +61,12 @@ Actions 页也可手动触发（workflow_dispatch）补跑。
 1. **每刊只取最新一期**——同一刊物同轮抓到多条公告时，只保留期数最大的一条；
 2. **官方信源第一优先**——只有 `grade: official` 的通道（刊物/出版方自己的站点、账号、
    募资页、政府出版方页）参与自动抓取；
-3. **二手信源必须经人工确认**——`grade: secondhand` 的通道（媒体报道、书店/豆瓣/电商页等）
+3. **二手信源必须经人工确认**
+4. **微信公众号只在单篇登记层覆盖**：mp.weixin 的环境异常墙拦机房 IP，故 CI 不抓微信；
+   17 种公众号刊物用 tools/fetch_wechat.py 在本机登记（住宅 IP 直过），或走搜狗搜索
+   低置信补充（限流极凶，一次运行只发一个请求，详见该脚本文档串的试点结论）
+
+（原第 3 条）二手信源必须经人工确认——`grade: secondhand` 的通道（媒体报道、书店/豆瓣/电商页等）
    不自动采信，只在抓取报告的「二手信源 · 待人工确认」段列出，确认后手动登记。
 
 ## 如何新增一本刊物
