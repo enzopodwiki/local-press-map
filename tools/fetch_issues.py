@@ -232,7 +232,7 @@ def extract_from_channel(channel, pub):
 
 def clean_theme(theme, title):
     """标题形如《貢丸湯》第30期《貢丸湯》〈…〉时，主题会残留重复刊名，清掉。"""
-    nm = title.replace('《', '').replace('》', '')
+    nm = re.sub(r'（[^）]*）', '', title.replace('《', '').replace('》', ''))
     t = (theme or '').strip()
     if nm and t.startswith(nm):
         t = t[len(nm):].lstrip('》〉」』 　·：:－-')
@@ -245,12 +245,12 @@ PRICE_RE = re.compile(
     re.I)
 # 主题里不允许出现的表述（创刊/上市/发售等事件词、购买引导）：整个条目视为无效
 THEME_FORBIDDEN_RE = re.compile(
-    r'^(?:創刊|创刊|復刊|复刊|新刊上市|上市|発売|发售|好評発売中|最新刊のご購入|ご購入はこちら)[!！。.\s]*$')
+    r'^(?:創刊|创刊|復刊|复刊|新刊上市|上市|発売|发售|好評発売中|封面公開|封面公开|最新刊のご購入|ご購入はこちら)[!！。.\s]*$')
 
 
 # 标题边缘的促销话术（新刊發售／熱賣中／装饰符号…）：反复剥离
 PROMO_EDGE = ('新刊發售', '新刊上市', '新刊発売', '好評発売中', '熱賣中', '热卖中', '発売中',
-              '最新刊', '新刊', '発売', '發售', '发售', '上市', '創刊', '创刊', '復刊', '复刊',
+              '封面公開', '封面公开', '最新刊', '新刊', '発売', '發售', '发售', '上市', '創刊', '创刊', '復刊', '复刊',
               '✨', '🔥', '🎉', '📢', '＼', '／', '/', '|')
 
 
@@ -271,7 +271,7 @@ def strip_promo_edges(t):
 
 def clean_display_theme(theme, title):
     """页面展示用的主题：去重复刊名、去联名企划标注、去价格与促销话术；无效返回空串。"""
-    nm = title.replace('《', '').replace('》', '')
+    nm = re.sub(r'（[^）]*）', '', title.replace('《', '').replace('》', ''))
     nmc = re.sub(r'\s+', '', nm).lower()
     t = clean_theme(theme, title)
     t = re.sub(r'【[^】]*】', ' ', t)          # 【X 和 X 特别企划】类联名标注不属于主题
@@ -356,17 +356,39 @@ def main():
 
     # 抓取原则：每刊只取最新一期。期数与主题至少要有一个——都解析不出（或主题
     # 属于价格/创刊/上市/购买引导等无效表述）的条目整条舍弃；有期数无主题则只展示期数。
+    # 出版公告信号（/news/ 路径、封面公開/新刊/發售 等标题词）优先于内容特集页：
+    # 官网常同时存在「特集页」（vol.NN 主题页）与「出版公告页」（第N期封面公開/发售），
+    # 刊物期数以公告页为准。
     PUB_EVENT_RE = re.compile(r'新刊|出刊|創刊|创刊|復刊|复刊')
+    ANNOUNCE_URL_RE = re.compile(r'/news/|/notice|/announcement|/press')
+    ANNOUNCE_TITLE_RE = re.compile(r'封面公開|封面公开|公開|公开|新刊|發售|发售|発売|上市|出刊')
+
+    def announce_signal(cand):
+        return bool(ANNOUNCE_URL_RE.search(urlparse(cand['url']).path)
+                    or ANNOUNCE_TITLE_RE.search(cand['title']))
+
     grouped = {}
     for p, c, cand in fresh_all:
         has_issue = issue_rank(cand['issue']) >= 0
         has_event = bool(PUB_EVENT_RE.search(cand['title']))
         if not (has_issue or has_event):
             continue
+        # 已记录过更高期数的刊物，不再接受更旧的「最新一期」
+        max_seen = max((issue_rank(r['issue']) for r in hist.get(p['t'], [])
+                        if issue_rank(r['issue']) >= 0), default=-1)
+        if has_issue and issue_rank(cand['issue']) <= max_seen:
+            continue
         grouped.setdefault(p['t'], (p, []))[1].append((c, cand, has_issue))
     new_items = []
     for t, (p, cands) in grouped.items():
-        best_c, best, best_has_issue = max(cands, key=lambda x: issue_rank(x[1]['issue']))
+        signalled = [x for x in cands if announce_signal(x[1])]
+        pool = signalled or cands
+        # 同期数并列时优先有实质主题的一条（如〈與自己散步〉优先于「封面公開」）
+        def pick_key(x):
+            rank = issue_rank(x[1]['issue'])
+            has_theme = 1 if clean_display_theme(x[1].get('theme', ''), t) else 0
+            return (rank, has_theme)
+        best_c, best, best_has_issue = max(pool, key=pick_key)
         theme = clean_display_theme(best.get('theme', ''), t)
         if not theme and not best_has_issue:
             continue
@@ -386,6 +408,8 @@ def main():
             batch = {'d': d, 'items': []}
             batches.insert(0, batch)
         for p, item in new_items:
+            # 同刊同期替换：批次里该刊物只保留最新一条（只取最新一期原则）
+            batch['items'] = [x for x in batch['items'] if x['t'] != p['t']]
             batch['items'].append({'t': p['t'], 'shelf': p['shelf'], 'issue': item['issue'],
                                    'theme': item['theme'], 'title': item['title'], 'url': item['url']})
         history['lastRun'] = datetime.now(TZ_CN).strftime('%F %R %z')
