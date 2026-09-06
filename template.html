@@ -925,7 +925,7 @@ function renderFresh(){
         let th=(it.theme||'').trim();
         const nm=it.t.replace(/[《》]/g,'').replace(/（[^）]*）/g,'');   /* 不注明 XX 出版 */
         if(nm && th.startsWith(nm)) th=th.slice(nm.length).replace(/^[》〉」』\s　·：:－-]+/,'');
-        const body=`《${nm}》${issue}${th?' · '+th:''}`;
+        const body=`《${nm}》${issue}${th ? ' ' + th : ''}`;
         return it.url
           ? `<a class="up-line" href="${it.url}" target="_blank" rel="noopener"><i>${tagFor(it)}</i><span>${body} ↗</span></a>`
           : `<span class="up-line"><i>${tagFor(it)}</i><span>${body}</span></span>`;
