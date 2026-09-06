@@ -12,11 +12,11 @@
   "by_method": [
    [
     "official",
-    27
+    28
    ],
    [
     "wechat",
-    17
+    16
    ],
    [
     "rss",
@@ -33,7 +33,39 @@
   ],
   "channels_with_feed": 16,
   "unreachable_channels": 16,
-  "note": "method 为每刊最优通道：rss>official>platform>wechat>social；wechat 表示需为该刊物定位公众号并配置桥接"
+  "note": "method 为每刊最优通道：rss>official>platform>wechat>social；wechat 表示需为该刊物定位公众号并配置桥接",
+  "audit": {
+   "date": "2026-09-06",
+   "upgraded": [
+    "《松赞Songtsam》"
+   ],
+   "spa_recorded": [
+    "《壹页郑州》"
+   ],
+   "wechat_only_confirmed": [
+    "《LAWAAI·事儿多》",
+    "《壹页郑州》",
+    "《新华录》",
+    "《Ketchup》（日文）",
+    "《古北古北》",
+    "《青山青山村》",
+    "《岛与》",
+    "《a mayzine》",
+    "《一个，人的村庄……》",
+    "《恰天光》",
+    "《芝罘历史文化》",
+    "《市南人文历史研究》",
+    "《深活集》",
+    "《阔目 Monsoon Fish》（前身《回南天》）",
+    "《西藏人文地理》",
+    "《柴米多生产生活指南》"
+   ],
+   "social_only": [
+    "《Timeout 消费导刊》",
+    "《走神》",
+    "《Salty. Dongyin Pictorial Plus+》（東引畫刊）"
+   ]
+  }
  },
  "pubs": [
   {
@@ -45,7 +77,8 @@
     {
      "name": "微博 @TimeOut北京",
      "url": "https://weibo.com/u/1700867777",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -58,12 +91,14 @@
     {
      "name": "LAVA Beijing《LAWAAI Magazines 事儿多杂志》",
      "url": "https://mp.weixin.qq.com/s/gQksCaP4POtpA5fMb12EIA",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "LAVA Beijing《SUMMER STUDIO WEEK 1》",
      "url": "https://mp.weixin.qq.com/s/fSTzKI1GpwmEi2XKywM91Q",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -76,14 +111,26 @@
     {
      "name": "DOOGHOOD《最新一期到店》",
      "url": "https://mp.weixin.qq.com/s/ncpDVXoDR3-Qx0W56i5oDw",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "野狗编辑部《继续爱郑州的2025年》",
      "url": "https://mp.weixin.qq.com/s/XSuOR0NA4ilo5UjBHgQCpw",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
+    },
+    {
+     "name": "野狗商店官网",
+     "url": "https://dooghood.com",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "spa",
+     "note": "JS 渲染站点，本管线不可解析"
     }
-   ]
+   ],
+   "audit_note": "2026-09-06 审计：官网为 SPA 不可解析，维持公众号通道"
   },
   {
    "t": "《新华录》",
@@ -94,12 +141,14 @@
     {
      "name": "大鱼营造《新华录第6号》",
      "url": "https://mp.weixin.qq.com/s/mUlOJV_WqFriDR2umLH_4w",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "大鱼营造《新华录第8号》",
      "url": "https://mp.weixin.qq.com/s/a9j4BpMvVva0aF4I_C3biA",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -112,17 +161,20 @@
     {
      "name": "乌云装扮者《这本日文杂志，全部关于上海》",
      "url": "https://mp.weixin.qq.com/s/rk3eGVyhGmP0stGVFyOiQw",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "热爱实验《这位日本建筑师眼中的上海，是怎样的？》",
      "url": "https://mp.weixin.qq.com/s/plHDiTEi3Vr8Ja745LKxlA",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "Instagram @ketchup_magazine_shanghai",
      "url": "https://www.instagram.com/ketchup_magazine_shanghai/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -135,12 +187,14 @@
     {
      "name": "大鱼营造《古北古北创刊号首发》",
      "url": "https://mp.weixin.qq.com/s/YaPhkJ1O8ohTS2b_fWv0ig",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "大鱼营造《古北古北第二期发布》",
      "url": "https://mp.weixin.qq.com/s/lICRXbFo8zclm5RT-22eJQ",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -153,17 +207,20 @@
     {
      "name": "《青山青山村》Vol.01",
      "url": "https://mp.weixin.qq.com/s/okayviKstyT5fOD_p0XShw",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "Vol.02",
      "url": "https://mp.weixin.qq.com/s/-cTyh5__QGhqx4iHX0ec-A",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "Vol.04",
      "url": "https://mp.weixin.qq.com/s/xoxfJseT_MBjmMJwNsIvWw",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -176,7 +233,8 @@
     {
      "name": "《岛与》四周年",
      "url": "https://mp.weixin.qq.com/s/jTRXS2uMqz0b_wuY-f8P0A",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -189,22 +247,26 @@
     {
      "name": "五月May《a mayzine 001 好好吃面》",
      "url": "https://mp.weixin.qq.com/s/20kMcOC02dz6qgyzwXQ1Dw",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "《a mayzine002 回到临海的年轻人》",
      "url": "https://mp.weixin.qq.com/s/kpf0vkq0rwAynUlSY7nmKg",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "《a mayzine003 小城种植》",
      "url": "https://mp.weixin.qq.com/s/oaTyi18-9GDMmDWQqu-s5g",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "《a mayzine004 城市怎么玩》",
      "url": "https://mp.weixin.qq.com/s/rR50o4KALnR0Q0f_IO7oxw",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -217,7 +279,8 @@
     {
      "name": "杏坛书院磐安榉溪《卢震：书写日常之上的村庄誌》",
      "url": "https://mp.weixin.qq.com/s/ew6jh-p97dw09Dozbbj6KA",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -230,7 +293,8 @@
     {
      "name": "恰天光《我们做了这本温州在地杂志》",
      "url": "https://mp.weixin.qq.com/s/upeiVvQMrTMMgIa8g4db9Q",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -251,7 +315,8 @@
     {
      "name": "微博 @HOMELAND家园",
      "url": "https://weibo.com/homelandmagazine/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -264,12 +329,14 @@
     {
      "name": "芝罘历史文化研究会《写作中不可忽视的形式方面的技术规范》",
      "url": "https://mp.weixin.qq.com/s/CwmhaYI811NFSHW-T9IGGw",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "芝罘历史文化研究会《总第27期出版发行》",
      "url": "https://mp.weixin.qq.com/s/2V-xZpX62kW2vWW9JbHbqA",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -282,7 +349,8 @@
     {
      "name": "市南政协《“城市复调的书写”新书分享会》",
      "url": "https://mp.weixin.qq.com/s/DlfjxrPlRQhDNU9BowRpkA",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -311,7 +379,8 @@
     {
      "name": "秾EDIBLE《深井社区杂志期待你的支持》",
      "url": "https://mp.weixin.qq.com/s/Z48PQXPfo1tntH5rPUGYFQ",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -324,17 +393,20 @@
     {
      "name": "创刊号筹备",
      "url": "https://www.xiaohongshu.com/explore/694e7333000000001f00c73b",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     },
     {
      "name": "创刊感悟",
      "url": "https://www.xiaohongshu.com/explore/695f5051000000001a02fee3",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     },
     {
      "name": "桥西篇预告",
      "url": "https://www.xiaohongshu.com/explore/697cc119000000001a02680b",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -347,7 +419,8 @@
     {
      "name": "伤停补时《阔目，游到线下去》",
      "url": "https://mp.weixin.qq.com/s/g9_BSfEFR4qgfb47kD-CWg",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -360,7 +433,8 @@
     {
      "name": "Local本地《把西仓做成一本最美的书》",
      "url": "https://mp.weixin.qq.com/s/Ju7idCFczrbakb2ARYssMQ",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "拾三潮《给西安一点市井的味道》",
@@ -381,7 +455,8 @@
     {
      "name": "西藏人文地理《这本杂志，带你提前揭秘西藏美术馆》",
      "url": "https://mp.weixin.qq.com/s/LLtNWiqpcacGwXqgqIxWfg",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -405,19 +480,30 @@
    "t": "《松赞Songtsam》",
    "shelf": "西藏",
    "freq": "季刊",
-   "method": "wechat",
+   "method": "official",
    "channels": [
+    {
+     "name": "松赞旅行官网·新闻",
+     "url": "https://songtsam.com/news",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    },
     {
      "name": "松赞Songtsam《那美好的仗，我们已经打过》",
      "url": "https://mp.weixin.qq.com/s/T0YrZhxBCKBn0tA5fX8srA",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "hima hima 隙马《旦增：拉萨是成功的》",
      "url": "https://mp.weixin.qq.com/s/PkkBwlJ6-7EdncL7jTztMA",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
-   ]
+   ],
+   "audit_note": "2026-09-06 审计：官网 /news 为服务端渲染可抓取；公众号仍为主阵地"
   },
   {
    "t": "《碧山》",
@@ -452,7 +538,8 @@
     {
      "name": "地道风物《从帝都到广西，只是一碗原乡美食的距离》",
      "url": "https://mp.weixin.qq.com/s/E4kQXb3gyvB35X3HljPE7w",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     },
     {
      "name": "豆瓣读书丛书页",
@@ -473,7 +560,8 @@
     {
      "name": "柴米多《环太湖，做本小书》",
      "url": "https://mp.weixin.qq.com/s/YS06gWlVUF1Bbgb-zjpTWQ",
-     "adapter": "wechat"
+     "adapter": "wechat",
+     "grade": "official"
     }
    ]
   },
@@ -510,12 +598,14 @@
     {
      "name": "Facebook @長春社文化古蹟資源中心",
      "url": "https://www.facebook.com/hkrcheritage/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     },
     {
      "name": "Instagram @hkrcheritage",
      "url": "https://www.instagram.com/hkrcheritage/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -562,7 +652,8 @@
     {
      "name": "Instagram @beinghongkong",
      "url": "https://www.instagram.com/beinghongkong/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -697,7 +788,8 @@
     {
      "name": "Facebook @靛花 tien faˊ",
      "url": "https://www.facebook.com/tienfa.tw/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -710,7 +802,8 @@
     {
      "name": "Facebook @making.paths",
      "url": "https://www.facebook.com/making.paths/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     },
     {
      "name": "Openbook《閱讀隨身聽：〈地味手帖〉編輯術》",
@@ -909,7 +1002,8 @@
     {
      "name": "Facebook @见域",
      "url": "https://www.facebook.com/CitiLens/posts/1548194855387848/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -1070,7 +1164,8 @@
     {
      "name": "Facebook @金門文藝",
      "url": "https://www.facebook.com/KinmenLiterature/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     },
     {
      "name": "博客来图书页",
@@ -1091,7 +1186,8 @@
     {
      "name": "Facebook @鹹味島合作社",
      "url": "https://www.facebook.com/saltyislandstudio/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -1204,7 +1300,8 @@
     {
      "name": "Facebook @qdymag",
      "url": "https://www.facebook.com/qdymag",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -1266,7 +1363,8 @@
     {
      "name": "Facebook @DEEPTOKYOmagazine",
      "url": "https://www.facebook.com/DEEPTOKYOmagazine/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },
@@ -1312,7 +1410,8 @@
     {
      "name": "Facebook @PgCityEye",
      "url": "https://www.facebook.com/PgCityEye/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     },
     {
      "name": "issuu",
@@ -1342,12 +1441,14 @@
     {
      "name": "Facebook @mynahmag",
      "url": "https://facebook.com/mynahmag",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     },
     {
      "name": "X @mynahmag",
      "url": "https://twitter.com/mynahmag/",
-     "adapter": "social"
+     "adapter": "social",
+     "grade": "official"
     }
    ]
   },

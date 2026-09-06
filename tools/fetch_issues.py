@@ -434,6 +434,13 @@ def main():
                   '以下通道为二手信源（媒体报道/书店页等），按原则不自动采信，确认后请手动登记：', '']
         lines += [f'- {p["t"]}（{p["shelf"]}）· {c["name"]}：{c["url"]}'
                   for p, c in pending_confirm]
+    # 盲区可见化：微信/社媒刊物不在自动抓取范围内，逐期列出提醒人工巡查
+    nonweb = [(p, sum(1 for c in p['channels'] if c['adapter'] in ('wechat', 'social')))
+              for p in sources['pubs'] if p['method'] in ('wechat', 'social')]
+    if nonweb:
+        lines += ['', '### 非网页信源 · 待人工巡查', '',
+                  '以下刊物的信源为公众号/社媒（不在自动抓取范围），请留意其新刊动态并人工登记：', '']
+        lines += [f'- {p["t"]}（{p["shelf"]}）· {n} 条微信/社媒通道' for p, n in nonweb]
     if warnings:
         lines += ['', '### 警告', '']
         lines += [f'- {w}' for w in warnings[:30]]
