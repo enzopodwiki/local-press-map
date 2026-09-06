@@ -234,9 +234,19 @@
     "foundAt": "2026-09-06",
     "channel": "https://deeptokyo.jp/en/"
    }
+  ],
+  "《美印臺南》": [
+   {
+    "issue": "74",
+    "title": "美印臺南第74期",
+    "url": "https://culture.tainan.gov.tw/form/Details?Parser=28,6,118,48,,,1466",
+    "theme": "",
+    "foundAt": "2026-09-06",
+    "channel": "https://culture.tainan.gov.tw/form/index?Parser=28,6,118,48,,,,17"
+   }
   ]
  },
- "lastRun": "2026-09-06 13:43 +0800",
+ "lastRun": "2026-09-06 14:19 +0800",
  "batches": [
   {
    "d": "2026-09-06",
@@ -256,6 +266,14 @@
      "theme": "〈與自己散步〉",
      "title": "第52期《秋刀魚》〈與自己散步〉",
      "url": "https://qdymag.com/news/takingawalk"
+    },
+    {
+     "t": "《美印臺南》",
+     "shelf": "台湾 · 南部",
+     "issue": "74",
+     "theme": "",
+     "title": "美印臺南第74期",
+     "url": "https://culture.tainan.gov.tw/form/Details?Parser=28,6,118,48,,,1466"
     }
    ]
   }
