@@ -14,6 +14,18 @@
 并把发现的公众号账号名/.biz 回写 sources.json 对应通道。
 登记后需手动跑 python3 tools/build.py 才会出现在页面上。
 
+微信桥接试点结论（2026-09-06，岛与 biz=Mzg5OTkwODk0Mw== / 松赞Songtsam 实测）：
+- 原生直连枚举公众号历史：死路。profile_ext?action=home 返回「验证」空壳页，
+  getmsg 接口返回 {"ret":-3,"errmsg":"no session"}——枚举必须有微信会话凭据，
+  住宅 IP 也绕不过（与单篇 /s/ 文章页可直过形成对比）；
+- 托管桥接：wechat2rss 托管版（bestblogs.dev）为 SPA 需注册；RSSHub 公共实例的
+  wechat/mp 路由 503/404；二十次幂（ershicimi.com）不可达——公共免费桥接不可用；
+- 唯一可行路线：自建 wewe-rss（微信读书凭据型）——需要本机装 Docker 或源码构建
+  （本机有 Node 22 无 Docker）、用户提供微信读书凭据（约月度过期需续期）、
+  且轮询只能本机跑（CI 够不到微信也够不到本机服务）；
+- 结论：桥接成本（装环境+凭据维护）对应收益（16 种公众号刊物的自动发现），
+  由用户权衡；未启用桥接前，微信覆盖依赖人工巡查提醒 + 本工具的单篇登记。
+
 搜狗微信搜索试点结论（2026-09-06，岛与 / 松赞Songtsam 两账号实测）：
 - 技术可行：本机 IP 初始可搜、结果块结构可解析（uigs="article_title_N" 带下划线，
   账号在 class="all-time-y2"，日期在 timeConvert('ts')）；
