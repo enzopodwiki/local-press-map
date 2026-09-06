@@ -244,6 +244,16 @@
     "foundAt": "2026-09-06",
     "channel": "https://culture.tainan.gov.tw/form/index?Parser=28,6,118,48,,,,17"
    }
+  ],
+  "《岛与》": [
+   {
+    "issue": "18",
+    "title": "《岛与》新刊vol.18 | 与海岛重逢时",
+    "url": "https://mp.weixin.qq.com/s/yGc69QWpSvQw6RBAFg8R9Q",
+    "theme": "与海岛重逢时",
+    "foundAt": "2026-09-06",
+    "channel": "人工登记（岛与官方公众号推文，经确认）"
+   }
   ]
  },
  "lastRun": "2026-09-06 14:19 +0800",
@@ -274,6 +284,14 @@
      "theme": "〈願望，留在日子裡慢慢成真〉",
      "title": "美印臺南第74期",
      "url": "https://culture.tainan.gov.tw/form/Details?Parser=28,6,118,48,,,1466"
+    },
+    {
+     "t": "《岛与》",
+     "shelf": "舟山",
+     "issue": "18",
+     "theme": "与海岛重逢时",
+     "title": "《岛与》新刊vol.18 | 与海岛重逢时",
+     "url": "https://mp.weixin.qq.com/s/yGc69QWpSvQw6RBAFg8R9Q"
     }
    ]
   }
