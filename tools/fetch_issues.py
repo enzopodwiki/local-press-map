@@ -24,6 +24,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
@@ -113,20 +114,41 @@ def parse_feed(xml_text):
         tag = el.tag.rsplit('}', 1)[-1]
         if tag not in ('item', 'entry'):
             continue
-        title, link = None, None
+        title, link, date = None, None, None
         for child in el:
             ctag = child.tag.rsplit('}', 1)[-1]
             if ctag == 'title' and child.text:
                 title = child.text.strip()
             elif ctag == 'link':
                 link = (child.get('href') or child.text or '').strip() or link
+            elif ctag in ('pubdate', 'published', 'updated') and child.text and date is None:
+                try:
+                    date = parsedate_to_datetime(child.text.strip()).strftime('%F')
+                except Exception:
+                    try:
+                        date = datetime.fromisoformat(child.text.strip()[:10]).strftime('%F')
+                    except Exception:
+                        pass
         if title:
-            items.append((title, link or ''))
+            items.append((title, link or '', date or ''))
     return items
 
 
 ANCHOR_RE = re.compile(r'<a[^>]+href="([^"#]+)"[^>]*>(.*?)</a>', re.S | re.I)
 TAG_RE = re.compile(r'<[^>]+>')
+# 页面/路径里的发布日期（2026-09-06、2026年9月6日、2026.9.6）
+PAGE_DATE_RE = re.compile(r'(20\d{2})[年.\-/](\d{1,2})[月.\-/](\d{1,2})[日]?')
+
+
+def page_date(text):
+    """从文本提取发布日期（ISO 格式），找不到返回 None。"""
+    m = PAGE_DATE_RE.search(text)
+    if not m:
+        return None
+    try:
+        return datetime(int(m.group(1)), int(m.group(2)), int(m.group(3))).strftime('%F')
+    except ValueError:
+        return None
 # 商店/CMS 常把商品路径直接写进 HTML（含 JS 数据），期数与主题就编码在路径里
 SLUG_RE = re.compile(r'(?:products|articles|posts|magazine)/[^\s"\'<>\\]{4,90}')
 TITLE_RE = re.compile(r'<title[^>]*>(.*?)</title>', re.S | re.I)
@@ -172,7 +194,8 @@ def scan_html(page_url, data, pub_title=None):
         t_host = urlparse(target).netloc.lower()
         if t_host != host and 'weixin.qq.com' not in t_host and 'mp.weixin' not in t_host:
             continue
-        push({'title': anchor, 'issue': issue, 'theme': theme, 'url': target})
+        push({'title': anchor, 'issue': issue, 'theme': theme, 'url': target,
+              'date': page_date(anchor) or page_date(target)})
 
     # 内嵌路径扫描：不依赖锚文本，直接从 HTML 原文里解码商品/文章路径
     for m in SLUG_RE.finditer(text):
@@ -182,7 +205,7 @@ def scan_html(page_url, data, pub_title=None):
         if issue is None:
             continue
         url = urljoin(page_url, raw.split('?')[0])
-        push({'title': slug, 'issue': issue, 'theme': theme, 'url': url})
+        push({'title': slug, 'issue': issue, 'theme': theme, 'url': url, 'date': page_date(slug)})
 
     # 深挖：落地页没有可解析期数的候选时，跟进站内候选链接，用目标页标题再提取
     if pub_title and not any(c['issue'] for c in out):
@@ -200,7 +223,8 @@ def scan_html(page_url, data, pub_title=None):
                 continue
             issue, theme = parse_issue(headline)
             if issue is not None or ANNOUNCE_RE.search(headline):
-                push({'title': headline, 'issue': issue, 'theme': theme, 'url': u})
+                push({'title': headline, 'issue': issue, 'theme': theme, 'url': u,
+                      'date': page_date(headline)})
     return out
 
 
@@ -218,14 +242,14 @@ def extract_from_channel(channel, pub):
         return [], [f'{pub["t"]}：通道返回 {status} {url}']
     if adapter == 'rss' or (channel.get('feed') and data.lstrip()[:5] in ('<?xml', '<rss ')):
         candidates = []
-        for title, link in parse_feed(decode(data))[:60]:
+        for title, link, date in parse_feed(decode(data))[:60]:
             title = html.unescape(re.sub(r'<[^>]+>', ' ', title)).strip()
             title = re.sub(r'\s+', ' ', title)
             issue, theme = parse_issue(title)
             # feed 里全是站点博文：没有期数又不像发布公告的条目直接丢弃
             if issue is None and not ANNOUNCE_RE.search(title):
                 continue
-            candidates.append({'issue': issue, 'theme': theme, 'title': title, 'url': link or final})
+            candidates.append({'issue': issue, 'theme': theme, 'title': title, 'url': link or final, 'date': date})
         return candidates[:MAX_ITEMS_PER_CHANNEL], []
     return scan_html(final, data, pub_title=pub['t']), []
 
@@ -243,6 +267,8 @@ def clean_theme(theme, title):
 PRICE_RE = re.compile(
     r'(?:NT\s?\$|HK\$|US\$|S\$|RM|¥|￥|€)\s?[\d,]+(?:\.\d+)?|\d{1,3}(?:,\d{3})+円|\d+\s?円',
     re.I)
+# 购买引导类文案：出现在主题里即视为无效（最新刊のご購入はこちら 等）
+CTA_RE = re.compile(r'購入|はこちら|ご注文')
 # 主题里不允许出现的表述（创刊/上市/发售等事件词、购买引导）：整个条目视为无效
 THEME_FORBIDDEN_RE = re.compile(
     r'^(?:創刊|创刊|復刊|复刊|新刊上市|上市|発売|发售|好評発売中|封面公開|封面公开|最新刊のご購入|ご購入はこちら)[!！。.\s]*$')
@@ -323,6 +349,11 @@ def main():
     hist = history.setdefault('history', {})
     batches = history.setdefault('batches', [])  # [{'d': 'YYYY-MM-DD', 'items': [...]}]，最新在前
 
+    # 时间窗口：只收录窗口期内发布公告的新刊（本次 9/1–9/14，后续从上次有产出的抓取滚动）
+    now_dt = datetime.now(TZ_CN)
+    window_start = history.get('lastScrape') or (now_dt - timedelta(days=14)).strftime('%F')
+    window_end = (now_dt + timedelta(days=2)).strftime('%F')
+
     jobs = []            # 可自动抓取的 (pub, channel)：仅官方通道
     pending_confirm = []  # 二手信源：不自动采信，报告里列出让人类确认
     for p in sources['pubs']:
@@ -351,8 +382,14 @@ def main():
                 continue
             seen = {(r.get('issue') or '?', r['url'].split('#')[0].rstrip('/'))
                     for r in hist.get(p['t'], [])}
-            fresh_all.extend((p, c, cand) for cand in candidates
-                             if ((cand['issue'] or '?'), cand['url'].split('#')[0].rstrip('/')) not in seen)
+            for cand in candidates:
+                # 时间窗口：只收录窗口期内发布公告的新刊（无日期可判的条目不在此过滤）
+                d = cand.get('date')
+                if d and (d < window_start or d > window_end):
+                    continue
+                if ((cand['issue'] or '?'), cand['url'].split('#')[0].rstrip('/')) in seen:
+                    continue
+                fresh_all.append((p, c, cand))
 
     # 抓取原则：每刊只取最新一期。期数与主题至少要有一个——都解析不出（或主题
     # 属于价格/创刊/上市/购买引导等无效表述）的条目整条舍弃；有期数无主题则只展示期数。
@@ -390,10 +427,12 @@ def main():
             return (rank, has_theme)
         best_c, best, best_has_issue = max(pool, key=pick_key)
         theme = clean_display_theme(best.get('theme', ''), t)
+        if theme and CTA_RE.search(theme):
+            theme = ''   # 购买引导不属于主题；有期数则降级为期数展示
         if not theme and not best_has_issue:
             continue
         item = {'issue': best['issue'], 'title': best['title'], 'url': best['url'],
-                'theme': theme,
+                'theme': theme, 'announcedAt': best.get('date', ''),
                 'foundAt': datetime.now(TZ_CN).strftime('%F'),
                 'channel': best_c['url']}
         new_items.append((p, item))
@@ -411,14 +450,17 @@ def main():
             # 同刊同期替换：批次里该刊物只保留最新一条（只取最新一期原则）
             batch['items'] = [x for x in batch['items'] if x['t'] != p['t']]
             batch['items'].append({'t': p['t'], 'shelf': p['shelf'], 'issue': item['issue'],
-                                   'theme': item['theme'], 'title': item['title'], 'url': item['url']})
+                                   'theme': item['theme'], 'title': item['title'],
+                                   'announcedAt': item.get('announcedAt', ''), 'url': item['url']})
         history['lastRun'] = datetime.now(TZ_CN).strftime('%F %R %z')
+        history['lastScrape'] = now_dt.strftime('%F')   # 有产出才推进窗口起点
         HISTORY_PATH.write_text(json.dumps(history, ensure_ascii=False, indent=1) + '\n',
                                 encoding='utf-8')
 
     # —— Markdown 摘要（stdout → PR 描述）——
     now = datetime.now(TZ_CN).strftime('%F %R')
-    lines = [f'## 新刊速递 · 抓取报告（{now}）', '']
+    lines = [f'## 新刊速递 · 抓取报告（{now}）',
+             f'收录窗口：{window_start} → {window_end}', '']
     if new_items:
         lines.append(f'发现 **{len(new_items)}** 条新公告：')
         lines.append('')

@@ -115,6 +115,15 @@
     "theme": "最新刊のご購入はこちら",
     "foundAt": "2026-09-06",
     "channel": "https://www.gekkan-kyoto.net/"
+   },
+   {
+    "issue": null,
+    "title": "最新刊のご購入はこちら",
+    "url": "https://www.gekkan-kyoto.net/onlineshop/backnumber/1/gekkan202610/",
+    "theme": "のご購入はこちら",
+    "announcedAt": null,
+    "foundAt": "2026-09-09",
+    "channel": "https://www.gekkan-kyoto.net/"
    }
   ],
   "《d design travel》": [
@@ -256,7 +265,7 @@
    }
   ]
  },
- "lastRun": "2026-09-06 14:19 +0800",
+ "lastRun": "2026-09-09 16:10 +0800",
  "batches": [
   {
    "d": "2026-09-06",
@@ -295,5 +304,6 @@
     }
    ]
   }
- ]
+ ],
+ "lastScrape": "2026-09-01"
 }
