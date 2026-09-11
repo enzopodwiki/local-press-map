@@ -157,11 +157,11 @@
   @media (prefers-reduced-motion:reduce){.sticky-mail{animation:none!important}}
   @media (max-width:760px){
     .float-stack{top:auto;bottom:12px;right:8px;gap:8px}
-    .sticky-note{width:104px;padding:8px 6px 6px;grid-template-columns:30px 1fr;gap:1px 6px}
-    .sticky-note strong{font-size:10.5px}
-    .sticky-note small{font-size:8.5px;line-height:1.4}
-    .sticky-note .sticky-mail{width:28px;height:25px;font-size:13px}
-    .sticky-note .sticky-tab{font-size:8.5px;padding:1px 4px}
+    /* 移动端收成小角标：只留图标，点击行为不变（✉ 投稿 / 贊 赞助） */
+    .sticky-note{width:44px;height:44px;padding:0;display:grid;place-items:center;grid-template-columns:none;border-radius:11px}
+    .sticky-note strong,.sticky-note small{display:none}
+    .sticky-note .sticky-mail{width:30px;height:27px;font-size:15px;border:none;background:none;box-shadow:none}
+    .sticky-note .sticky-tab{font-size:8px;padding:1px 4px;top:-7px;left:-7px}
   }
   /* ===== 赞助弹窗 ===== */
   .sponsor-dialog{width:min(560px,calc(100% - 24px));border:2.5px solid var(--ink);border-radius:12px;background:var(--paper);box-shadow:8px 8px 0 rgba(38,34,28,.2);padding:0}
