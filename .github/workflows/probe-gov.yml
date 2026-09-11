@@ -1,0 +1,43 @@
+name: probe-gov
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          for u in \
+            "https://www.klcg.gov.tw/tw/klcg1/3241.html" \
+            "https://klctb.klcg.gov.tw/News2.aspx?n=7775&sms=12517" \
+            "https://www.culture.ntpc.gov.tw/xmdoc?xsmsid=0G244582088669372377" \
+            "https://typass.tycg.gov.tw/list/library" \
+            "https://www.hchcc.gov.tw/" \
+            "https://www.culture.taichung.gov.tw/" \
+            "https://www.chcg.gov.tw/ch2/e-publication-gov-publication.aspx?page=1" \
+            "https://www.bocach.gov.tw/cl.aspx?n=3928" \
+            "https://information.yunlin.gov.tw/News_eBook.aspx?n=11659&sms=16852" \
+            "https://www.tainan.gov.tw/News_eBook.aspx?n=14090&sms=14343" \
+            "https://culture.tainan.gov.tw/form/index?Parser=28,6,118,48" \
+            "https://takao.kcg.gov.tw/ebook" \
+            "https://orgws.kcg.gov.tw/" \
+            "https://www.hccc.gov.tw/zh-tw/PublicationLite/List?category=223&page=1" \
+            "https://tour-hualien.hl.gov.tw/News_Link2.aspx?n=84&sms=12334" \
+            "https://abda.hl.gov.tw/EBook/List" \
+            "https://www.taitung.gov.tw/Epaper.aspx?n=13405&sms=13175" \
+            "https://culture.taitung.gov.tw/magazine" \
+            "https://ttstylefood-travel.org/" \
+            "https://www.suao.gov.tw/News.aspx?n=13752&sms=13440" \
+            "https://www-ws.pthg.gov.tw/Upload/2015pthg/taiwu/13/index.html" \
+            "https://952vazaytamo.wixsite.com/952vazaytamo/magazine" \
+            "https://client.matsu.idv.tw/literature/periodical-today-s.html" \
+            "https://www.yda.gov.tw/docDetail.aspx?docid=57648&pid=84&uid=30300" \
+            "https://www.kinmen.gov.tw/" \
+            "https://cabkc.kinmen.gov.tw/shoppinglist?page=2&uid=84" \
+            "https://www.lym.gov.tw/" ; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/124" "$u" 2>/dev/null)
+            echo "$code  $u"
+          done
