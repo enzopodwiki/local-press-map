@@ -4,7 +4,7 @@ name: research-years
 # 结果写入 workflow 日志供人工整理。验证后移除。
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 permissions:
   contents: read
