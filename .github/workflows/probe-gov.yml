@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
+          set +e
           for u in \
             "https://www.klcg.gov.tw/tw/klcg1/3241.html" \
             "https://klctb.klcg.gov.tw/News2.aspx?n=7775&sms=12517" \
