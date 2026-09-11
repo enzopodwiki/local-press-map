@@ -286,14 +286,14 @@
   .panel[data-map="taiwan"] .pin .ring{r:4.6;stroke-width:1.1}
   .panel[data-map="taiwan"] .pin .core{r:3.2}
   .panel[data-map="taiwan"] .pin .hit{r:7}
-  .panel[data-map="taiwan"] .pin .pcount{font-size:2.2px}
-  .panel[data-map="taiwan"] .plabel{font-size:3.0px;stroke-width:1.1px}
+  .panel[data-map="taiwan"] .pin .pcount{font-size:4.1px}
+  .panel[data-map="taiwan"] .plabel{font-size:5.2px;stroke-width:1.6px}
   .panel[data-map="taiwan"] .pin-empty .ring{r:2.4;stroke-width:.9}
   .county{fill:color-mix(in srgb, var(--bamboo) 16%, var(--paper));stroke:var(--ink);stroke-width:.8;cursor:pointer;transition:fill .15s ease}
   .county:hover{fill:color-mix(in srgb, var(--bamboo) 34%, var(--paper))}
   .county.is-current{fill:color-mix(in srgb, var(--bamboo) 46%, var(--paper));stroke-width:1.6}
   .pin-empty .ring{fill:var(--paper);stroke:rgba(38,34,28,.4);stroke-dasharray:2 2}
-  .county-jump{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:rgba(38,34,28,.6)}
+  .county-jump{display:none;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:rgba(38,34,28,.6)}
   .county-jump select{
     padding:6px 26px 6px 10px;border:1.5px dashed var(--ink);border-radius:6px;outline:0;
     background:var(--paper) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M1 1l4 4 4-4" fill="none" stroke="%2326221C" stroke-width="1.5"/></svg>') no-repeat right 9px center;
@@ -416,11 +416,11 @@
     .panel[data-map="taiwan"] .pin .ring{r:6.2;stroke-width:1.6}
     .panel[data-map="taiwan"] .pin .core{r:4.4}
     .panel[data-map="taiwan"] .pin .hit{r:11}
-    .panel[data-map="taiwan"] .pin .pcount{font-size:3.2px}
-    .panel[data-map="taiwan"] .plabel{font-size:5.8px;stroke-width:1.8px}
+    .panel[data-map="taiwan"] .pin .pcount{font-size:3.0px}
+    .panel[data-map="taiwan"] .plabel{font-size:4.1px;stroke-width:1.6px}
     .panel[data-map="taiwan"] .pin-empty .ring{r:3.4}
     .search-box,.search-panel{width:100%}
-    .county-jump{width:100%;justify-content:space-between}
+    .county-jump{display:flex;width:100%;justify-content:space-between;margin:0 0 8px}
     .county-jump select{flex:1;min-width:0}
     .search-box kbd{display:none}
     #search-input{padding:11px 14px;font-size:16px}   /* ≥16px 防 iOS 聚焦自动放大 */
@@ -663,27 +663,27 @@
         <select id="county-jump" aria-label="精确选择县市">
           <option value="">选择县市…</option>
           <option value="tw-all">全台 · 跨县市</option>
-          <option value="tw-keelung">基隆市（5）</option>
-          <option value="tw-taipei">台北市（6）</option>
-          <option value="tw-newtaipei">新北市（10）</option>
-          <option value="tw-taoyuan">桃园市（7）</option>
-          <option value="tw-hsinchu">新竹县（6）</option>
-          <option value="tw-miaoli">苗栗县（3）</option>
-          <option value="tw-taichung">台中市（8）</option>
-          <option value="tw-changhua">彰化县（6）</option>
-          <option value="tw-nantou">南投县（3）</option>
-          <option value="tw-yunlin">云林县（3）</option>
-          <option value="tw-chiayi-city">嘉义市（2）</option>
-          <option value="tw-tainan">台南市（9）</option>
-          <option value="tw-kaohsiung">高雄市（8）</option>
-          <option value="tw-pingtung">屏东县（4）</option>
-          <option value="tw-yilan">宜兰县（5）</option>
-          <option value="tw-hualien">花莲县（8）</option>
-          <option value="tw-taitung">台东县（9）</option>
-          <option value="tw-penghu">澎湖县（2）</option>
-          <option value="tw-kinmen">金门县（3）</option>
-          <option value="tw-lienchiang">连江县（2）</option>
-          <option value="tw-hsinchu-city">新竹市（4）</option>
+          <option value="tw-keelung">基隆市</option>
+          <option value="tw-taipei">台北市</option>
+          <option value="tw-newtaipei">新北市</option>
+          <option value="tw-taoyuan">桃园市</option>
+          <option value="tw-hsinchu">新竹县</option>
+          <option value="tw-miaoli">苗栗县</option>
+          <option value="tw-taichung">台中市</option>
+          <option value="tw-changhua">彰化县</option>
+          <option value="tw-nantou">南投县</option>
+          <option value="tw-yunlin">云林县</option>
+          <option value="tw-chiayi-city">嘉义市</option>
+          <option value="tw-tainan">台南市</option>
+          <option value="tw-kaohsiung">高雄市</option>
+          <option value="tw-pingtung">屏东县</option>
+          <option value="tw-yilan">宜兰县</option>
+          <option value="tw-hualien">花莲县</option>
+          <option value="tw-taitung">台东县</option>
+          <option value="tw-penghu">澎湖县</option>
+          <option value="tw-kinmen">金门县</option>
+          <option value="tw-lienchiang">连江县</option>
+          <option value="tw-hsinchu-city">新竹市</option>
           <option value="tw-chiayi">嘉义县</option>
         </select>
       </label>
@@ -1278,19 +1278,20 @@ document.querySelectorAll('.panel [data-r]').forEach(el=>{
   el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
 });
 
-/* 移动端：地区胶囊索引 + 阅览须知浮钮 */
+/* 移动端：地区下拉索引（五地域统一，替代旧胶囊；台湾为县市下拉框） */
 if(matchMedia('(max-width:760px)').matches){
   document.querySelectorAll('.panel').forEach(pn=>{
     const mid=pn.dataset.map;
-    if(mid==='taiwan') return;   // 台湾用县市下拉框，不再生成胶囊
-    const wrap=document.createElement('div');wrap.className='region-index';
-    DATA.filter(r=>r.map===mid).forEach(r=>{
-      const b=document.createElement('button');b.className='ri-chip';b.dataset.r=r.id;
-      b.textContent=r.region+' '+r.pubs.length;
-      b.addEventListener('click',()=>openRegion(r.id));
-      wrap.appendChild(b);
-    });
-    pn.querySelector('.map-card').after(wrap);
+    if(mid==='taiwan') return;   // 台湾已有县市下拉框
+    const regions=DATA.filter(r=>r.map===mid);
+    if(!regions.length) return;
+    const label=document.createElement('label');label.className='county-jump map-jump';
+    label.innerHTML='<span>地区</span>';
+    const sel=document.createElement('select');sel.setAttribute('aria-label','选择地区');
+    sel.innerHTML='<option value="">选择地区…</option>'+regions.map(r=>`<option value="${r.id}">${r.region}</option>`).join('');
+    sel.addEventListener('change',()=>{const v=sel.value;if(!v)return;openRegion(v);history.replaceState(null,'','#'+v);sel.value='';});
+    label.appendChild(sel);
+    pn.querySelector('.map-card').after(label);
   });
 }
 
