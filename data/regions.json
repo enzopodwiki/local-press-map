@@ -579,6 +579,14 @@
    "roam": true
   },
   {
+   "id": "jp-tohoku",
+   "region": "东北六县",
+   "map": "japan",
+   "pubs": [
+    "《東北食べる通信》（东北食通信）"
+   ]
+  },
+  {
    "id": "jp-niigata",
    "region": "新潟县",
    "map": "japan",
@@ -637,7 +645,6 @@
     "《d design travel》",
     "《離島経済新聞》（ritokei）",
     "《TURNS》",
-    "《東北食べる通信》（东北食通信）",
     "《秋刀魚》（台湾出版）",
     "《THE NEW JAPAN》"
    ],
