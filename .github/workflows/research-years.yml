@@ -5,6 +5,9 @@ name: research-years
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/research-years.yml']
 
 permissions:
   contents: read
