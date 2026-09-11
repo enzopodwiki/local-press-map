@@ -1078,6 +1078,14 @@
      "status": 200,
      "usable": "ok",
      "grade": "secondhand"
+    },
+    {
+     "name": "屏東本事官方網站",
+     "url": "https://www.pingtung-media.com/",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
     }
    ]
   },
