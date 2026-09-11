@@ -579,32 +579,24 @@
    "roam": true
   },
   {
-   "id": "tohoku",
-   "region": "东北",
-   "map": "japan",
-   "pubs": [
-    "《東北食べる通信》（东北食通信）"
-   ]
-  },
-  {
-   "id": "niigata",
-   "region": "新潟",
+   "id": "jp-niigata",
+   "region": "新潟县",
    "map": "japan",
    "pubs": [
     "《自遊人》"
    ]
   },
   {
-   "id": "kyoto",
-   "region": "京都",
+   "id": "jp-kyoto",
+   "region": "京都府",
    "map": "japan",
    "pubs": [
     "《月刊京都》"
    ]
   },
   {
-   "id": "tokyo",
-   "region": "东京",
+   "id": "jp-tokyo",
+   "region": "东京都",
    "map": "japan",
    "pubs": [
     "《谷中・根津・千駄木》（谷根千）",
@@ -613,24 +605,24 @@
    ]
   },
   {
-   "id": "hyogo",
-   "region": "兵库 · 城崎",
+   "id": "jp-hyogo",
+   "region": "兵库县",
    "map": "japan",
    "pubs": [
     "《本と温泉》（书与温泉）"
    ]
   },
   {
-   "id": "setouchi",
-   "region": "濑户内",
+   "id": "jp-kagawa",
+   "region": "香川县",
    "map": "japan",
    "pubs": [
     "《せとうちスタイル》（濑户内风格）"
    ]
   },
   {
-   "id": "kyushu",
-   "region": "北九州",
+   "id": "jp-fukuoka",
+   "region": "福冈县",
    "map": "japan",
    "pubs": [
     "《雲のうえ》（云上）"
@@ -645,6 +637,7 @@
     "《d design travel》",
     "《離島経済新聞》（ritokei）",
     "《TURNS》",
+    "《東北食べる通信》（东北食通信）",
     "《秋刀魚》（台湾出版）",
     "《THE NEW JAPAN》"
    ],
