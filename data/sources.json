@@ -8,7 +8,7 @@
   "note": "GitHub Actions 每周一 01:00 UTC（北京 09:00）触发，周数奇偶判断只跑双周"
  },
  "summary": {
-  "monitored": 90,
+  "monitored": 94,
   "by_method": [
    [
     "official",
@@ -24,7 +24,7 @@
    ],
    [
     "platform",
-    7
+    11
    ],
    [
     "social",
@@ -1811,6 +1811,74 @@
      "grade": "official",
      "status": 200,
      "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《原曜臺中》",
+   "shelf": "tw-central",
+   "freq": "季刊",
+   "method": "platform",
+   "channels": [
+    {
+     "name": "Issuu·群御廣告代編電子刊",
+     "url": "https://issuu.com/chiefad/docs/_vol_11_",
+     "adapter": "platform",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok",
+     "note": "出版方官方电子刊由群御廣告代編发布于 issuu"
+    }
+   ]
+  },
+  {
+   "t": "《文化臺中》",
+   "shelf": "tw-central",
+   "freq": "季刊",
+   "method": "platform",
+   "channels": [
+    {
+     "name": "Issuu·群御廣告代編電子刊",
+     "url": "https://issuu.com/chiefad/docs/_no.64",
+     "adapter": "platform",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok",
+     "note": "出版方官方电子刊由群御廣告代編发布于 issuu"
+    }
+   ]
+  },
+  {
+   "t": "《南投風華》",
+   "shelf": "tw-central",
+   "freq": "月刊",
+   "method": "platform",
+   "channels": [
+    {
+     "name": "Issuu·群御廣告代編電子刊",
+     "url": "https://issuu.com/chiefad/docs/_120_",
+     "adapter": "platform",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok",
+     "note": "出版方官方电子刊由群御廣告代編发布于 issuu"
+    }
+   ]
+  },
+  {
+   "t": "《彰化味》",
+   "shelf": "tw-central",
+   "freq": "季刊",
+   "method": "platform",
+   "channels": [
+    {
+     "name": "Issuu·群御廣告代編電子刊",
+     "url": "https://issuu.com/chiefad/docs/_no112",
+     "adapter": "platform",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok",
+     "note": "出版方官方电子刊由群御廣告代編发布于 issuu"
     }
    ]
   }
