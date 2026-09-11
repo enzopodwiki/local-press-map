@@ -147,8 +147,8 @@ def render(data):
         html = html.replace('const FRESH_ISSUES = __FRESH__;',
                             'const FRESH_ISSUES = ' + json.dumps(batches[:FRESH_BATCHES], ensure_ascii=False, indent=1) + ';')
     for rg in data:
-        pat = re.compile(r'(<g class="pin" data-r="' + re.escape(rg['id']) +
-                         r'"[^>]*>.*?<text class="pcount" y="3\.5">)\d+(</text>)', re.S)
+        pat = re.compile(r'(<g class="pin[^"]*" data-r="' + re.escape(rg['id']) +
+                         r'"[^>]*>.*?<text class="pcount[^"]*" y="3\.5">)\d+(</text>)', re.S)
         html, n = pat.subn(r'\g<1>' + str(len(rg['pubs'])) + r'\g<2>', html, count=1)
         if n == 0 and not rg.get('roam'):
             raise SystemExit(f'构建失败：非流动书柜区域缺少地图 pin：{rg["id"]}')

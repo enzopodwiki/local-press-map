@@ -49,8 +49,8 @@ def main():
 
     # 3. 地图 pin 数量与数据一致
     for r in data:
-        pat = re.search(r'<g class="pin" data-r="' + re.escape(r['id']) +
-                        r'"[^>]*>.*?<text class="pcount" y="3\.5">(\d+)</text>', html, re.S)
+        pat = re.search(r'<g class="pin[^"]*" data-r="' + re.escape(r['id']) +
+                        r'"[^>]*>.*?<text class="pcount[^"]*" y="3\.5">(\d+)</text>', html, re.S)
         if r.get('roam'):
             if pat:
                 err(f'流动书柜 {r["id"]} 不应有 pin')
