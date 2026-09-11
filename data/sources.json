@@ -8,7 +8,7 @@
   "note": "GitHub Actions 每周一 01:00 UTC（北京 09:00）触发，周数奇偶判断只跑双周"
  },
  "summary": {
-  "monitored": 95,
+  "monitored": 94,
   "by_method": [
    [
     "official",
@@ -24,7 +24,7 @@
    ],
    [
     "platform",
-    12
+    11
    ],
    [
     "social",
@@ -1879,22 +1879,6 @@
      "status": 200,
      "usable": "ok",
      "note": "出版方官方电子刊由群御廣告代編发布于 issuu"
-    }
-   ]
-  },
-  {
-   "t": "《農遊誌》",
-   "shelf": "tw-all",
-   "freq": "半年刊",
-   "method": "platform",
-   "channels": [
-    {
-     "name": "農遊超市·農遊誌電子書",
-     "url": "https://issuu.com/farmtour_market/docs/_pdf_1_",
-     "adapter": "platform",
-     "grade": "official",
-     "status": 200,
-     "usable": "ok"
     }
    ]
   }
