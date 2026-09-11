@@ -1,13 +1,12 @@
 name: research-years
 
-# 一次性调研：从各县市官方出版品页抓取刊物创刊时间线索（創刊/第1期/民國紀年），
-# 结果写入 workflow 日志供人工整理。验证后移除。
+# 一次性调研：从各县市官方出版品页抓取刊物创刊时间线索，结果写入日志。验证后移除。
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['.github/workflows/research-years.yml']
+    paths: ['.github/workflows/research-years.yml', 'tools/research_years_snippet.py']
 
 permissions:
   contents: read
@@ -25,23 +24,8 @@ jobs:
             local name="$1" url="$2"
             html=$(curl -sL --max-time 25 -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/124" "$url" 2>/dev/null)
             echo "===== $name ====="
-            echo "$html" | python3 -c "
-import sys, re, html
-s = sys.stdin.read()
-text = html.unescape(re.sub(r'<[^>]+>', ' ', re.sub(r'<script.*?</script>|<style.*?</style>', '', s, flags=re.S)))
-text = re.sub(r'\s+', ' ', text)
-hits = []
-for pat in [r'(創刊|第\s*1\s*期|第一期|创刊)[^。]{0,60}', r'民國\s*\d{2,3}\s*年[^。，]{0,40}', r'(19[5-9]\d|20[0-2]\d)\s*年\s*[01]?\d?\s*月[^。，]{0,30}']:
-    for m in re.finditer(pat, text):
-        hits.append(m.group(0)[:70])
-seen = set()
-for h in hits[:8]:
-    if h not in seen:
-        seen.add(h)
-        print('  线索:', h)
-if not seen:
-    print('  （无创刊线索，页面大小', len(s), '字节）')
-"
+            echo "$html" > /tmp/page.html
+            python3 tools/research_years_snippet.py /tmp/page.html
           }
           probe "悠活臺南" "https://www.tainan.gov.tw/News_eBook.aspx?n=14090&sms=14343"
           probe "臺南藝文月刊+S-Life" "https://culture.tainan.gov.tw/form/index?Parser=28,6,118,48"
@@ -49,7 +33,6 @@ if not seen:
           probe "臺東藝文" "https://culture.taitung.gov.tw/magazine"
           probe "高雄畫刊" "https://takao.kcg.gov.tw/ebook"
           probe "文化臺中" "https://www.culture.taichung.gov.tw/2061062/2072210/2102292/2102340"
-          probe "大墩文化" "https://www.culture.taichung.gov.tw/"
           probe "美好彰化" "https://www.chcg.gov.tw/ch2/e-publication-gov-publication.aspx?page=1"
           probe "新北市文化季刊+藝遊" "https://www.culture.ntpc.gov.tw/xmdoc?xsmsid=0G244582088669372377"
           probe "桃園誌等" "https://typass.tycg.gov.tw/list/library"
@@ -63,5 +46,4 @@ if not seen:
           probe "雲林生活" "https://information.yunlin.gov.tw/News_eBook.aspx?n=11659&sms=16852"
           probe "雲林藝文月刊" "https://content.yunlin.gov.tw/News_eBook.aspx?n=15415&sms=18549"
           probe "彰化味" "https://www.bocach.gov.tw/cl.aspx?n=3928"
-          sleep 2
           echo "===== 调研完成 ====="
