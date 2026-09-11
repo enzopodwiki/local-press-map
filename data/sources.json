@@ -8,11 +8,11 @@
   "note": "GitHub Actions 每周一 01:00 UTC（北京 09:00）触发，周数奇偶判断只跑双周"
  },
  "summary": {
-  "monitored": 70,
+  "monitored": 90,
   "by_method": [
    [
     "official",
-    28
+    48
    ],
    [
     "wechat",
@@ -33,7 +33,7 @@
   ],
   "channels_with_feed": 16,
   "unreachable_channels": 16,
-  "note": "method 为每刊最优通道：rss>official>platform>wechat>social；wechat 表示需为该刊物定位公众号并配置桥接",
+  "note": "method 为每刊最优通道：rss>official>platform>wechat>social；wechat 表示需为该刊物定位公众号并配置桥接；2026-09-11 起纳入 elephlow 比对新增的政府城市刊",
   "audit": {
    "date": "2026-09-06",
    "upgraded": [
@@ -1491,6 +1491,326 @@
      "feed": "https://www.chiangmaicitylife.com/feed/",
      "usable": "ok",
      "grade": "official"
+    }
+   ]
+  },
+  {
+   "t": "《魅力基隆》",
+   "shelf": "tw-north",
+   "freq": "季刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "基隆市政府·魅力基隆",
+     "url": "https://www.klcg.gov.tw/tw/klcg1/3241.html",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《新北市文化季刊》",
+   "shelf": "tw-north",
+   "freq": "季刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "新北市文化局出版品",
+     "url": "https://www.culture.ntpc.gov.tw/xmdoc?xsmsid=0G244582088669372377",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《桃園誌》",
+   "shelf": "tw-north",
+   "freq": "雙月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "桃園市出版品聯合書城",
+     "url": "https://typass.tycg.gov.tw/list/library",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《新竹藝文》",
+   "shelf": "tw-north",
+   "freq": "月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "新竹縣文化局出版品",
+     "url": "https://www.hchcc.gov.tw/Tw/Publication/Links?filter=eeb2ed25-8cc6-4454-b021-321f66df62cf",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《美好彰化》",
+   "shelf": "tw-central",
+   "freq": "雙月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "彰化縣政府出版品",
+     "url": "https://www.chcg.gov.tw/ch2/e-publication-gov-publication.aspx?page=1",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《雲林生活》",
+   "shelf": "tw-central",
+   "freq": "縣刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "雲林縣政府電子書",
+     "url": "https://information.yunlin.gov.tw/News_eBook.aspx?n=11659&sms=16852",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《悠活臺南》",
+   "shelf": "tw-south",
+   "freq": "市刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "臺南市政府·悠活臺南",
+     "url": "https://www.tainan.gov.tw/News_eBook.aspx?n=14090&sms=14343",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《高雄畫刊》",
+   "shelf": "tw-south",
+   "freq": "月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "高雄市政府·高雄畫刊電子書",
+     "url": "https://takao.kcg.gov.tw/ebook",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《臺東藝文》",
+   "shelf": "tw-east",
+   "freq": "月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "臺東縣政府·看見臺東",
+     "url": "https://culture.taitung.gov.tw/magazine",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《文化開傳》",
+   "shelf": "tw-north",
+   "freq": "月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "基隆市文化觀光局·文化開傳",
+     "url": "https://klctb.klcg.gov.tw/News2.aspx?n=7775&sms=12517",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《新北市藝遊》",
+   "shelf": "tw-north",
+   "freq": "月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "新北市文化局出版品",
+     "url": "https://www.culture.ntpc.gov.tw/xmdoc?xsmsid=0g290617351802660588",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《桃園藝文》",
+   "shelf": "tw-north",
+   "freq": "月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "桃園市文化局",
+     "url": "https://culture.tycg.gov.tw/News.aspx?n=11229&sms=14623",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《雲林藝文月刊》",
+   "shelf": "tw-central",
+   "freq": "月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "雲林縣文化觀光處電子書",
+     "url": "https://content.yunlin.gov.tw/News_eBook.aspx?n=15415&sms=18549",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《臺南藝文月刊》",
+   "shelf": "tw-south",
+   "freq": "月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "臺南市政府文化局出版品",
+     "url": "https://culture.tainan.gov.tw/form/index?Parser=28%2C6%2C118%2C48%2C%2C%2C%2C15",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《S-Life 新生活藝文誌》",
+   "shelf": "tw-south",
+   "freq": "雙月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "臺南市政府文化局出版品",
+     "url": "https://culture.tainan.gov.tw/form/index?Parser=28%2C6%2C118%2C48",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《洄瀾文訊》",
+   "shelf": "tw-east",
+   "freq": "月刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "花蓮縣文化局出版品",
+     "url": "https://www.hccc.gov.tw/zh-tw/PublicationLite/List?category=222",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《看見臺東》",
+   "shelf": "tw-east",
+   "freq": "季刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "臺東縣政府·看見臺東",
+     "url": "https://www.taitung.gov.tw/Epaper.aspx?n=13405&sms=13175",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《花蓮趣》",
+   "shelf": "tw-east",
+   "freq": "季刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "花蓮縣政府觀光處·花蓮趣",
+     "url": "https://tour-hualien.hl.gov.tw/News_Link2.aspx?n=84&sms=12334",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《蘇澳人》",
+   "shelf": "tw-north",
+   "freq": "季刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "蘇澳鎮公所·蘇澳人",
+     "url": "https://www.suao.gov.tw/News.aspx?n=13752&sms=13440",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
+    }
+   ]
+  },
+  {
+   "t": "《鳳山好厝邊》",
+   "shelf": "tw-south",
+   "freq": "季刊",
+   "method": "official",
+   "channels": [
+    {
+     "name": "高雄市政府·鳳山好厝邊刊檔",
+     "url": "https://orgws.kcg.gov.tw/001/KcgOrgUploadFiles/210/relfile/15500/122913/e1c2e255-450b-43f2-83e1-296085d880ad.pdf",
+     "adapter": "official",
+     "grade": "official",
+     "status": 200,
+     "usable": "ok"
     }
    ]
   }
