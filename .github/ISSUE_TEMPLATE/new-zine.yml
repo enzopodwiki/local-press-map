@@ -1,0 +1,117 @@
+name: 补充地方刊物
+description: 推荐一本「在地刊物地图」尚未收录的地方刊物
+title: "[新刊推荐] "
+labels: ["zine-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢补充！提交后由维护者核对信源并整理收录，收录后会在「收录上新」横幅中致谢。
+        带 * 为必填项。
+
+  - type: input
+    id: title
+    attributes:
+      label: 刊物名称 *
+      description: 完整刊名（可保留繁体），如《貢丸湯》
+      placeholder: 《…》
+    validations:
+      required: true
+
+  - type: dropdown
+    id: county
+    attributes:
+      label: 所属县市 *
+      description: 台湾请选具体县市；跨县市发行选「全台」；港澳/日本/新马/泰国请选对应地区
+      options:
+        - 基隆市
+        - 台北市
+        - 新北市
+        - 桃园市
+        - 新竹市
+        - 新竹县
+        - 苗栗县
+        - 台中市
+        - 彰化县
+        - 南投县
+        - 云林县
+        - 嘉义市
+        - 嘉义县
+        - 台南市
+        - 高雄市
+        - 屏东县
+        - 宜兰县
+        - 花莲县
+        - 台东县
+        - 澎湖县
+        - 金门县
+        - 连江县
+        - 全台（跨县市）
+        - 中国大陆（请在地点栏写明城市）
+        - 香港
+        - 澳门
+        - 日本（请在地点栏写明城市）
+        - 新马（请在地点栏写明城市）
+        - 泰国（请在地点栏写明城市）
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: 具体地点 *
+      description: 如「新北淡水」「台南正兴街」「花莲万荣乡」
+      placeholder: …
+    validations:
+      required: true
+
+  - type: input
+    id: year
+    attributes:
+      label: 创刊年份
+      description: 如「2021 年」或「2021 年 9 月」；不清楚可留空
+      placeholder: …
+
+  - type: dropdown
+    id: period
+    attributes:
+      label: 出版频率
+      options:
+        - 月刊
+        - 双月刊
+        - 季刊
+        - 半年刊
+        - 年刊
+        - 不定期
+        - 单册/已完结
+        - 不清楚
+
+  - type: textarea
+    id: intro
+    attributes:
+      label: 刊物介绍 *
+      description: 一段话介绍（内容主题、编辑团队、出版背景等）。维护者会根据你提供的信源重新归纳后收录。
+      placeholder: …
+    validations:
+      required: true
+
+  - type: input
+    id: sources
+    attributes:
+      label: 信源链接
+      description: 官网/官方账号/报道链接，多个用「 ｜ 」分隔。强烈建议提供，官方来源优先收录。
+      placeholder: https://…
+
+  - type: checkboxes
+    id: status
+    attributes:
+      label: 出版状态
+      options:
+        - label: 该刊物已停刊/休刊
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 其他说明
+      description: 选填。任何想补充的信息。
+      placeholder: …

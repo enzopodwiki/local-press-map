@@ -1,0 +1,84 @@
+name: zine-submission
+
+# 「补充刊物」投稿处理：新 issue（label: zine-submission）→ 解析表单字段 →
+# 校验标题唯一 → 生成档案条目 + 归柜 → 开草稿 PR 供维护者确认合并。
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process:
+    if: contains(github.event.issue.labels.*.name, 'zine-submission')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: 解析投稿并生成数据变更
+        id: parse
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: |
+          set +e
+          python3 tools/process_submission.py > /tmp/submission_report.md 2>&1
+          RC=$?
+          cat /tmp/submission_report.md
+          echo "rc=$RC" >> "$GITHUB_OUTPUT"
+          if [ $RC -eq 0 ] && [ -n "$(git status --porcelain data/)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 处理结果写回 issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RC: ${{ steps.parse.outputs.rc }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+        run: |
+          {
+            echo "## 投稿处理结果"
+            echo ""
+            cat /tmp/submission_report.md
+          } > /tmp/comment.md
+          if [ "$RC" = "0" ]; then
+            gh issue comment "$ISSUE_NUM" --body-file /tmp/comment.md
+          else
+            gh issue comment "$ISSUE_NUM" --body-file /tmp/comment.md
+            gh issue edit "$ISSUE_NUM" --remove-label zine-submission --add-label needs-manual-review || true
+          fi
+
+      - name: 有有效投稿时开草稿 PR
+        if: steps.parse.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BRANCH="bot/submission-$ISSUE_NUM"
+          git checkout -B "$BRANCH" origin/main
+          git add data/
+          git commit -m "收录投稿：$ISSUE_TITLE（@$ISSUE_AUTHOR，#$ISSUE_NUM）"
+          git push --force origin "$BRANCH"
+          PR_NUM=$(gh pr list --state open --head "$BRANCH" --json number -q '.[0].number // empty')
+          if [ -n "$PR_NUM" ]; then
+            gh pr edit "$PR_NUM" --body-file /tmp/submission_report.md
+          else
+            gh pr create --draft \
+              --title "收录投稿：$ISSUE_TITLE（#$ISSUE_NUM）" \
+              --body-file /tmp/submission_report.md
+          fi
+          gh issue close "$ISSUE_NUM" --comment "已生成收录 PR，合并后上线。感谢补充！"
