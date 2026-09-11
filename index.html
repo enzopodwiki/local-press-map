@@ -282,6 +282,13 @@
   .pin .pcount{font-size:9.5px;font-weight:900;fill:#fff;text-anchor:middle;pointer-events:none;font-family:var(--sans)}
   
   /* ===== 台湾县市地图 ===== */
+  /* viewBox 240×350 远小于大陆 880×806：pin/字号按 3.67 比例缩小，屏显与大陆一致 */
+  .panel[data-map="taiwan"] .pin .ring{r:4.6;stroke-width:1.1}
+  .panel[data-map="taiwan"] .pin .core{r:3.2}
+  .panel[data-map="taiwan"] .pin .hit{r:7}
+  .panel[data-map="taiwan"] .pin .pcount{font-size:2.7px}
+  .panel[data-map="taiwan"] .plabel{font-size:3.4px;stroke-width:1.2px}
+  .panel[data-map="taiwan"] .pin-empty .ring{r:2.4;stroke-width:.9}
   .county{fill:color-mix(in srgb, var(--bamboo) 16%, var(--paper));stroke:var(--ink);stroke-width:.8;cursor:pointer;transition:fill .15s ease}
   .county:hover{fill:color-mix(in srgb, var(--bamboo) 34%, var(--paper))}
   .county.is-current{fill:color-mix(in srgb, var(--bamboo) 46%, var(--paper));stroke-width:1.6}
@@ -406,6 +413,12 @@
     .masthead{font-size:38px}
     .chip{font-size:10.5px;padding:4px 8px}
     .toolbar{padding:0 14px;flex-direction:column;align-items:stretch;gap:10px}
+    .panel[data-map="taiwan"] .pin .ring{r:6.2;stroke-width:1.6}
+    .panel[data-map="taiwan"] .pin .core{r:4.4}
+    .panel[data-map="taiwan"] .pin .hit{r:11}
+    .panel[data-map="taiwan"] .pin .pcount{font-size:4px}
+    .panel[data-map="taiwan"] .plabel{font-size:6.5px;stroke-width:2px}
+    .panel[data-map="taiwan"] .pin-empty .ring{r:3.4}
     .search-box,.search-panel{width:100%}
     .county-jump{width:100%;justify-content:space-between}
     .county-jump select{flex:1;min-width:0}
