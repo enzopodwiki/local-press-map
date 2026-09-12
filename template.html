@@ -156,7 +156,7 @@
   @keyframes sticky-wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(4deg)}}
   @media (prefers-reduced-motion:reduce){.sticky-mail{animation:none!important}}
   @media (max-width:760px){
-    .float-stack{top:auto;bottom:12px;right:8px;gap:8px}
+    .float-stack{top:auto;bottom:12px;left:8px;right:auto;gap:8px}
     /* 移动端收成小角标：只留图标，点击行为不变（✉ 投稿 / 贊 赞助） */
     .sticky-note{width:44px;height:44px;padding:0;display:grid;place-items:center;grid-template-columns:none;border-radius:11px}
     .sticky-note strong,.sticky-note small{display:none}
@@ -429,7 +429,7 @@
     /* 地图：横滑大图 */
     .map-wrap{padding:8px 8px 4px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
     .map-wrap::-webkit-scrollbar{display:none}
-    .panel[data-map="china"] svg.map{width:700px;min-width:700px;max-width:none;max-height:none}
+    .panel[data-map="china"] svg.map{width:100%;min-width:0;max-height:none}
     .panel[data-map] svg.map{max-height:none}
     .panel.portrait svg.map{width:100%;min-width:0}
     .panel.portrait .map-wrap{padding-bottom:56px}
@@ -1271,6 +1271,18 @@ const wireJump = (selectId, mapId) => {
 };
 wireJump('county-jump', 'taiwan');
 wireJump('pref-jump', 'japan');
+
+/* ================= 移动端大陆地图默认取景 =================
+   小屏默认裁到东部书柜密集团（大理—舟山、北京—海南，与截图一致）；
+   拉萨柜在此取景外，仍可经「地区」下拉或搜索进入。桌面取全图。 */
+const cnSvg = document.querySelector('section.panel[data-map="china"] svg.map');
+if (cnSvg) {
+  const CN_FULL = '0 0 880 806', CN_MOBILE = '345.8 75.4 405 542';
+  const cnMq = matchMedia('(max-width:760px)');
+  const applyCnCrop = () => { cnSvg.setAttribute('viewBox', cnMq.matches ? CN_MOBILE : CN_FULL); };
+  applyCnCrop();
+  if (cnMq.addEventListener) cnMq.addEventListener('change', applyCnCrop);
+}
 
 /* ================= 绑定地图交互（仅限地图元素；「收录上新」与搜索结果各自带书目标定位） ================= */
 document.querySelectorAll('.panel [data-r]').forEach(el=>{
