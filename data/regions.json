@@ -615,9 +615,9 @@
    "region": "东京都",
    "map": "japan",
    "pubs": [
+    "《DEEPTOKYOmagazine》",
     "《谷中・根津・千駄木》（谷根千）",
-    "《TOmagazine》",
-    "《DEEPTOKYOmagazine》"
+    "《TOmagazine》"
    ]
   },
   {
@@ -667,8 +667,8 @@
    "region": "福冈县",
    "map": "japan",
    "pubs": [
-    "《雲のうえ》（云上）",
-    "《ふくおか食べる通信》"
+    "《ふくおか食べる通信》",
+    "《雲のうえ》（云上）"
    ]
   },
   {
@@ -705,8 +705,8 @@
     "《離島経済新聞》（ritokei）",
     "《TURNS》",
     "《秋刀魚》（台湾出版）",
-    "《旅する食べる通信》",
-    "《THE NEW JAPAN》"
+    "《THE NEW JAPAN》",
+    "《旅する食べる通信》"
    ],
    "sub": "一行一册、走遍列岛的刊物",
    "roam": true
