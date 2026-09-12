@@ -579,6 +579,14 @@
    "roam": true
   },
   {
+   "id": "jp-hokkaido",
+   "region": "北海道",
+   "map": "japan",
+   "pubs": [
+    "《北海道食べる通信》"
+   ]
+  },
+  {
    "id": "jp-tohoku",
    "region": "东北六县",
    "map": "japan",
@@ -613,11 +621,28 @@
    ]
   },
   {
+   "id": "jp-shizuoka",
+   "region": "静冈县",
+   "map": "japan",
+   "pubs": [
+    "《伊豆食べる通信》"
+   ]
+  },
+  {
+   "id": "jp-aichi",
+   "region": "爱知县",
+   "map": "japan",
+   "pubs": [
+    "《あいち食べる通信》"
+   ]
+  },
+  {
    "id": "jp-hyogo",
    "region": "兵库县",
    "map": "japan",
    "pubs": [
-    "《本と温泉》（书与温泉）"
+    "《本と温泉》（书与温泉）",
+    "《兵庫食べる通信》"
    ]
   },
   {
@@ -625,7 +650,16 @@
    "region": "香川县",
    "map": "japan",
    "pubs": [
-    "《せとうちスタイル》（濑户内风格）"
+    "《せとうちスタイル》（濑户内风格）",
+    "《四国食べる通信》"
+   ]
+  },
+  {
+   "id": "jp-ehime",
+   "region": "爱媛县",
+   "map": "japan",
+   "pubs": [
+    "《えひめ・こうち食べる通信》"
    ]
   },
   {
@@ -633,7 +667,32 @@
    "region": "福冈县",
    "map": "japan",
    "pubs": [
-    "《雲のうえ》（云上）"
+    "《雲のうえ》（云上）",
+    "《ふくおか食べる通信》"
+   ]
+  },
+  {
+   "id": "jp-kumamoto",
+   "region": "熊本县",
+   "map": "japan",
+   "pubs": [
+    "《高校生がつくる水俣食べる通信》"
+   ]
+  },
+  {
+   "id": "jp-miyazaki",
+   "region": "宫崎县",
+   "map": "japan",
+   "pubs": [
+    "《宮崎ひなた》"
+   ]
+  },
+  {
+   "id": "jp-kagoshima",
+   "region": "鹿儿岛县",
+   "map": "japan",
+   "pubs": [
+    "《かごんま食べる通信》"
    ]
   },
   {
@@ -646,6 +705,7 @@
     "《離島経済新聞》（ritokei）",
     "《TURNS》",
     "《秋刀魚》（台湾出版）",
+    "《旅する食べる通信》",
     "《THE NEW JAPAN》"
    ],
    "sub": "一行一册、走遍列岛的刊物",
