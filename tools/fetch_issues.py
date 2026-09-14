@@ -390,6 +390,14 @@ def main():
             seen = {(r.get('issue') or '?', r['url'].split('#')[0].rstrip('/'))
                     for r in hist.get(p['t'], [])}
             for cand in candidates:
+                # 通道标题守卫：共用列表页的条目若带【刊物名】前缀，须与本刊一致，
+                # 防止别刊公告被挂到本刊名下（2026-09-14 S-Life×美印臺南 案例）
+                px = re.search(r'【([^】]+)】', cand['title'])
+                if px:
+                    pt = re.sub(r'[《》\s]', '', p['t'])
+                    pl = re.sub(r'\s', '', px.group(1))
+                    if pl not in pt and pt not in pl:
+                        continue
                 # 时间窗口：只收录窗口期内发布公告的新刊（无日期可判的条目不在此过滤）
                 d = cand.get('date')
                 if d and (d < window_start or d > window_end):
