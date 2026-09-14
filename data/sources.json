@@ -1201,7 +1201,7 @@
   },
   {
    "t": "《月刊京都》",
-   "shelf": "京都",
+   "shelf": "京都府",
    "freq": "月刊",
    "method": "official",
    "channels": [
@@ -1315,7 +1315,7 @@
   },
   {
    "t": "《東北食べる通信》（东北食通信）",
-   "shelf": "东北",
+   "shelf": "东北六县",
    "freq": "月刊",
    "method": "official",
    "channels": [
@@ -1331,7 +1331,7 @@
   },
   {
    "t": "《本と温泉》（书与温泉）",
-   "shelf": "兵库 · 城崎",
+   "shelf": "兵库县",
    "freq": "不定期",
    "method": "official",
    "channels": [
@@ -1355,7 +1355,7 @@
   },
   {
    "t": "《DEEPTOKYOmagazine》",
-   "shelf": "东京",
+   "shelf": "东京都",
    "freq": "不定期",
    "method": "rss",
    "channels": [
