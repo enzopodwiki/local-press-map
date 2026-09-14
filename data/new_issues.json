@@ -263,9 +263,53 @@
     "foundAt": "2026-09-06",
     "channel": "人工登记（岛与官方公众号推文，经确认）"
    }
+  ],
+  "《新北市文化季刊》": [
+   {
+    "issue": "60",
+    "title": "標題： 新北市文化季刊第60期",
+    "url": "https://www.culture.ntpc.gov.tw/xmdoc/cont?xsmsid=0G244582088669372377&sid=0Q205487680231259421",
+    "theme": "標題： 新北市文化季刊",
+    "announcedAt": null,
+    "foundAt": "2026-09-14",
+    "channel": "https://www.culture.ntpc.gov.tw/xmdoc?xsmsid=0G244582088669372377"
+   }
+  ],
+  "《美好彰化》": [
+   {
+    "issue": "42",
+    "title": "《美好彰化》第42期 半線感性",
+    "url": "https://www.chcg.gov.tw/ch2/05view.aspx?data_id=28482",
+    "theme": "半線感性",
+    "announcedAt": null,
+    "foundAt": "2026-09-14",
+    "channel": "https://www.chcg.gov.tw/ch2/e-publication-gov-publication.aspx?page=1"
+   }
+  ],
+  "《高雄畫刊》": [
+   {
+    "issue": "28",
+    "title": "最新電子書 高雄畫刊 No.28 發行日期：2026/08",
+    "url": "https://takao.kcg.gov.tw/files/ebook_multimedia/671",
+    "theme": "最新電子書 高雄畫刊 發行日期：2026/08",
+    "announcedAt": null,
+    "foundAt": "2026-09-14",
+    "channel": "https://takao.kcg.gov.tw/ebook"
+   }
+  ],
+  "《S-Life 新生活藝文誌》": [
+   {
+    "issue": "74",
+    "title": "【美印臺南刊物】美印臺南第74期",
+    "url": "https://culture.tainan.gov.tw/form/Details?Parser=28,6,118,48,,,1466",
+    "theme": "美印臺南",
+    "announcedAt": null,
+    "foundAt": "2026-09-14",
+    "channel": "https://culture.tainan.gov.tw/form/index?Parser=28%2C6%2C118%2C48"
+   }
   ]
  },
- "lastRun": "2026-09-09 16:10 +0800",
+ "lastRun": "2026-09-14 13:43 +0800",
  "batches": [
   {
    "d": "2026-09-06",
@@ -305,5 +349,5 @@
    ]
   }
  ],
- "lastScrape": "2026-09-01"
+ "lastScrape": "2026-09-14"
 }
