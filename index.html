@@ -5523,10 +5523,8 @@ const UPDATES = [
 function renderUpdates(){
   const el=document.getElementById('update-strip');
   /* 只展示当天批次，之前的自动剔除（批次日期格式「YYYY 年 M 月 D 日」） */
-  const now=new Date();
-  const today=`${now.getFullYear()} 年 ${now.getMonth()+1} 月 ${now.getDate()} 日`;
-  const todays=UPDATES.filter(b=>b.d===today);
-  if(!todays.length){el.style.display='none';return;}
+  /* 一直显示最近一次批次，直到下一次收录覆盖 */
+  const todays=[UPDATES[0]];
   const first=todays[0];
   const short=first.d.replace(/ 年 /g,'.').replace(/ 月 /g,'.').replace(/ 日$/,'');
   const batch=b=>`
