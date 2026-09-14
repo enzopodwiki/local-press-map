@@ -22,7 +22,7 @@ REGIONS_PATH = ROOT / 'data' / 'regions.json'
 FRESH_PATH = ROOT / 'data' / 'new_issues.json'
 TEMPLATE_PATH = ROOT / 'template.html'
 OUTPUT_PATH = ROOT / 'index.html'
-FRESH_BATCHES = 6  # 页面「新刊速递」模块展示的最近批次数
+FRESH_BATCHES = 6  # 注入页面的最近批次数（页面只渲染最新一批，其余为余量）
 
 
 def parse_md(path):
