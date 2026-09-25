@@ -22,7 +22,7 @@
 
 ```
 data/在地刊物地图.md    内容唯一数据源：刊物条目（标题/地点/年份/频率/停刊/介绍/信源/封面）
-data/regions.json      结构数据：69 个书柜的分组、顺序、地图归属（新增地区时才改）
+data/regions.json      结构数据：76 个书柜的分组、顺序、地图归属（新增地区时才改）
 data/sources.json      「新刊速递」监控清单：94 种在刊刊物的信源通道、适配方式与探测状态
 data/new_issues.json   「新刊速递」抓取历史（发现过的公告按刊物去重落在这里）
 template.html          版式模板：页面的一切，除了数据（DATA 与总数是占位符）
@@ -30,7 +30,7 @@ tools/build.py         构建脚本：数据源 + 模板 → index.html
 tools/validate.py      校验脚本：数据一致性体检（CI 也会跑）
 tools/migrate_p0.py    一次性迁移脚本存档（2026-08 从旧仓库结构迁出，勿再用）
 index.html             构建产物，GitHub Pages 直接发布本文件
-covers/                封面图（c001…c151，条目用「封面：covers/cXXX.jpg」引用）
+covers/                封面图（c001…c153，条目用「封面：covers/cXXX.jpg」引用）
 archive/build_legacy/  P0 之前的一次性补丁脚本与备份，仅作历史存档
 docs/                  操作文档：信源调研方法（research）、移动端适配约定（mobile）
 ```
