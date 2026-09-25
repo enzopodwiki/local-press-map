@@ -30,7 +30,7 @@ tools/build.py         构建脚本：数据源 + 模板 → index.html
 tools/validate.py      校验脚本：数据一致性体检（CI 也会跑）
 tools/migrate_p0.py    一次性迁移脚本存档（2026-08 从旧仓库结构迁出，勿再用）
 index.html             构建产物，GitHub Pages 直接发布本文件
-covers/                封面图（c001…c161，条目用「封面：covers/cXXX.jpg」引用）
+covers/                封面图（c001…c162，条目用「封面：covers/cXXX.jpg」引用）
 archive/build_legacy/  P0 之前的一次性补丁脚本与备份，仅作历史存档
 docs/                  操作文档：信源调研方法（research）、移动端适配约定（mobile）
 ```
