@@ -8,7 +8,7 @@
   "note": "GitHub Actions 每周一 01:00 UTC（北京 09:00）触发，周数奇偶判断只跑双周"
  },
  "summary": {
-  "monitored": 94,
+  "monitored": 92,
   "by_method": [
    [
     "official",
@@ -1639,22 +1639,6 @@
    ]
   },
   {
-   "t": "《文化開傳》",
-   "shelf": "tw-north",
-   "freq": "月刊",
-   "method": "official",
-   "channels": [
-    {
-     "name": "基隆市文化觀光局·文化開傳",
-     "url": "https://klctb.klcg.gov.tw/News2.aspx?n=7775&sms=12517",
-     "adapter": "official",
-     "grade": "official",
-     "status": 200,
-     "usable": "ok"
-    }
-   ]
-  },
-  {
    "t": "《新北市藝遊》",
    "shelf": "tw-north",
    "freq": "月刊",
@@ -1759,22 +1743,6 @@
     {
      "name": "臺東縣政府·看見臺東",
      "url": "https://www.taitung.gov.tw/Epaper.aspx?n=13405&sms=13175",
-     "adapter": "official",
-     "grade": "official",
-     "status": 200,
-     "usable": "ok"
-    }
-   ]
-  },
-  {
-   "t": "《花蓮趣》",
-   "shelf": "tw-east",
-   "freq": "季刊",
-   "method": "official",
-   "channels": [
-    {
-     "name": "花蓮縣政府觀光處·花蓮趣",
-     "url": "https://tour-hualien.hl.gov.tw/News_Link2.aspx?n=84&sms=12334",
      "adapter": "official",
      "grade": "official",
      "status": 200,
