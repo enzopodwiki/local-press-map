@@ -232,6 +232,15 @@
     "theme": "〈JAZZ & LIFE〉",
     "foundAt": "2026-09-06",
     "channel": "https://qdymag.com/"
+   },
+   {
+    "issue": "53",
+    "title": "第53期《秋刀魚》〈第二次的沖繩〉",
+    "url": "https://qdymag.com/news/nidomeno-okinawa",
+    "theme": "〈第二次的沖繩〉",
+    "announcedAt": null,
+    "foundAt": "2026-11-09",
+    "channel": "https://qdymag.com/"
    }
   ],
   "《DEEPTOKYOmagazine》": [
@@ -273,6 +282,15 @@
     "announcedAt": null,
     "foundAt": "2026-09-14",
     "channel": "https://www.culture.ntpc.gov.tw/xmdoc?xsmsid=0G244582088669372377"
+   },
+   {
+    "issue": "61",
+    "title": "標題： 新北市文化季刊第61期",
+    "url": "https://www.culture.ntpc.gov.tw/xmdoc/cont?xsmsid=0G244582088669372377&sid=0Q295647295337843499",
+    "theme": "標題： 新北市文化季刊",
+    "announcedAt": null,
+    "foundAt": "2026-11-09",
+    "channel": "https://www.culture.ntpc.gov.tw/xmdoc?xsmsid=0G244582088669372377"
    }
   ],
   "《美好彰化》": [
@@ -284,6 +302,15 @@
     "announcedAt": null,
     "foundAt": "2026-09-14",
     "channel": "https://www.chcg.gov.tw/ch2/e-publication-gov-publication.aspx?page=1"
+   },
+   {
+    "issue": "43",
+    "title": "《美好彰化》第43期 河海共治 活水長流",
+    "url": "https://www.chcg.gov.tw/ch2/05view.aspx?data_id=28594",
+    "theme": "河海共治 活水長流",
+    "announcedAt": null,
+    "foundAt": "2026-11-09",
+    "channel": "https://www.chcg.gov.tw/ch2/e-publication-gov-publication.aspx?page=1"
    }
   ],
   "《高雄畫刊》": [
@@ -294,6 +321,15 @@
     "theme": "最新電子書 高雄畫刊 發行日期：2026/08",
     "announcedAt": null,
     "foundAt": "2026-09-14",
+    "channel": "https://takao.kcg.gov.tw/ebook"
+   },
+   {
+    "issue": "29",
+    "title": "最新電子書 高雄畫刊 No.29 發行日期：2026/10",
+    "url": "https://takao.kcg.gov.tw/files/ebook_multimedia/672",
+    "theme": "最新電子書 高雄畫刊 發行日期：2026/10",
+    "announcedAt": null,
+    "foundAt": "2026-11-09",
     "channel": "https://takao.kcg.gov.tw/ebook"
    }
   ],
@@ -307,10 +343,71 @@
     "foundAt": "2026-09-14",
     "channel": "https://culture.tainan.gov.tw/form/index?Parser=28%2C6%2C118%2C48"
    }
+  ],
+  "《THE NEW JAPAN》": [
+   {
+    "issue": "3",
+    "title": "MIYAZAKI Vol.3 THE CURIOUS CASE OF SADOHARA DOLLS Made by a ninth-generation artisan",
+    "url": "https://thenewjapan.com/en/articles/thenewjapan-column-en-14",
+    "theme": "MIYAZAKI THE CURIOUS CASE OF SADOHARA DOLLS Made by a ninth-generation artisan",
+    "announcedAt": null,
+    "foundAt": "2026-11-09",
+    "channel": "https://thenewjapan.com/en"
+   }
   ]
  },
- "lastRun": "2026-09-14 13:43 +0800",
+ "lastRun": "2026-11-09 15:35 +0800",
  "batches": [
+  {
+   "d": "2026-11-09",
+   "items": [
+    {
+     "t": "《秋刀魚》（台湾出版）",
+     "shelf": "流动书柜 · 全国刊物",
+     "issue": "53",
+     "theme": "〈第二次的沖繩〉",
+     "title": "第53期《秋刀魚》〈第二次的沖繩〉",
+     "announcedAt": null,
+     "url": "https://qdymag.com/news/nidomeno-okinawa"
+    },
+    {
+     "t": "《THE NEW JAPAN》",
+     "shelf": "流动书柜 · 全国刊物",
+     "issue": "3",
+     "theme": "MIYAZAKI THE CURIOUS CASE OF SADOHARA DOLLS Made by a ninth-generation artisan",
+     "title": "MIYAZAKI Vol.3 THE CURIOUS CASE OF SADOHARA DOLLS Made by a ninth-generation artisan",
+     "announcedAt": null,
+     "url": "https://thenewjapan.com/en/articles/thenewjapan-column-en-14"
+    },
+    {
+     "t": "《新北市文化季刊》",
+     "shelf": "tw-north",
+     "issue": "61",
+     "theme": "標題： 新北市文化季刊",
+     "title": "標題： 新北市文化季刊第61期",
+     "announcedAt": null,
+     "url": "https://www.culture.ntpc.gov.tw/xmdoc/cont?xsmsid=0G244582088669372377&sid=0Q295647295337843499"
+    },
+    {
+     "t": "《美好彰化》",
+     "shelf": "tw-central",
+     "issue": "43",
+     "theme": "河海共治 活水長流",
+     "title": "《美好彰化》第43期 河海共治 活水長流",
+     "announcedAt": null,
+     "url": "https://www.chcg.gov.tw/ch2/05view.aspx?data_id=28594"
+    },
+    {
+     "t": "《高雄畫刊》",
+     "shelf": "tw-south",
+     "issue": "29",
+     "theme": "最新電子書 高雄畫刊 發行日期：2026/10",
+     "title": "最新電子書 高雄畫刊 No.29 發行日期：2026/10",
+     "announcedAt": null,
+     "url": "https://takao.kcg.gov.tw/files/ebook_multimedia/672"
+    }
+   ]
+  },
   {
    "d": "2026-09-06",
    "items": [
@@ -349,5 +446,5 @@
    ]
   }
  ],
- "lastScrape": "2026-09-14"
+ "lastScrape": "2026-11-09"
 }
